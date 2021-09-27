@@ -1,0 +1,102 @@
+.hero {
+  padding: 16px;
+  z-index: 3;
+  position: relative;
+
+  @media screen and (min-width: 1200px) {
+    padding: 118px 0px 32px 144px;
+  }
+}
+
+.hero-text {
+  z-index: 3;
+  position: relative;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 36px;
+  color: $white;
+  margin-bottom: 8px;
+  display: inline-block;
+}
+
+.hero-title {
+  z-index: 3;
+  position: relative;
+  font-family: $hero-font;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 72px;
+  line-height: 100%;
+  color: $white;
+  margin-bottom: 80px;
+
+  @media screen and(min-width: 730px) {
+    font-size: 128px;
+  }
+}
+
+.hero-btn {
+  z-index: 3;
+  position: relative;
+  padding: 24px;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 36px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.hero-btn--icon {
+  z-index: 3;
+  position: relative;
+  width: 48px;
+  height: 48px;
+  fill: $white;
+  margin-left: 10px;
+}
+
+.hero-list {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+
+  @media screen and (min-width: 1920px) {
+    justify-content: end;
+  }
+}
+
+.hero-list-item {
+  z-index: 3;
+  position: relative;
+  width: 160px;
+  height: 160px;
+  background-color: $white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-right: 16px;
+  margin-bottom: 16px;
+
+  &:hover,
+  :focus {
+    background-color: $black;
+    fill: $white;
+    color: $white;
+  }
+}
+
+.hero-list-icon {
+  width: 56px;
+  height: 56px;
+  margin-bottom: 16px;
+}
+
+.hero-list-name {
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 27px;
+  color: $grey-text;
+}

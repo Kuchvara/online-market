@@ -1,0 +1,162 @@
+.footer {
+  padding: 16px;
+  background-color: $black;
+  text-align: center;
+
+  @media screen and (min-width: 1920px) {
+    padding: 64px 144px 32px;
+  }
+}
+
+.footer-flex {
+  display: flex;
+
+  @media screen and (max-width: 1919px) {
+    flex-wrap: wrap;
+  }
+}
+
+.footer-copyright {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 21px;
+  color: $grey-text;
+  display: inline-block;
+  margin-top: 96px;
+}
+
+.footer-contacts-box {
+  padding-right: 32px;
+  margin-right: 32px;
+  text-align: left;
+
+  @media screen and (min-idth: 1920px) {
+    margin-right: 278px;
+  }
+}
+
+.footer-logo {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 36px;
+  color: $white;
+  display: flex;
+  align-items: center;
+  margin-bottom: 32px;
+}
+
+.footer-logo--icon {
+  fill: $white;
+  width: 39px;
+  height: 24px;
+  margin-right: 8px;
+}
+
+.footer-contacts-description {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 32px;
+  color: $grey-text;
+  display: inline-block;
+  margin-bottom: 32px;
+}
+
+.fotter-contacts {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 32px;
+  color: $white;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+
+  &:not(:last-child) {
+    margin-bottom: 16px;
+  }
+}
+
+.footer-contacts-icon {
+  fill: $white;
+  margin-right: 10px;
+}
+
+.footer-content-box {
+  text-align: left;
+  &:not(:last-child) {
+    margin-right: 32px;
+    width: 245px;
+  }
+}
+
+.footer-content-box--heading {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 36px;
+  color: $white;
+  margin-bottom: 32px;
+}
+
+.footer-product-item {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 27px;
+  color: $grey-text;
+
+  &:not(:last-child) {
+    margin-bottom: 16px;
+  }
+}
+
+.footer-form-text {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 27px;
+  color: $grey-text;
+  margin-bottom: 35px;
+  display: block;
+}
+
+.footer-input {
+  background-color: $black;
+  border: 1px solid $white;
+  text-align: center;
+
+  @media screen and (min-width: 1920px) {
+    padding: 16px 149px 17px 24px;
+  }
+}
+
+.footer-input::placeholder {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 27px;
+  letter-spacing: 0.02em;
+  color: $grey-text;
+}
+
+.footer-submit-btn {
+  padding: 16px;
+  background-color: $white;
+  cursor: pointer;
+}
+
+.footer-submit-btn--arrow {
+  fill: $black;
+  width: 31px;
+  height: 32px;
+}
+
+.footer-btn-box {
+  display: flex;
+  max-width: 384px;
+  box-sizing: border-box;
+}
