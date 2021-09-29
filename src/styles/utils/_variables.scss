@@ -6,3 +6,11 @@ $background: #cdcfd1;
 
 $main-font: 'Poppins', sans-serif;
 $hero-font: 'Playfair Display', serif;
+
+// mixins
+@mixin font($fs, $lh, $fw: 400) {
+  font-style: normal;
+  font-size: $fs;
+  line-height: $lh;
+  font-weight: $fw;
+}

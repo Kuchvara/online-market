@@ -3,25 +3,26 @@
   padding: 0px 16px;
   margin-bottom: 20px;
 
-  @media screen and (min-width: 1920px) {
+  @media screen and (min-width: 1200px) {
     padding: 0px 142px 0px 144px;
     margin-bottom: 100px;
   }
 }
 
 .arrival-title {
-  font-style: normal;
-  font-weight: bold;
-  font-size: 36px;
-  line-height: 54px;
+  @include font(17px, 27px, 700);
+  @media screen and (min-width: 361px) {
+    @include font(36px, 54px, 700);
+  }
+
   color: $black;
   margin-bottom: 32px;
 }
 
 .arrival-list {
   display: flex;
-  flex-wrap: wrap;
   justify-content: space-around;
+  flex-wrap: wrap;
 }
 
 .arrival-item {
@@ -31,7 +32,9 @@
   text-align: center;
 
   @media screen and (min-width: 1920px) {
-    padding: 47px 24px;
+    padding: 24px;
+    margin-right: 16px;
+    margin-bottom: 16px;
     flex-direction: row;
     align-items: center;
   }
@@ -44,28 +47,25 @@
 }
 
 .arrival-name {
-  font-style: normal;
-  font-weight: 500;
-  font-size: 24px;
-  line-height: 36px;
+  @include font(22px, 36px);
+  @media screen and (min-width: 361px) {
+    @include font(36px, 54px, 500);
+  }
   color: $black;
   margin-bottom: 8px;
   display: block;
 }
 
 .arrival-price {
-  font-style: normal;
-  font-weight: 500;
-  font-size: 24px;
-  line-height: 36px;
+  @include font(18px, 27px);
+  @media screen and (min-width: 361px) {
+    @include font(24px, 36px, 500);
+  }
   color: $grey-text;
 }
 
 .view-all-link {
-  font-style: normal;
-  font-weight: 500;
-  font-size: 18px;
-  line-height: 27px;
+  @include font(18px, 27px, 500);
   color: $black;
   margin-right: 8px;
   display: flex;

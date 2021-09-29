@@ -50,9 +50,12 @@ const jsLoaders = () => {
 
 module.exports = {
   mode: 'development',
-  entry: ['@babel/polyfill', './src/index.js'],
+  entry: {
+    index: './src/index.js',
+    checkout: './src/js/checkout.js'
+  },
   output: {
-    filename: '[name].bundle.js',
+    filename: '[name].js',
     path: path.resolve(__dirname, 'dist')
   },
 
@@ -70,13 +73,23 @@ module.exports = {
             template: './src/index.html',
             filename: 'index.html',
             minify: {
-                collapseWhitespace: !devMode
-            }
+              collapseWhitespace: !devMode
+          },
+            chunks: ['index']            
+        }),
+        new HTMLWebpackPlugin({
+            template: './src/checkout.html',
+            filename: 'checkout.html',
+            minify: {
+              collapseWhitespace: !devMode
+          },
+            chunks: ['checkout']
         }),
         new CopyWebpackPlugin(
           [
           { from: 'src/images', to: 'images' },
-          { from: 'src/js/slider/slick.min.js', to: 'slick.min.js'}
+          { from: 'src/js/slider/slick.min.js', to: 'slick.min.js' },
+          { from: 'src/js/jquery.mask.js', to: 'jquery.mask.js'}
           ]
         ),        
         new CleanWebpackPlugin(),

@@ -1,0 +1,222 @@
+.checkout-container {
+  padding: 0px 32px;
+
+  @media screen and (min-width: 1600px) {
+    padding: 0px 144px;
+  }
+}
+
+.checkout-header-login--group {
+  display: flex;
+  justify-content: end;
+
+  @media screen and (max-width: 1200px) {
+    width: 400px;
+  }
+
+  @media screen and (max-width: 1800px) {
+    width: 800px;
+  }
+}
+
+.checkout-title {
+  text-align: center;
+  @include font(36px, 54px, 700);
+  margin-bottom: 32px;
+  margin-top: 17px;
+
+  @media screen and (min-width: 730px) {
+    margin-bottom: 100px;
+  }
+}
+
+.checkout-progres {
+  display: flex;
+  padding: 0px 32px;
+  justify-content: space-between;
+  margin-bottom: 80px;
+
+  @media screen and (max-width: 730px) {
+    flex-direction: column;
+  }
+}
+
+.checkout-progress_item {
+  color: $grey-text;
+  display: flex;
+  align-items: center;
+
+  @media screen and (max-width: 730px) {
+    margin-bottom: 16px;
+  }
+
+  &:not(:last-child) {
+    color: $black;
+  }
+}
+
+.checkout-progress_number {
+  border-radius: 50%;
+  border: 2px solid;
+  box-sizing: border-box;
+  width: 56px;
+  height: 56px;
+  margin-right: 24px;
+  @include font(24px, 36px, 500);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.checkout-progress_name {
+  @include font(24px, 36px, 500);
+}
+
+.form {
+  @include font(18px, 27px);
+  color: $grey-text;
+  margin-bottom: 100px;
+  display: flex;
+  flex-direction: column;
+
+  @media screen and (min-width: 1200px) {
+    width: 800px;
+
+    &:not(:last-child) {
+      margin-right: 32px;
+      width: 662px;
+    }
+  }
+
+  @media screen and (min-width: 1920px) {
+    &:not(:last-child) {
+      margin-right: 170px;
+    }
+  }
+}
+
+.form-title {
+  color: $black;
+  @include font(18px, 27px 500);
+  margin-bottom: 32px;
+}
+
+.checkout-form_label {
+  margin-bottom: 16px;
+}
+
+.checkout-form_input {
+  padding: 16px;
+  box-sizing: border-box;
+  border: 1px solid #cdcfd1;
+  margin-bottom: 32px;
+  height: 60px;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+
+  &:not(:last-child) {
+    margin-right: 32px;
+  }
+}
+
+#state {
+  @media screen and (min-width: 1920px) {
+    width: calc(100% + 107px);
+  }
+}
+
+#card {
+  width: calc(100% + 70px);
+
+  @media screen and (min-width: 1920px) {
+    width: calc(100% + 246px);
+  }
+}
+
+.state-flex-box {
+  display: flex;
+  justify-content: space-between;
+
+  @media screen and (max-width: 600px) {
+    flex-direction: column;
+  }
+}
+
+.checkout-btn {
+  padding: 16px;
+  width: 245px;
+  margin-left: auto;
+  margin-top: 43px;
+}
+
+.checkout-form-flex {
+  @media screen and (min-width: 1200px) {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+.payment-list {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 32px;
+
+  @media screen and (max-width: 730px) {
+    flex-wrap: wrap;
+  }
+}
+
+.payment-item {
+  margin: 0 auto;
+}
+
+.payment-input {
+  appearance: none;
+  position: absolute;
+}
+
+.payment-icon {
+  width: 40px;
+  height: 40px;
+  margin-right: 16px;
+}
+
+.payment-method {
+  display: block;
+  width: 200px;
+  height: 103px;
+  box-sizing: border-box;
+  border: 1px solid #cdcfd1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: $black;
+
+  @media screen and (min-width: 1400px) {
+    width: 245px;
+  }
+
+  @media screen and (max-width: 1199px) {
+    margin-bottom: 16px;
+  }
+
+  &:hover,
+  :focus {
+    background-color: $black;
+    color: $white;
+    fill: $white;
+  }
+}
+
+.payment-text {
+  @include font(18px, 27px);
+}
+
+.payment-input:checked + .payment-method {
+  background-color: $black;
+  color: $white;
+  fill: $white;
+}

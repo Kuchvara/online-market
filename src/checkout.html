@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@400;700&display=swap"
+    rel="stylesheet">
+  <title>Online-market</title>
+</head>
+<body>
+  <header class="header">
+    <h1 class="logo">
+      <svg class="header-logo-icon">
+        <use href="./images/svg/sprite.svg#icon-logo"></use>
+      </svg>Elliye
+    </h1>
+    <div class="burger-menu" id="burger-menu">
+      <a href="" class="burger-menu_button">
+        <spun class="burger-menu_lines"></spun>
+      </a>
+      <div class="burger-menu_nav">
+        <div class="header-menu__flex">          
+          <div class="checkout-header-login--group">
+            <svg class="header-icon">
+              <use href="./images/svg/sprite.svg#icon-basket"></use>
+            </svg>
+            <svg class="header-icon">
+              <use href="./images/svg/sprite.svg#icon-envelope"></use>
+            </svg>
+            <button class="btn login">Login</button>
+          </div>
+        </div>
+        <nav class="navigation">
+          <ul class="header-navigation">
+            <li class="header-navigation-item"><a href="./index.html" class="link">Home</a></li>
+            <li class="header-navigation-item"><a href="" class="link">Shopping Cart</a></li>            
+            <li class="header-navigation-item"><a href="./checkout.html" class="link">Checkout</a></li>
+          </ul>
+        </nav>
+      </div>
+      <div class="burger-menu_overlay"></div>
+    </div>
+  </header>
+  <main class="checkout-container">
+  <h4 class="checkout-title">Checkout</h4>
+  <ul class="checkout-progres">
+    <li class="checkout-progress_item">
+      <span class="checkout-progress_number">1</span>
+      <span class="checkout-progress_name">Shopping Cart</span>
+    </li>
+    <li class="checkout-progress_item">
+      <span class="checkout-progress_number">2</span>
+      <span class="checkout-progress_name">Checkout</span>
+    </li>
+    <li class="checkout-progress_item">
+      <span class="checkout-progress_number">3</span>
+      <span class="checkout-progress_name">Completed</span>
+    </li>
+  </ul>
+  <form action="" class="checkout-form-flex">
+    <div class="form buyer">
+      <span class="form-title">Buyer Info</span>
+      <label for="name" class="checkout-form_label">Full Name</label>
+      <input type="text" id="name" class="checkout-form_input" autocomplete=off required
+        pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"/>
+      <label for="address" class="checkout-form_label">Address</label>
+      <input type="text" id="address" class="checkout-form_input" autocomplete=off required/>
+      <label for="contact" class="checkout-form_label">Contact</label>
+      <input type="tel" id="contact" class="contact checkout-form_input" autocomplete=off required
+        pattern="(\+?( |-|\.)?\d{1,2}( |-|\.)?)?(\(?\d{3}\)?|\d{3})( |-|\.)?(\d{3}( |-|\.)?\d{4})"/>
+      <label for="city" class="checkout-form_label">City</label>
+      <input type="text" id="city" class="checkout-form_input" autocomplete=off required/>
+      <div class="state-flex-box">
+      <div class="flex-column">
+        <label for="state" class="checkout-form_label">State</label>
+        <input type="text" id="state" class="checkout-form_input" required/>
+      </div>
+      <div class="flex-column">
+        <label for="zipCode" class="checkout-form_label">Zip Code</label>
+        <input type="number" id="zipCode" class="checkout-form_input" required/>
+      </div>      
+      </div>
+    </div>  
+    <div class="form buyer">
+      <span class="form-title">Payment Method</span>
+      <ul class="payment-list">
+      <li class="payment-item">
+        <input type="radio" name="paymentMethod" class="payment-input" id="creditCard" required/>
+        <label class="payment-method" for="creditCard">          
+          <svg class="payment-icon">
+            <use href="./images/svg/sprite.svg#icon-Card"></use>
+          </svg>
+          <span class="payment-text">Credit Card</span>          
+        </label>
+      </li>
+      <li class="payment-item">
+        <input type="radio" name="paymentMethod" class="payment-input" id="bank" required/>
+        <label class="payment-method" for="bank">
+          <svg class="payment-icon">
+            <use href="./images/svg/payment.svg#Transfer"></use>
+          </svg>
+          <span class="payment-text">Bank Transfer</span>          
+        </label>
+      </li>
+      <li class="payment-item">
+        <input type="radio" name="paymentMethod" class="payment-input" id="paypal" required/>
+        <label class="payment-method" for="paypal">
+          <svg class="payment-icon">
+            <use href="./images/svg/payment.svg#Paypal"></use>
+          </svg>
+          <span class="payment-text">Paypal</span>          
+        </label>
+      </li>
+      </ul>
+      <label for="cardName" class="checkout-form_label">Name on Card</label>
+      <input type="text" id="cardName" class="checkout-form_input" required autocomplete="off"
+        pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"/>
+      <div class="state-flex-box">
+      <div class="flex-column">
+        <label for="card" class="checkout-form_label">Card Number</label>
+        <input type="text" id="card" class="checkout-form_input" autocomplete="off" required/>
+      </div>
+      <div class="flex-column">
+        <label for="cvv" class="checkout-form_label">CVV</label>
+        <input type="number" id="cvv" class="checkout-form_input" autocomplete="off" required/>
+      </div>
+      </div>
+      <div class="state-flex-box">
+      <div class="flex-column">
+        <label for="month" class="checkout-form_label">Month</label>
+        <input type="number" id="month" class="checkout-form_input" required/>
+      </div>
+      <div class="flex-column">
+        <label for="year" class="checkout-form_label">Year</label>
+        <input type="number" id="year" class="checkout-form_input" required/>
+      </div>
+      </div>
+      <button type="submit" class="btn checkout-btn">Checkout</button>
+    </div>
+  </form>
+  </main>
+  <footer class="footer">
+    <div class="footer-flex">
+      <div class="footer-contacts-box">
+        <h2 class="footer-logo">
+          <svg class="footer-logo--icon">
+            <use href="./images/svg/sprite.svg#icon-logo"></use>
+          </svg>
+          Elliye
+        </h2>
+        <span class="footer-contacts-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nulla amet ut
+          temporibus.</span>
+        <a href="tel:+1234567890" class="fotter-contacts">
+          <svg class="footer-contacts-icon" width="20" height="20">
+            <use href="./images/svg/sprite.svg#icon-phone"></use>
+          </svg>
+          +1234567890
+        </a>
+        <a href="mailto:info@devstudio.com" class="fotter-contacts">
+          <svg class="footer-contacts-icon" width="20" height="16">
+            <use href="./images/svg/sprite.svg#icon-envelope"></use>
+          </svg>
+          elliye@support.com
+        </a>
+      </div>
+      <div class="footer-content-box">
+        <h5 class="footer-content-box--heading">Product Links</h5>
+        <ul>
+          <li class="footer-product-item"><a href="#categories" class="link">Categories</a></li>
+          <li class="footer-product-item"><a href="#arrival" class="link">New Arrival</a></li>
+          <li class="footer-product-item"><a href="#featured" class="link">Features</a></li>
+          <li class="footer-product-item"><a href="#collections" class="link">Collections</a></li>
+        </ul>
+      </div>
+      <div class="footer-content-box">
+        <h5 class="footer-content-box--heading">Company</h5>
+        <ul>
+          <li class="footer-product-item">About</li>
+          <li class="footer-product-item">Blog</li>
+          <li class="footer-product-item">Careers</li>
+          <li class="footer-product-item">Services</li>
+          <li class="footer-product-item">Privacy Policy</li>
+          <li class="footer-product-item">Terms of service</li>
+        </ul>
+      </div>
+      <div class="footer-content-box">
+        <h5 class="footer-content-box--heading">Join our Newsletter</h5>
+        <form autocomplete="off">
+          <span class=" footer-form-text">
+            Drop your email below to get update, promotions, coupons, and more!
+          </span>
+          <div class="footer-btn-box">
+            <input 
+              type="email"
+              class="footer-input"
+              placeholder="Enter your email" 
+              pattern="\A[A-Z0-9+_.-]+@[A-Z0-9.-]+\Z"/>
+            <button type="submit" class="footer-submit-btn">
+              <svg class="footer-submit-btn--arrow">
+                <use href="./images/svg/sprite.svg#icon-ArrowR"></use>
+              </svg>
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <span class="footer-copyright">Copyright © 2021 Elliye. All Right Reseved</span>
+  </footer>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="./slick.min.js"></script>
+  <script src="./jquery.mask.js"></script>  
+</body>
+</html>
