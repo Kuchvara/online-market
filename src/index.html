@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link
+		href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@400;700&display=swap"
+		rel="stylesheet">	
+	<title>Online-market</title>
+</head>
+<body>
+<header class="header">
+	<h1 class="logo">
+		<svg class="header-logo-icon">
+			<use href="./images/svg/sprite.svg#icon-logo"></use>
+		</svg>Elliye
+	</h1>
+	<div class="burger-menu" id="burger-menu">		
+		<a href="" class="burger-menu_button">
+			<spun class="burger-menu_lines"></spun>
+		</a>
+		<div class="burger-menu_nav">
+		<div class="header-menu__flex">
+			<form>
+			<div class="header-btn-box">
+				<input class="header-input" placeholder="Search here" />
+				<button type="submit" class="header-submit-btn">
+					<svg class="header-submit-btn--icon">
+						<use href="./images/svg/sprite.svg#icon-search"></use>
+					</svg>
+				</button>
+			</div>
+			</form>
+			<div class="header-login--group">
+			<svg class="header-icon">
+				<use href="./images/svg/sprite.svg#icon-basket"></use>
+			</svg>
+			<svg class="header-icon">
+				<use href="./images/svg/sprite.svg#icon-envelope"></use>
+			</svg>
+			<button class="btn login">Login</button>
+			</div>
+		</div>		
+		<nav class="navigation">
+			<ul class="header-navigation">
+				<li class="header-navigation-item"><a href="#categories" class="link">Categories</a></li>
+				<li class="header-navigation-item"><a href="#arrival" class="link">New Arrival</a></li>
+				<li class="header-navigation-item"><a href="#featured" class="link">Features</a></li>
+				<li class="header-navigation-item"><a href="#collections" class="link">Collections</a></li>
+			</ul>
+		</nav>
+		</div>
+		<div class="burger-menu_overlay"></div>
+	</div>	
+</header>
+<main>
+	<section class="hero">		
+		<span class="hero-text">50% Off Limited Offer</span>
+		<h2 class="hero-title">Summer<br> Collection</h2>
+		<button class="btn hero-btn">Shop Now 
+			<svg class="hero-btn--icon"><use href="./images/svg/sprite.svg#icon-ArrowR"></use></svg>
+		</button>
+		<ul class="hero-list" id="categories">
+			<li class="hero-list-item">
+				<svg class="hero-list-icon"><use href="./images/svg/sprite.svg#icon-jacket"></use></svg>
+				<span class="hero-list-name">Jacket</span>
+			</li>
+			<li class="hero-list-item">
+				<svg class="hero-list-icon">
+					<use href="./images/svg/sprite.svg#icon-shirt"></use>
+				</svg>
+				<span class="hero-list-name">Shirt</span>
+			</li>
+			<li class="hero-list-item">
+				<svg class="hero-list-icon">
+					<use href="./images/svg/sprite.svg#icon-pants"></use>
+				</svg>
+				<span class="hero-list-name">Pants</span>
+			</li>
+			<li class="hero-list-item">
+				<svg class="hero-list-icon">
+					<use href="./images/svg/sprite.svg#icon-shoes"></use>
+				</svg>
+				<span class="hero-list-name">Shoes</span>
+			</li>
+			<li class="hero-list-item">
+				<svg class="hero-list-icon">
+					<use href="./images/svg/sprite.svg#icon-dress"></use>
+				</svg>
+				<span class="hero-list-name">Dress</span>
+			</li>
+			<li class="hero-list-item">
+				<svg class="hero-list-icon">
+					<use href="./images/svg/sprite.svg#icon-accesories"></use>
+				</svg>
+				<span class="hero-list-name">Accesories</span>
+			</li>
+		</ul>
+		<div class="slider">
+			<div class="slide first"></div>
+			<div class="slide second"></div>
+			<div class="slide third"></div>
+		</div>
+	</section>	
+	<ul class="brands">
+		<li>
+			<svg class="brands-icon"><use href="./images/svg/brands.svg#Bajuu"></use></svg>
+		</li>
+		<li>
+			<svg class="brands-icon">
+				<use href="./images/svg/brands.svg#Kathoc"></use>
+			</svg>
+		</li>
+		<li>
+			<svg class="brands-icon">
+				<use href="./images/svg/brands.svg#Pernik"></use>
+			</svg>
+		</li>
+		<li>
+			<svg class="brands-icon">
+				<use href="./images/svg/brands.svg#Spatu"></use>
+			</svg>
+		</li>
+	</ul>	
+	<section class="collections" id="collections">
+		<div class="collections-small">
+			<div class="collection-item casual">
+				<span>Casual</span><br><span class="collection-text">Collection</span>
+			</div>
+			<div class="collection-item summer">
+				<span>Summer</span><br><span class="collection-text">Collection</span>
+			</div>
+		</div>
+		<div class="collection-item big">
+			<span>Big Vibe</span><br><span class="collection-text">Collection</span>
+		</div>
+	</section>
+	<section class="featured" id="featured">
+		<div class="featured-title_flex">
+			<h4 class="featured-title">Featured</h4>
+			<a href="" class="view-all-link">View all<svg class="view-all-icon">
+					<use href="./images/svg/spriteMini.svg#icon-ArrowR"></use>
+				</svg></a>
+		</div>
+		<div class="featured-content_flex">
+			<div class="featured-product--box_big">Discover Our	<h4 class="featured-product--heading">Featured Product</h4></div>
+			<ul class="featured-list">
+				<li class="featured-list-item"><img src="./images/GreenJacket.jpg">
+					<span class="featured-list-item-name">Green Warm Jacket</span><span class="fetured-list-item-price">$299</span></li>
+				<li class="featured-list-item"><img src="./images/GreenJacket.jpg">
+					<span class="featured-list-item-name">Green Warm Jacket</span><span class="fetured-list-item-price">$299</span></li>
+				<li class="featured-list-item"><img src="./images/GreenJacket.jpg">
+					<span class="featured-list-item-name">Green Warm Jacket</span><span class="fetured-list-item-price">$299</span></li>
+				<li class="featured-list-item"><img src="./images/GreenJacket.jpg">
+					<span class="featured-list-item-name">Green Warm Jacket</span><span class="fetured-list-item-price">$299</span></li>
+				<li class="featured-list-item"><img src="./images/GreenJacket.jpg">
+					<span class="featured-list-item-name">Green Warm Jacket</span><span class="fetured-list-item-price">$299</span></li>
+				<li class="featured-list-item"><img src="./images/GreenJacket.jpg">
+					<span class="featured-list-item-name">Green Warm Jacket</span><span class="fetured-list-item-price">$299</span></li>
+				<li class="featured-list-item"><img src="./images/GreenJacket.jpg">
+					<span class="featured-list-item-name">Green Warm Jacket</span><span class="fetured-list-item-price">$299</span></li>
+				<li class="featured-list-item"><img src="./images/GreenJacket.jpg">
+					<span class="featured-list-item-name">Green Warm Jacket</span><span class="fetured-list-item-price">$299</span></li>
+			</ul>
+		</div>		
+	</section>
+	<section class="limited">
+		<h4 class="limited-heading">Limited Offer</h4>
+		<ul class="limited-list">
+			<li class="limited-list--item">
+				<div class="limited-image-box">
+					<img src="./images/blackJacket.jpg" alt="jacket" class="limited-image">
+					<button type="button" class="btn limited-btn">Add to Cart</button>
+				</div>
+				<div>
+					<span class="limited-card--text">Limited Deals</span>
+					<ul class="limited-card--time-list" id="timer">
+						<li class="limited-card--time-item">
+							<p class="limited-card--time-value" id="hours">08</p>
+							<p class="limited-card--time-measure">Hours</p>
+						</li>
+						<li class="limited-card--time-item">
+							<p class="limited-card--time-value" id="minutes">58</p>
+							<p class="limited-card--time-measure">Minutes</p>
+						</li>
+						<li class="limited-card--time-item">
+							<p class="limited-card--time-value" id="seconds">18</p>
+							<p class="limited-card--time-measure">Seconds</p>
+						</li>
+					</ul>
+					<h5 class="limited-card-title">Black Warm Jacket</h5>
+					<span class="limited-card-price_old">$299</span><span class="limited-card-price_new">$199</span>
+				</div>
+			</li>
+				<li class="limited-list--item">
+					<div class="limited-image-box">
+						<img src="./images/blackJacket.jpg" alt="jacket" class="limited-image">
+						<button type="button" class="btn limited-btn">Add to Cart</button>
+					</div>
+					<div>
+						<span class="limited-card--text">Limited Deals</span>
+						<ul class="limited-card--time-list" id="timer-2">
+							<li class="limited-card--time-item">
+								<p class="limited-card--time-value" id="hours">08</p>
+								<p class="limited-card--time-measure">Hours</p>
+							</li>
+							<li class="limited-card--time-item">
+								<p class="limited-card--time-value" id="minutes">58</p>
+								<p class="limited-card--time-measure">Minutes</p>
+							</li>
+							<li class="limited-card--time-item">
+								<p class="limited-card--time-value" id="seconds">18</p>
+								<p class="limited-card--time-measure">Seconds</p>
+							</li>
+						</ul>
+						<h5 class="limited-card-title">Black Warm Jacket</h5>
+						<span class="limited-card-price_old">$299</span><span class="limited-card-price_new">$199</span>
+					</div>
+				</li>
+		</ul>
+	</section>
+	<div class="arriva-week-flex" id="arrival">
+		<section>
+			<h4 class="arrival-title">New Arrival</h4>
+			<ul class="arrival-list">
+				<li class="arrival-item">
+					<img src="./images/checkeredJacket.jpg" alt="stuff" class="arrival-image">
+					<p>
+						<span class="arrival-name">Checkered Jacket</span>
+						<span class="arrival-price">$299</span>
+					</p>
+				</li>
+				<li class="arrival-item">
+					<img src="./images/checkeredJacket.jpg" alt="stuff" class="arrival-image">
+					<p>
+						<span class="arrival-name">Checkered Jacket</span>
+						<span class="arrival-price">$299</span>
+					</p>
+				</li>
+				<li class="arrival-item">
+					<img src="./images/checkeredJacket.jpg" alt="stuff" class="arrival-image">
+					<p>
+						<span class="arrival-name">Checkered Jacket</span>
+						<span class="arrival-price">$299</span>
+					</p>
+				</li>
+				<li class="arrival-item">
+					<img src="./images/checkeredJacket.jpg" alt="stuff" class="arrival-image">
+					<p>
+						<span class="arrival-name">Checkered Jacket</span>
+						<span class="arrival-price">$299</span>
+					</p>
+				</li>				
+			</ul>
+			<a href="" class="view-all-link">View all<svg class="view-all-icon">
+				<use href="./images/svg/spriteMini.svg#icon-ArrowR"></use></svg></a>
+		</section>
+		<section>
+			<h4 class="arrival-title">Popular This Week</h4>
+			<ul class="arrival-list">
+				<li class="arrival-item">
+					<img src="./images/checkeredJacket.jpg" alt="stuff" class="arrival-image">
+					<p>
+						<span class="arrival-name">Checkered Jacket</span>
+						<span class="arrival-price">$299</span>
+					</p>
+				</li>
+				<li class="arrival-item">
+					<img src="./images/checkeredJacket.jpg" alt="stuff" class="arrival-image">
+					<p>
+						<span class="arrival-name">Checkered Jacket</span>
+						<span class="arrival-price">$299</span>
+					</p>
+				</li>
+				<li class="arrival-item">
+					<img src="./images/checkeredJacket.jpg" alt="stuff" class="arrival-image">
+					<p>
+						<span class="arrival-name">Checkered Jacket</span>
+						<span class="arrival-price">$299</span>
+					</p>
+				</li>
+				<li class="arrival-item">
+					<img src="./images/checkeredJacket.jpg" alt="stuff" class="arrival-image">
+					<p>
+						<span class="arrival-name">Checkered Jacket</span>
+						<span class="arrival-price">$299</span>
+					</p>
+				</li>
+			</ul>
+				<a href="" class="view-all-link">View all<svg class="view-all-icon">
+						<use href="./images/svg/spriteMini.svg#icon-ArrowR"></use>
+					</svg></a>
+		</section>
+	</div>
+	<ul class="benefits">
+		<li class="benefits-item">
+			<svg class="benefits-icon">
+				<use href="./images/svg/spriteMini.svg#icon-Truck"></use>
+			</svg>
+			<div class="benefits-text-box">
+				<h6 class="benefit-name">Free Delivery</h6>
+				<p class="benefit-description">This free shipping	only for selected region</p>
+			</div>
+		</li>
+		<li class="benefits-item">
+			<svg class="benefits-icon">
+				<use href="./images/svg/sprite.svg#icon-Card"></use>
+			</svg>
+			<div class="benefits-text-box">
+				<h6 class="benefit-name">Payment Method</h6>
+				<p class="benefit-description">This free shipping only for selected region</p>
+			</div>
+		</li>
+		<li class="benefits-item">
+			<svg class="benefits-icon">
+				<use href="./images/svg/sprite.svg#icon-Broken"></use>
+			</svg>
+			<div class="benefits-text-box">
+				<h6 class="benefit-name">Warranty</h6>
+				<p class="benefit-description">This free shipping only for selected region</p>
+			</div>
+		</li>
+		<li class="benefits-item">
+			<svg class="benefits-icon">
+				<use href="./images/svg/sprite.svg#icon-earphones"></use>
+			</svg>
+			<div class="benefits-text-box">
+				<h6 class="benefit-name">Customer Support</h6>
+				<p class="benefit-description">This free shipping only for selected region</p>
+			</div>
+		</li>		
+	</ul>
+</main>
+<footer class="footer">
+	<div class="footer-flex">
+		<div class="footer-contacts-box">
+			<h2 class="footer-logo">
+				<svg class="footer-logo--icon"><use href="./images/svg/sprite.svg#icon-logo"></use></svg>
+				Elliye
+			</h2>
+			<span class="footer-contacts-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nulla amet ut temporibus.</span>
+			<a href="tel:+1234567890" class="fotter-contacts">
+				<svg class="footer-contacts-icon" width="20" height="20">
+					<use href="./images/svg/sprite.svg#icon-phone"></use>
+				</svg>
+				+1234567890
+			</a>
+			<a href="mailto:info@devstudio.com" class="fotter-contacts">
+				<svg class="footer-contacts-icon" width="20" height="16">
+					<use href="./images/svg/sprite.svg#icon-envelope"></use>
+				</svg>
+				elliye@support.com
+			</a>			
+		</div>
+		<div class="footer-content-box">
+			<h5 class="footer-content-box--heading">Product Links</h5>
+			<ul>				
+				<li class="footer-product-item"><a href="#categories" class="link">Categories</a></li>
+				<li class="footer-product-item"><a href="#arrival" class="link">New Arrival</a></li>
+				<li class="footer-product-item"><a href="#featured" class="link">Features</a></li>
+				<li class="footer-product-item"><a href="#collections" class="link">Collections</a></li>
+			</ul>
+		</div>
+		<div class="footer-content-box">
+			<h5 class="footer-content-box--heading">Company</h5>
+			<ul>
+				<li class="footer-product-item">About</li>
+				<li class="footer-product-item">Blog</li>
+				<li class="footer-product-item">Careers</li>
+				<li class="footer-product-item">Services</li>
+				<li class="footer-product-item">Privacy Policy</li>
+				<li class="footer-product-item">Terms of service</li>
+			</ul>
+		</div>
+		<div class="footer-content-box">
+			<h5 class="footer-content-box--heading">Join our Newsletter</h5>
+			<form autocomplete="off">				
+				<span class=" footer-form-text">
+					Drop your email below to get update, promotions, coupons, and more!
+				</span>
+				<div class="footer-btn-box">			
+				<input type="email" class="footer-input" placeholder="Enter your email" />				
+				<button type="submit" class="footer-submit-btn">
+					<svg class="footer-submit-btn--arrow"><use href="./images/svg/sprite.svg#icon-ArrowR"></use></svg>					
+				</button>
+				</div>
+			</form>						
+		</div>
+	</div>	
+	<span class="footer-copyright">Copyright © 2021 Elliye. All Right Reseved</span>	
+</footer>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="./slick.min.js"></script>
+</body>
+</html>

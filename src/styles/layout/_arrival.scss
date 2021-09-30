@@ -1,0 +1,79 @@
+.arriva-week-flex {
+  display: flex;
+  padding: 0px 16px;
+  margin-bottom: 20px;
+
+  @media screen and (min-width: 1920px) {
+    padding: 0px 142px 0px 144px;
+    margin-bottom: 100px;
+  }
+}
+
+.arrival-title {
+  font-style: normal;
+  font-weight: bold;
+  font-size: 36px;
+  line-height: 54px;
+  color: $black;
+  margin-bottom: 32px;
+}
+
+.arrival-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.arrival-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+
+  @media screen and (min-width: 1920px) {
+    padding: 47px 24px;
+    flex-direction: row;
+    align-items: center;
+  }
+}
+
+.arrival-image {
+  width: 107px;
+  height: 107px;
+  margin-right: 16px;
+}
+
+.arrival-name {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 36px;
+  color: $black;
+  margin-bottom: 8px;
+  display: block;
+}
+
+.arrival-price {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 36px;
+  color: $grey-text;
+}
+
+.view-all-link {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 27px;
+  color: $black;
+  margin-right: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.view-all-icon {
+  width: 31px;
+  height: 32px;
+}

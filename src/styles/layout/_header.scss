@@ -1,0 +1,229 @@
+.header {
+  padding: 16px;
+  background-color: $white;
+  display: flex;
+  align-items: flex-start;
+  box-sizing: border-box;
+
+  @media screen and (min-width: 1024px) {
+    padding: 24px 144px;
+  }
+
+  @media screen and (min-width: 731px) {
+    justify-content: space-between;
+  }
+}
+
+.header-menu__flex {
+  @media screen and (min-width: 731px) {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 24px;
+    padding-bottom: 24px;
+  }
+
+  @media screen and (min-width: 1630px) and (max-width: 1919px) {
+    margin-left: 411px;
+  }
+}
+
+.header-logo-icon {
+  width: 39px;
+  height: 24px;
+  margin-right: 8px;
+}
+
+.header-btn-box {
+  display: flex;
+  margin-bottom: 32px;
+
+  @media screen and (min-width: 731px) {
+    margin-right: 70px;
+    margin-bottom: 0px;
+  }
+
+  @media screen and (min-width: 1500px) {
+    margin-right: 309px;
+  }
+}
+
+.header-input {
+  padding: 10px;
+  text-align: center;
+  background-color: $white;
+  border: 2px solid #f6f7fb;
+
+  @media screen and (min-width: 1920px) {
+    padding: 10px 347px 11px 0px;
+  }
+}
+
+.header-input::placeholder {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 27px;
+  color: $grey-text;
+
+  @media screen and (max-width: 700px) {
+    display: none;
+  }
+}
+
+.header-submit-btn {
+  padding: 12px;
+  background-color: $black;
+}
+
+.header-submit-btn--icon {
+  width: 24px;
+  height: 24px;
+}
+
+.header-icon {
+  width: 24px;
+  height: 24px;
+  margin-right: 32px;
+}
+
+.login {
+  padding: 13.5px 34px;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 21px;
+}
+
+.header-login--group {
+  display: flex;
+  align-items: center;
+
+  @media screen and (max-width: 730px) {
+    justify-content: center;
+    margin-bottom: 32px;
+  }
+}
+
+.header-navigation {
+  @media screen and (min-width: 731px) {
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-around;
+  }
+}
+
+.header-navigation-item {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 27px;
+  color: $black;
+
+  @media screen and (max-width: 730px) {
+    margin-bottom: 16px;
+  }
+
+  @media screen and (min-width: 1920px) {
+    &:not(:last-child) {
+      margin-right: 80px;
+    }
+  }
+}
+
+.logo {
+  font-style: normal;
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 36px;
+  color: $black;
+}
+
+// burger menu
+
+.burger-menu_button {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  z-index: 7;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: $black;
+  transition: 0.4s;
+
+  @media screen and (min-width: 730px) {
+    display: none;
+  }
+}
+
+.burger-menu_lines::before,
+.burger-menu_lines::after,
+.burger-menu_lines {
+  position: absolute;
+  width: 25px;
+  height: 3px;
+  background-color: $white;
+  transition: 0.4s;
+}
+.burger-menu_lines {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.burger-menu_lines::before {
+  content: '';
+  top: -10px;
+}
+.burger-menu_lines::after {
+  content: '';
+  top: 10px;
+}
+
+.burger-menu_active .burger-menu_lines {
+  background-color: transparent;
+}
+.burger-menu_active .burger-menu_lines::before {
+  top: 0;
+  transform: rotate(45deg);
+}
+.burger-menu_active .burger-menu_lines::after {
+  top: 0;
+  transform: rotate(-45deg);
+}
+
+.burger-menu_nav {
+  @media screen and (max-width: 730px) {
+    padding: 80px 16px 0px 16px;
+    position: fixed;
+    top: 0;
+    z-index: 6;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    height: 100%;
+    background-color: $background;
+    overflow-y: auto;
+    right: -100%;
+    transition: 0.8s;
+  }
+}
+
+.burger-menu_active .burger-menu_nav {
+  right: 0;
+  transition: 0.4s;
+}
+
+.burger-menu_overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 5;
+}
+
+.burger-menu_active .burger-menu_overlay {
+  display: block;
+  background-color: rgba(0, 0, 0, 0.5);
+}

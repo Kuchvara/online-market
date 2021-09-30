@@ -1,0 +1,96 @@
+.collections {
+  display: flex;
+  justify-content: space-around;
+  text-align: center;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+  padding: 0px 16px;
+
+  @media screen and (max-width: 1919px) {
+  }
+
+  @media screen and (min-width: 1920px) {
+    margin-bottom: 100px;
+    padding: 0px 143px 0px 144px;
+    flex-wrap: nowrap;
+  }
+}
+
+.collections-small {
+  @media screen and (max-width: 1919px) {
+    width: 700px;
+  }
+}
+
+.collection-item {
+  background-color: $background;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 36px;
+  line-height: 54px;
+}
+
+.collection-text {
+  font-family: $hero-font;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 48px;
+  line-height: 63.98px;
+}
+
+.casual {
+  padding: 32px;
+  color: $black;
+  margin-bottom: 32px;
+  box-sizing: border-box;
+  background: url(../images/casual.jpg);
+
+  @media screen and (max-width: 1919px) {
+    height: 334px;
+  }
+
+  @media screen and (min-width: 1920px) {
+    padding: 142px 491px 142px 83px;
+  }
+}
+
+.summer {
+  padding: 32px;
+  color: $black;
+  margin-bottom: 32px;
+  box-sizing: border-box;
+  background: url(../images/Summer.jpg);
+
+  @media screen and (max-width: 1919px) {
+    height: 334px;
+  }
+
+  @media screen and (min-width: 1920px) {
+    padding: 146px 483px 138px 90px;
+    margin-bottom: 0;
+  }
+}
+
+.big {
+  padding: 32px;
+  color: $white;
+  margin-bottom: 32px;
+  background: url(../images/bigCollection.jpeg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  box-sizing: border-box;
+
+  @media screen and (max-width: 1919px) {
+    width: 700px;
+    height: 700px;
+  }
+
+  // @media screen and (max-width: 750px) {
+  //   height: 350px;
+  // }
+
+  @media screen and (min-width: 1920px) {
+    padding: 304px 492px 412px 80px;
+    margin-bottom: 0;
+  }
+}
