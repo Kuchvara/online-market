@@ -55,7 +55,7 @@ module.exports = {
     checkout: './src/js/checkout.js'
   },
   output: {
-    filename: '[name].js',
+    filename: './js/[name].js',
     path: path.resolve(__dirname, 'dist')
   },
 
@@ -86,9 +86,8 @@ module.exports = {
       chunks: ['checkout']
     }),
     new CopyWebpackPlugin([
-      { from: 'src/images', to: 'images' },
-      // { from: 'src/js/slider/slick.min.js', to: 'slick.min.js' },
-      { from: 'src/js/jquery.mask.js', to: 'jquery.mask.js'}
+      { from: 'src/images', to: 'images' },      
+      { from: 'src/js/jquery.mask.js', to: 'js/jquery.mask.js'}
     ]),        
     new CleanWebpackPlugin(),
     new MiniCssExtractPlugin({

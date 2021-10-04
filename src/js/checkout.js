@@ -1,5 +1,6 @@
 import './burger';
 import './back-to-top';
+import './jquery.mask';
 
 import '../styles/main.scss';
 
