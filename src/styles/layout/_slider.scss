@@ -8,8 +8,7 @@
 
 .slide {
   height: 800px;
-  background-repeat: no-repeat;
-  background-size: cover;
+  position: relative;
 
   @media screen and (max-width: 1200px) {
     height: 700px;
@@ -32,31 +31,85 @@
   }
 }
 
-.first {
+.overlayed {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   background-image: linear-gradient(
-      90deg,
-      rgba(47, 48, 58, 0.4) 50%,
-      rgba(47, 48, 58, 0.4) 100%
-    ),
-    url(../images/Summer.jpg);
+    90deg,
+    rgba(47, 48, 58, 0.4) 50%,
+    rgba(47, 48, 58, 0.4) 100%
+  );
 }
 
-.second {
-  background-image: linear-gradient(
-      90deg,
-      rgba(47, 48, 58, 0.4) 50%,
-      rgba(47, 48, 58, 0.4) 100%
-    ),
-    url(../images/casual.jpg);
+.slide-img {
+  display: block;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
 }
 
-.third {
-  background-image: linear-gradient(
-      90deg,
-      rgba(47, 48, 58, 0.4) 50%,
-      rgba(47, 48, 58, 0.4) 100%
-    ),
-    url(../images/bigCollection.jpeg);
+.slick-dotted.slick-slider {
+  margin-bottom: 30px;
+}
+
+.slick-dots {
+  position: absolute;
+  bottom: -25px;
+
+  display: block;
+
+  width: 100%;
+  padding: 0;
+  margin: 0;
+
+  list-style: none;
+
+  text-align: center;
+}
+
+.slick-dots li {
+  position: relative;
+
+  display: inline-block;
+
+  width: 20px;
+  height: 20px;
+  margin: 0 5px;
+  padding: 0;
+
+  cursor: pointer;
+}
+
+.slick-dots li button {
+  font-size: 0;
+  line-height: 0;
+
+  display: block;
+
+  width: 20px;
+  height: 20px;
+  padding: 5px;
+
+  cursor: pointer;
+
+  color: transparent;
+  border: 0;
+  outline: none;
+  background: transparent;
+}
+
+.slick-dots li button:hover,
+.slick-dots li button:focus {
+  outline: none;
+}
+
+.slick-dots li button:hover:before,
+.slick-dots li button:focus:before {
+  opacity: 1;
 }
 
 .slick-dots li button:before {

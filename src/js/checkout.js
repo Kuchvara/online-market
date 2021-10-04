@@ -5,9 +5,7 @@ import '../styles/main.scss';
 
 const email = document.querySelector('.footer-input')
 const fullName = document.querySelector('#name')
-const address = document.querySelector('#address')
 const contact = document.querySelector('#contact')
-const city = document.querySelector('#city')
 const cardName = document.querySelector('#cardName')
 const card = document.querySelector('#card')
 const cvv = document.querySelector('#cvv')
@@ -16,10 +14,10 @@ const year = document.querySelector('#year')
 const month = document.querySelector('#month')
 
 email.addEventListener("input", function () { 
-  if (email.validity.patternMismatch) {
-    email.setCustomValidity("e-mail address is not valid");
+  if (!email.validity.patternMismatch && email.value.length > 0) {
+    email.setCustomValidity("");    
   } else {
-    email.setCustomValidity("");
+    email.setCustomValidity("e-mail address is not valid");
   }
 });
 

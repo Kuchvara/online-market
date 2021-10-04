@@ -3,7 +3,7 @@ module.exports = {
   rules: {
     'comma-dangle': 'off',
     'space-before-function-paren': 'off',
-    // 'no-unused-vars': "warn"
+    'no-unused-vars': "warn"
 },
   "env": {
     "es2021": true,
@@ -13,8 +13,5 @@ module.exports = {
   },
   "parserOptions": {
     "ecmaVersion": 12
-  }
-  // "extends": [
-  //   "eslint:recommended"
-  // ]
+  }  
 }
