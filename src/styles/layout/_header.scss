@@ -201,7 +201,6 @@
     flex-flow: column;
     align-items: center;
     height: 100%;
-    background-color: $background;
     overflow-y: auto;
     right: -100%;
     transition: 0.8s;
@@ -211,6 +210,7 @@
 .burger-menu_active .burger-menu_nav {
   right: 0;
   transition: 0.4s;
+  background-color: $background;
 }
 
 .burger-menu_overlay {

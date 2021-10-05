@@ -6,7 +6,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link
 		href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@400;700&display=swap"
-		rel="stylesheet">	
+		rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
 	<title>Online-market</title>
 </head>
 <body>
@@ -48,6 +49,7 @@
 				<li class="header-navigation-item"><a href="#arrival" class="link">New Arrival</a></li>
 				<li class="header-navigation-item"><a href="#featured" class="link">Features</a></li>
 				<li class="header-navigation-item"><a href="#collections" class="link">Collections</a></li>
+				<li class="header-navigation-item"><a href="./checkout.html" class="link">checkout</a></li>
 			</ul>
 		</nav>
 		</div>
@@ -98,9 +100,18 @@
 			</li>
 		</ul>
 		<div class="slider">
-			<div class="slide first"></div>
-			<div class="slide second"></div>
-			<div class="slide third"></div>
+			<div class="slide">
+				<img src="./images/Summer.jpg" alt="first-slide" class="slide-img">
+				<span class="overlayed"></span>
+			</div>
+			<div class="slide">
+				<img src="./images/bigCollection.jpeg" alt="second-slide" class="slide-img">
+				<span class="overlayed"></span>
+			</div>
+			<div class="slide">
+				<img src="./images/casual.jpg" alt="third-slide" class="slide-img">
+				<span class="overlayed"></span>
+			</div>
 		</div>
 	</section>	
 	<ul class="brands">
@@ -126,14 +137,17 @@
 	<section class="collections" id="collections">
 		<div class="collections-small">
 			<div class="collection-item casual">
-				<span>Casual</span><br><span class="collection-text">Collection</span>
+				<span class="collection-name">Casual</span><br><span class="collection-text">Collection</span>
+				<img src="./images/casual.jpg" alt="casual collection" class="collection-image">
 			</div>
 			<div class="collection-item summer">
-				<span>Summer</span><br><span class="collection-text">Collection</span>
+				<span class="collection-name">Summer</span><br><span class="collection-text">Collection</span>
+				<img src="./images/Summer.jpg" alt="summer collection" class="collection-image">
 			</div>
 		</div>
 		<div class="collection-item big">
-			<span>Big Vibe</span><br><span class="collection-text">Collection</span>
+			<span class="collection-name">Big Vibe</span><br><span class="collection-text">Collection</span>
+			<img src="./images/bigCollection.jpeg" alt="big vibe collection" class="collection-image">
 		</div>
 	</section>
 	<section class="featured" id="featured">
@@ -144,7 +158,10 @@
 				</svg></a>
 		</div>
 		<div class="featured-content_flex">
-			<div class="featured-product--box_big">Discover Our	<h4 class="featured-product--heading">Featured Product</h4></div>
+			<div class="featured-product--box_big"><span class="collection-name">Discover Our</span><h4 class="featured-product--heading">Featured Product</h4>
+				<img src="./images/Summer.jpg" alt="featured collection" class="collection-image">
+				<span class="overlayed"></span>
+			</div>
 			<ul class="featured-list">
 				<li class="featured-list-item"><img src="./images/GreenJacket.jpg">
 					<span class="featured-list-item-name">Green Warm Jacket</span><span class="fetured-list-item-price">$299</span></li>
@@ -200,17 +217,17 @@
 					</div>
 					<div>
 						<span class="limited-card--text">Limited Deals</span>
-						<ul class="limited-card--time-list" id="timer-2">
+						<ul class="limited-card--time-list" id="timerSecond">
 							<li class="limited-card--time-item">
-								<p class="limited-card--time-value" id="hours">08</p>
+								<p class="limited-card--time-value" id="hoursSecond">08</p>
 								<p class="limited-card--time-measure">Hours</p>
 							</li>
 							<li class="limited-card--time-item">
-								<p class="limited-card--time-value" id="minutes">58</p>
+								<p class="limited-card--time-value" id="minutesSecond">58</p>
 								<p class="limited-card--time-measure">Minutes</p>
 							</li>
 							<li class="limited-card--time-item">
-								<p class="limited-card--time-value" id="seconds">18</p>
+								<p class="limited-card--time-value" id="secondsSecond">18</p>
 								<p class="limited-card--time-measure">Seconds</p>
 							</li>
 						</ul>
@@ -380,7 +397,7 @@
 					Drop your email below to get update, promotions, coupons, and more!
 				</span>
 				<div class="footer-btn-box">			
-				<input type="email" class="footer-input" placeholder="Enter your email" />				
+				<input type="email" class="footer-input" placeholder="Enter your email" pattern="^[A-Za-z0-9+_.-]+@[a-z]+\.[a-z]*$" />
 				<button type="submit" class="footer-submit-btn">
 					<svg class="footer-submit-btn--arrow"><use href="./images/svg/sprite.svg#icon-ArrowR"></use></svg>					
 				</button>
@@ -391,6 +408,6 @@
 	<span class="footer-copyright">Copyright © 2021 Elliye. All Right Reseved</span>	
 </footer>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="./slick.min.js"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 </body>
 </html>

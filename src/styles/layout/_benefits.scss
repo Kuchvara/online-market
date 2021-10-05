@@ -2,11 +2,14 @@
   display: flex;
   background-color: $background2;
   justify-content: space-around;
-  flex-wrap: wrap;
   padding: 16px;
 
   @media screen and (min-width: 1920px) {
     padding: 0px 144px;
+  }
+
+  @media screen and (max-width: 1199px) {
+    flex-wrap: wrap;
   }
 }
 

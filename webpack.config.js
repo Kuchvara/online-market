@@ -9,29 +9,29 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const devMode = process.env.NODE_ENV !== "production";
 
 const optimization = () => {
-    const config = {
-        splitChunks: {
-            chunks: 'all'
-        }
+  const config = {
+    splitChunks: {
+      chunks: 'all'
     }
+  }
 
-    if (!devMode) {
-        config.minimizer = [
-            new OptimizeCssAssetPlugin(),
-            new TerserWebpackPlugin()
-        ]
-    }
-    return config;
+  if (!devMode) {
+    config.minimizer = [
+      new OptimizeCssAssetPlugin(),
+      new TerserWebpackPlugin()
+    ]
+  }
+  return config;
 };
 
 const cssLoader = (extra) => {
-    const loaders = [devMode ? 'style-loader' : MiniCssExtractPlugin.loader,
-        'css-loader']
+  const loaders = [devMode ? 'style-loader' : MiniCssExtractPlugin.loader, 'css-loader']
     
-    if (extra) {
-        loaders.push(extra)
-    }
-    return loaders
+  if (extra) {
+    loaders.push(extra)
+  }
+  
+  return loaders
 };
 
 const jsLoaders = () => {
@@ -50,9 +50,12 @@ const jsLoaders = () => {
 
 module.exports = {
   mode: 'development',
-  entry: ['@babel/polyfill', './src/index.js'],
+  entry: {
+    index: './src/index.js',
+    checkout: './src/js/checkout.js'
+  },
   output: {
-    filename: '[name].bundle.js',
+    filename: './js/[name].js',
     path: path.resolve(__dirname, 'dist')
   },
 
@@ -64,74 +67,66 @@ module.exports = {
     port: 4200
   },
     
-    devtool: devMode ? 'source-map' : 'nosources-source-map',
-    plugins: [
-        new HTMLWebpackPlugin({
-            template: './src/index.html',
-            filename: 'index.html',
-            minify: {
-                collapseWhitespace: !devMode
-            }
-        }),
-        new CopyWebpackPlugin(
-          [
-          { from: 'src/images', to: 'images' },
-          { from: 'src/js/slider/slick.min.js', to: 'slick.min.js'}
-          ]
-        ),        
-        new CleanWebpackPlugin(),
-        new MiniCssExtractPlugin({
-            filename: '[name].[contenthash].css'
-        })
-          
-    ],
-    module: {
-        rules: [
-            {
-                test: /\.css$/,
-                use: cssLoader()
-            },
-            {
-                test: /\.(ttf|woff|woff2|eot)$/,
-                use: ['file-loader']
-            },
-            {
-                test: /\.s[ac]ss$/,
-                use: cssLoader('sass-loader')
-            },
-            {
-                test: /\.m?js$/,
-                exclude: /node_modules/,
-                use: jsLoaders()
-                },
-            {
-                test: /\.(png|svg|jpg|jpeg|gif)$/i,
-                type: 'asset/resource',
-                use: [
-    {
-      loader: 'image-webpack-loader',
-      options: {
-        mozjpeg: {
-          progressive: true,
-        },        
-        optipng: {
-          enabled: false,
-        },
-        pngquant: {
-          quality: [0.65, 0.90],
-          speed: 4
-        },
-        gifsicle: {
-          interlaced: false,
-        },        
-        webp: {
-          quality: 75
-        }
-      }
-    },
-  ],
+  devtool: devMode ? 'source-map' : 'nosources-source-map',
+  plugins: [
+    new HTMLWebpackPlugin({
+      template: './src/index.html',
+      filename: 'index.html',
+      minify: {
+        collapseWhitespace: !devMode
       },
-      
+      chunks: ['index']            
+    }),
+    new HTMLWebpackPlugin({
+      template: './src/checkout.html',
+      filename: 'checkout.html',
+      minify: {
+        collapseWhitespace: !devMode
+      },
+      chunks: ['checkout']
+    }),
+    new CopyWebpackPlugin([
+      { from: 'src/images', to: 'images' },      
+      { from: 'src/js/jquery.mask.js', to: 'js/jquery.mask.js'}
+    ]),        
+    new CleanWebpackPlugin(),
+    new MiniCssExtractPlugin({
+      filename: '[name].[contenthash].css'
+    })          
+  ],
+  module: {
+    rules: [
+      {
+        test: /\.css$/,
+        use: cssLoader()
+      },
+      {
+        test: /\.(ttf|woff|woff2|eot)$/,
+        use: ['file-loader']
+      },
+      {
+        test: /\.s[ac]ss$/,
+        use: cssLoader('sass-loader')
+      },
+      {
+        test: /\.m?js$/,
+        exclude: /node_modules/,
+        use: jsLoaders()
+      },
+      {
+        test: /\.(png|svg|jpg|jpeg|gif)$/i,
+        type: 'asset/resource',
+        use: [{
+          loader: 'image-webpack-loader',
+          options: {
+            mozjpeg: {progressive: true},        
+            optipng: {enabled: false},
+            pngquant: {quality: [0.65, 0.90], speed: 4},
+            gifsicle: {interlaced: false},        
+            webp: {quality: 75}
+          }
+        }],
+      },      
     ]
   }
 }

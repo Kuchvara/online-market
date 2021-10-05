@@ -5,11 +5,19 @@ const refs = {
   timer: document.querySelector('#timer')  
 }
 
+const refsSecond = {
+  hours: document.querySelector('#hoursSecond'),
+  mins: document.querySelector('#minutesSecond'),
+  secs: document.querySelector('#secondsSecond'),
+  timer: document.querySelector('#timerSecond')
+}
+
 class CountdownTimer {
 
-  constructor({ selector, targetDate }) {
+  constructor({ selector, targetDate, refs }) {
     this.selector = selector;
     this.targetDate = targetDate;
+    this.refs = refs;
 
     this.intervalId = null;
   }
@@ -41,9 +49,9 @@ class CountdownTimer {
   }
 
   setTextContent(hours, mins, secs) {        
-    refs.hours.textContent = hours;
-    refs.mins.textContent = mins;
-    refs.secs.textContent = secs;  
+    this.refs.hours.textContent = hours;
+    this.refs.mins.textContent = mins;
+    this.refs.secs.textContent = secs;  
   } 
 
   pad(value) {
@@ -52,8 +60,15 @@ class CountdownTimer {
 }
   
 const timer = new CountdownTimer({
-    selector: '#timer',
-    targetDate: new Date('Oct 11, 2021'),
+  selector: refs.timer,
+  targetDate: new Date('Oct 11, 2021'),
+  refs: refs
 });
 
-timer.start();
+const timerSecond = new CountdownTimer({
+  selector: refsSecond.timer,
+  targetDate: new Date('Oct 17, 2021'),
+  refs: refsSecond
+})
+
+if (refs.hours) { timer.start(); timerSecond.start()};
