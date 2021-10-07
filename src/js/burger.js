@@ -1,4 +1,4 @@
-refs = {
+const refs = {
   menu: document.querySelector('#burger-menu'),
   button: document.querySelector('.burger-menu_button', '.burger-menu_lines'),  
   overlay: document.querySelector('.burger-menu_overlay')

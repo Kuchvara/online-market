@@ -1,0 +1,142 @@
+.toggle-container {
+  width: 24px;
+  height: 24px;
+  margin-right: 32px;
+  position: relative;
+}
+
+.cart-btn {
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.cart-icon {
+  width: 24px;
+  height: 24px;
+}
+
+.cart-counter {
+  position: absolute;
+  top: -15px;
+  right: -15px;
+  background: $black;
+  width: 24px;
+  height: 24px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  color: $white;
+}
+
+.cart {
+  padding: 52px 16px 32px 16px;
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  max-width: 400px;
+  height: 100%;
+  background-color: $white;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  transition: 0.3s linear;
+  transform: translateX(100%);
+  overflow-y: scroll;
+  color: $black;
+  fill: $black;
+}
+
+.show .cart {
+  transform: translateX(0);
+}
+
+.cart-title {
+  @include font(24px, 36px, 700);
+  color: $black;
+
+  @media screen and (min-width: 1200px) {
+    @include font(36px, 54px, 700);
+  }
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  transition: 0.3s linear;
+  opacity: 0;
+  z-index: -1;
+}
+
+.overlay.show {
+  opacity: 1;
+  z-index: 100;
+}
+
+.cart-close-btn {
+  background: transparent;
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  cursor: pointer;
+}
+
+.cart-price {
+  @include font(24px, 36px);
+  margin-bottom: 20px;
+}
+
+.checkout-link {
+  color: $white;
+  background-color: $black;
+  padding: 8px 20px;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.cart-items {
+  display: block;
+  height: 70%;
+}
+
+.cart-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.cart-item-image {
+  width: 75px;
+  height: 75px;
+  object-fit: cover;
+}
+
+.cart-item-name {
+  @include font(20px, 20px, 700);
+}
+
+.cart-item-price {
+  @include font(20px, 20px);
+}
+
+.cart-amount-box {
+  @include font(20px, 24px);
+  display: flex;
+  flex-direction: column;
+}
+
+.cart-increase-amount-btn,
+.cart-decrease-amount-btn,
+.cart-remove-item {
+  cursor: pointer;
+}
+
+.cart-remove-item {
+  width: 24px;
+  height: 24px;
+}

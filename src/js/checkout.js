@@ -1,8 +1,11 @@
+'use strict';
+
+import '../styles/main.scss';
+
 import './burger';
 import './back-to-top';
 import './jquery.mask';
-
-import '../styles/main.scss';
+import './cart';
 
 const email = document.querySelector('.footer-input')
 const fullName = document.querySelector('#name')

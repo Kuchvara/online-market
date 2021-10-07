@@ -6,19 +6,6 @@
   }
 }
 
-.checkout-header-login--group {
-  display: flex;
-  justify-content: end;
-
-  @media screen and (max-width: 1200px) {
-    width: 400px;
-  }
-
-  @media screen and (max-width: 1800px) {
-    width: 800px;
-  }
-}
-
 .checkout-title {
   text-align: center;
   @include font(36px, 54px, 700);
@@ -66,10 +53,20 @@
   display: flex;
   align-items: center;
   justify-content: center;
+
+  @media screen and (max-width: 830px) {
+    @include font(18px, 27px);
+    width: 40px;
+    height: 40px;
+  }
 }
 
 .checkout-progress_name {
   @include font(24px, 36px, 500);
+
+  @media screen and (max-width: 830px) {
+    @include font(18px, 27px);
+  }
 }
 
 .form {
@@ -219,4 +216,34 @@
   background-color: $black;
   color: $white;
   fill: $white;
+}
+
+// checkout header
+
+.checkout-header-menu {
+  @media screen and (min-width: 731px) {
+    display: flex;
+    justify-content: end;
+    margin-bottom: 24px;
+    padding-bottom: 24px;
+    margin-left: 411px;
+  }
+
+  @media screen and (min-width: 1630px) and (max-width: 1919px) {
+    margin-left: 411px;
+  }
+}
+
+.checkout-header-login--group {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+
+  @media screen and (max-width: 1200px) {
+    width: 400px;
+  }
+
+  @media screen and (min-width: 1800px) {
+    width: 800px;
+  }
 }
