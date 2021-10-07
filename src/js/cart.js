@@ -12,8 +12,7 @@ const refs = {
 
 //  seting initial storage
 
-let storage = JSON.parse(localStorage.getItem('storage'))
-if (!storage) {storage = []}
+let storage = JSON.parse(localStorage.getItem('storage')) ? JSON.parse(localStorage.getItem('storage')) : localStorage.setItem('storage', '[]')
 
 // toggle cart
 
