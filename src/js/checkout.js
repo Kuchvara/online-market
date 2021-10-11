@@ -16,7 +16,22 @@ const cvv = document.querySelector('#cvv')
 const zipCode = document.querySelector('#zipCode')
 const year = document.querySelector('#year')
 const month = document.querySelector('#month')
+const form = document.querySelector('#paymentData')
 
+// form data
+form.onsubmit = (e) => {
+  e.preventDefault()
+
+  let data = new FormData(form)
+
+  let object = {};
+  data.forEach((value, key) => object[key] = value);  
+  
+  console.log(JSON.stringify(object)); 
+}
+// ======================
+
+// validation
 email.addEventListener("input", function () { 
   if (!email.validity.patternMismatch && email.value.length > 0) {
     email.setCustomValidity("");    
@@ -58,7 +73,7 @@ card.addEventListener("input", function () {
 });
 
 cvv.addEventListener("input", function () {  
-  if (cvv.value.length !== 3) {
+  if (cvv.value.length !== 3) {    
     cvv.setCustomValidity("cvv number should be 3 signs length");        
   } else {
     cvv.setCustomValidity("");
@@ -73,8 +88,7 @@ zipCode.addEventListener("input", function () {
   }
 });
 
-year.addEventListener("input", function () {
-  console.log(year.value.length !== 2 && Number(year.value) >= 21);
+year.addEventListener("input", function () {  
   if (year.value.length === 2 && Number(year.value) >= 21) {
     year.setCustomValidity("");      
   } else {
@@ -89,9 +103,9 @@ month.addEventListener("input", function () {
     month.setCustomValidity("unvalid month");
   }
 });
+// ================
 
-// ============= mask
-
+//  mask
 $(document).ready(function () {
   $(year).mask('00');
   $(month).mask('00');
