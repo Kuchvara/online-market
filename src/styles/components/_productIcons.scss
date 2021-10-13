@@ -1,0 +1,39 @@
+.featured-list-item {
+  position: relative;
+}
+
+.featured-list-item:hover .product-icons {
+  opacity: 1;
+}
+
+.product-icons {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  display: flex;
+  transition: 0.3s linear;
+}
+
+.product-icon {
+  width: 25px;
+  height: 25px;
+  fill: $white;
+}
+
+.product-icon-box {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: $black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.product-link {
+  margin-right: 24px;
+  text-decoration: none;
+}

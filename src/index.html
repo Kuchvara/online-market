@@ -19,7 +19,7 @@
 	</h1>
 	<div class="burger-menu" id="burger-menu">		
 		<a href="" class="burger-menu_button">
-			<spun class="burger-menu_lines"></spun>
+			<span class="burger-menu_lines"></span>
 		</a>
 		<div class="burger-menu_nav">
 		<div class="header-menu__flex">
@@ -34,12 +34,17 @@
 			</div>
 			</form>
 			<div class="header-login--group">
-			<svg class="header-icon">
-				<use href="./images/svg/sprite.svg#icon-basket"></use>
-			</svg>
-			<svg class="header-icon">
-				<use href="./images/svg/sprite.svg#icon-envelope"></use>
-			</svg>
+				<div class="toggle-container">
+					<button type="button" class="cart-btn" id="main-cart-btn">
+						<svg class="cart-icon">
+							<use href="./images/svg/sprite.svg#icon-basket"></use>
+						</svg>
+					</button>
+					<span class="cart-counter">0</span>
+				</div>			
+				<svg class="header-icon">
+					<use href="./images/svg/sprite.svg#icon-envelope"></use>
+				</svg>
 			<button class="btn login">Login</button>
 			</div>
 		</div>		
@@ -49,7 +54,7 @@
 				<li class="header-navigation-item"><a href="#arrival" class="link">New Arrival</a></li>
 				<li class="header-navigation-item"><a href="#featured" class="link">Features</a></li>
 				<li class="header-navigation-item"><a href="#collections" class="link">Collections</a></li>
-				<li class="header-navigation-item"><a href="./checkout.html" class="link">checkout</a></li>
+				<li class="header-navigation-item"><a href="./checkout.html" class="link">Checkout</a></li>
 			</ul>
 		</nav>
 		</div>
@@ -163,22 +168,142 @@
 				<span class="overlayed"></span>
 			</div>
 			<ul class="featured-list">
-				<li class="featured-list-item"><img src="./images/GreenJacket.jpg">
-					<span class="featured-list-item-name">Green Warm Jacket</span><span class="fetured-list-item-price">$299</span></li>
-				<li class="featured-list-item"><img src="./images/GreenJacket.jpg">
-					<span class="featured-list-item-name">Green Warm Jacket</span><span class="fetured-list-item-price">$299</span></li>
-				<li class="featured-list-item"><img src="./images/GreenJacket.jpg">
-					<span class="featured-list-item-name">Green Warm Jacket</span><span class="fetured-list-item-price">$299</span></li>
-				<li class="featured-list-item"><img src="./images/GreenJacket.jpg">
-					<span class="featured-list-item-name">Green Warm Jacket</span><span class="fetured-list-item-price">$299</span></li>
-				<li class="featured-list-item"><img src="./images/GreenJacket.jpg">
-					<span class="featured-list-item-name">Green Warm Jacket</span><span class="fetured-list-item-price">$299</span></li>
-				<li class="featured-list-item"><img src="./images/GreenJacket.jpg">
-					<span class="featured-list-item-name">Green Warm Jacket</span><span class="fetured-list-item-price">$299</span></li>
-				<li class="featured-list-item"><img src="./images/GreenJacket.jpg">
-					<span class="featured-list-item-name">Green Warm Jacket</span><span class="fetured-list-item-price">$299</span></li>
-				<li class="featured-list-item"><img src="./images/GreenJacket.jpg">
-					<span class="featured-list-item-name">Green Warm Jacket</span><span class="fetured-list-item-price">$299</span></li>
+				<li class="featured-list-item">
+					<img src="./images/GreenJacket.jpg" alt="green jacket">					
+					<span class="featured-list-item-name">Green Warm Jacket</span>
+					<span class="fetured-list-item-price">299$</span>
+					<div class="product-icons">
+						<a href="" class="product-icon-box product-link">
+							<svg class="product-icon">
+								<use href="./images/svg/sprite.svg#icon-search"></use>
+							</svg>
+						</a>
+						<button class="product-icon-box" id="product-cart-btn" data-id="1">
+							<svg class="product-icon">
+								<use href="./images/svg/sprite.svg#icon-basket"></use>
+							</svg>
+						</button>
+					</div>
+				</li>
+				<li class="featured-list-item">
+					<img src="./images/GreenJacket.jpg" alt="green jacket">
+					<span class="featured-list-item-name">Yellow Warm Jacket</span>
+					<span class="fetured-list-item-price">299$</span>
+					<div class="product-icons">
+						<a href="" class="product-icon-box product-link">
+							<svg class="product-icon">
+								<use href="./images/svg/sprite.svg#icon-search"></use>
+							</svg>
+						</a>
+						<button class="product-icon-box" id="product-cart-btn" data-id="2">
+							<svg class="product-icon">
+								<use href="./images/svg/sprite.svg#icon-basket"></use>
+							</svg>
+						</button>
+					</div>
+				</li>
+				<li class="featured-list-item">
+					<img src="./images/GreenJacket.jpg" alt="green jacket">
+					<span class="featured-list-item-name">Red Warm Jacket</span>
+					<span class="fetured-list-item-price">299$</span>
+					<div class="product-icons">
+						<a href="" class="product-icon-box product-link">
+							<svg class="product-icon">
+								<use href="./images/svg/sprite.svg#icon-search"></use>
+							</svg>
+						</a>
+						<button class="product-icon-box" id="product-cart-btn" data-id="3">
+							<svg class="product-icon">
+								<use href="./images/svg/sprite.svg#icon-basket"></use>
+							</svg>
+						</button>
+					</div>
+				</li>
+				<li class="featured-list-item">
+					<img src="./images/GreenJacket.jpg" alt="green jacket">
+					<span class="featured-list-item-name">Green Warm Jacket</span>
+					<span class="fetured-list-item-price">299$</span>
+					<div class="product-icons">
+						<a href="" class="product-icon-box product-link">
+							<svg class="product-icon">
+								<use href="./images/svg/sprite.svg#icon-search"></use>
+							</svg>
+						</a>
+						<button class="product-icon-box" id="product-cart-btn" data-id="4">
+							<svg class="product-icon">
+								<use href="./images/svg/sprite.svg#icon-basket"></use>
+							</svg>
+						</button>
+					</div>
+				</li>
+				<li class="featured-list-item">
+					<img src="./images/GreenJacket.jpg" alt="green jacket">
+					<span class="featured-list-item-name">Green Warm Jacket</span>
+					<span class="fetured-list-item-price">299$</span>
+					<div class="product-icons">
+						<a href="" class="product-icon-box product-link">
+							<svg class="product-icon">
+								<use href="./images/svg/sprite.svg#icon-search"></use>
+							</svg>
+						</a>
+						<button class="product-icon-box" id="product-cart-btn" data-id="5">
+							<svg class="product-icon">
+								<use href="./images/svg/sprite.svg#icon-basket"></use>
+							</svg>
+						</button>
+					</div>
+				</li>
+				<li class="featured-list-item">
+					<img src="./images/GreenJacket.jpg" alt="green jacket">
+					<span class="featured-list-item-name">Green Warm Jacket</span>
+					<span class="fetured-list-item-price">299$</span>
+					<div class="product-icons">
+						<a href="" class="product-icon-box product-link">
+							<svg class="product-icon">
+								<use href="./images/svg/sprite.svg#icon-search"></use>
+							</svg>
+						</a>
+						<button class="product-icon-box" id="product-cart-btn" data-id="6">
+							<svg class="product-icon">
+								<use href="./images/svg/sprite.svg#icon-basket"></use>
+							</svg>
+						</button>
+					</div>
+				</li>
+				<li class="featured-list-item">
+					<img src="./images/GreenJacket.jpg" alt="green jacket">
+					<span class="featured-list-item-name">Green Warm Jacket</span>
+					<span class="fetured-list-item-price">299$</span>
+					<div class="product-icons">
+						<a href="" class="product-icon-box product-link">
+							<svg class="product-icon">
+								<use href="./images/svg/sprite.svg#icon-search"></use>
+							</svg>
+						</a>
+						<button class="product-icon-box" id="product-cart-btn" data-id="7">
+							<svg class="product-icon">
+								<use href="./images/svg/sprite.svg#icon-basket"></use>
+							</svg>
+						</button>
+					</div>
+				</li>
+				<li class="featured-list-item">
+					<img src="./images/GreenJacket.jpg" alt="green jacket">
+					<span class="featured-list-item-name">Green Warm Jacket</span>
+					<span class="fetured-list-item-price">299$</span>
+					<div class="product-icons">
+						<a href="" class="product-icon-box product-link">
+							<svg class="product-icon">
+								<use href="./images/svg/sprite.svg#icon-search"></use>
+							</svg>
+						</a>
+						<button class="product-icon-box" id="product-cart-btn" data-id="8">
+							<svg class="product-icon">
+								<use href="./images/svg/sprite.svg#icon-basket"></use>
+							</svg>
+						</button>
+					</div>
+				</li>
 			</ul>
 		</div>		
 	</section>
@@ -407,6 +532,23 @@
 	</div>	
 	<span class="footer-copyright">Copyright © 2021 Elliye. All Right Reseved</span>	
 </footer>
+<div class="overlay">
+	<aside class="cart">
+		<button class="cart-close-btn">
+			<svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">				
+				<path
+					d="M31.708 25.708c-0-0-0-0-0-0l-9.708-9.708 9.708-9.708c0-0 0-0 0-0 0.105-0.105 0.18-0.227 0.229-0.357 0.133-0.356 0.057-0.771-0.229-1.057l-4.586-4.586c-0.286-0.286-0.702-0.361-1.057-0.229-0.13 0.048-0.252 0.124-0.357 0.228 0 0-0 0-0 0l-9.708 9.708-9.708-9.708c-0-0-0-0-0-0-0.105-0.104-0.227-0.18-0.357-0.228-0.356-0.133-0.771-0.057-1.057 0.229l-4.586 4.586c-0.286 0.286-0.361 0.702-0.229 1.057 0.049 0.13 0.124 0.252 0.229 0.357 0 0 0 0 0 0l9.708 9.708-9.708 9.708c-0 0-0 0-0 0-0.104 0.105-0.18 0.227-0.229 0.357-0.133 0.355-0.057 0.771 0.229 1.057l4.586 4.586c0.286 0.286 0.702 0.361 1.057 0.229 0.13-0.049 0.252-0.124 0.357-0.229 0-0 0-0 0-0l9.708-9.708 9.708 9.708c0 0 0 0 0 0 0.105 0.105 0.227 0.18 0.357 0.229 0.356 0.133 0.771 0.057 1.057-0.229l4.586-4.586c0.286-0.286 0.362-0.702 0.229-1.057-0.049-0.13-0.124-0.252-0.229-0.357z">
+				</path>
+			</svg>
+		</button>
+		<h3 class="cart-title">Your cart</h3>
+		<div class="cart-items"></div>
+		<footer>
+			<h3 class="cart-price">Total price: $0</h3>
+			<a href="./checkout.html" class="checkout-link">Checkout</a>			
+		</footer>
+	</aside>
+</div>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 </body>

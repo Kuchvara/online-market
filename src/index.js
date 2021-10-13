@@ -1,9 +1,12 @@
+'use strict';
+
 import './styles/main.scss';
 
 import './js/back-to-top';
 import './js/timer';
 import './js/burger';
 import './js/slider';
+import './js/cart';
 
 // footer validation
 
