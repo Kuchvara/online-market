@@ -51,8 +51,9 @@ const jsLoaders = () => {
 module.exports = {
   mode: 'development',
   entry: {
-    index: './src/index.js',
-    checkout: './src/js/checkout.js'
+    index: ['regenerator-runtime/runtime.js', './src/index.js'],
+    checkout: ['regenerator-runtime/runtime.js', './src/js/pages/checkout.js'],    
+    categories: ['regenerator-runtime/runtime.js', './src/js/pages/categories.js']
   },
   output: {
     filename: './js/[name].js',
@@ -85,6 +86,14 @@ module.exports = {
       },
       chunks: ['checkout']
     }),
+    new HTMLWebpackPlugin({
+      template: './src/categories.html',
+      filename: 'categories.html',
+      minify: {
+        collapseWhitespace: !devMode
+      },
+      chunks: ['categories']
+    }),
     new CopyWebpackPlugin([
       { from: 'src/images', to: 'images' },      
       { from: 'src/js/jquery.mask.js', to: 'js/jquery.mask.js'}
@@ -112,6 +121,11 @@ module.exports = {
         test: /\.m?js$/,
         exclude: /node_modules/,
         use: jsLoaders()
+      },
+      {
+        test: /\.hbs$/,
+        exclude: /node_modules/,
+        use: "handlebars-loader"
       },
       {
         test: /\.(png|svg|jpg|jpeg|gif)$/i,

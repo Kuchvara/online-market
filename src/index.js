@@ -1,21 +1,24 @@
 'use strict';
+import 'regenerator-runtime/runtime';
 
-import './styles/main.scss';
+import './styles/pages/main.scss';
 
-import './js/back-to-top';
-import './js/timer';
-import './js/burger';
-import './js/slider';
-import './js/cart';
+import './js/components/back-to-top';
+import './js/components/timer';
+import './js/components/burger';
+import './js/components/slider';
+import './js/components/cart';
+import './js/components/footerMailValidation';
 
-// footer validation
+const links = document.querySelector('#categories')
 
-const email = document.querySelector('.footer-input')
+links.addEventListener('click', (e) => {  
+  const id = e.target.id
+  
+  const urlData = {
+    id: id
+  }  
 
-email.addEventListener("input", function () { 
-  if (!email.validity.patternMismatch && email.value.length > 0) {
-    email.setCustomValidity("");    
-  } else {
-    email.setCustomValidity("e-mail address is not valid");
-  }
-});
+  localStorage.setItem('urlData', JSON.stringify(urlData))
+  window.location.href = './categories.html';
+})

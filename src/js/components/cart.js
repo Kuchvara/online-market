@@ -85,7 +85,7 @@ const addToCart = (item) => {
   refs.cartItems.appendChild(article);
 };
 
-refs.productBtn.forEach(btn => btn.addEventListener('click', (e) => {  
+refs.productBtn.forEach(btn => btn.addEventListener('click', (e) => {
   const startPoint = e.currentTarget.parentElement.previousElementSibling;
 
   const item = {
