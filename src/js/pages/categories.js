@@ -12,12 +12,15 @@ import productTpl from '../../templates/product.hbs';
 const root = document.querySelector('.product-list');
 const total = document.querySelector('.product-content-total');
 const coutner = document.querySelector('.product-content-coutner');
-const prices = document.querySelectorAll('#price')
-const categories = document.querySelector('#categories')
+const prices = document.querySelectorAll('#price');
+const categories = document.querySelector('#categories');
+const manufacturer = document.querySelector('#manufacturer');
+const manufacturerInput = document.querySelector('#manufacturerName')
 
 let pricesArr = []
 let minPrice
 let maxPrice
+let manufacturerName
 
 // categoria filter
 categories.addEventListener('click', (e) => {  
@@ -30,6 +33,7 @@ categories.addEventListener('click', (e) => {
   localStorage.setItem('urlData', JSON.stringify(urlData))
   
   init()
+  location.reload()
 })
 
 // price filter
@@ -56,6 +60,17 @@ prices.forEach(el => el.addEventListener('click', (e) => {
   init()
 }))
 
+// manufacturer filter
+manufacturer.addEventListener('submit', e => {
+  e.preventDefault()
+
+  manufacturerName = manufacturerInput.value;
+
+  init()
+
+  manufacturerInput.value = ''
+})
+
 // functions
 let getUrl = function () {
   let baseUrl = 'http://localhost:3030/products?$limit=20'
@@ -64,10 +79,14 @@ let getUrl = function () {
 
   if (urlData.id) {
     url = `${baseUrl}&category.id=${urlData.id}`
-  }  
+  }
+  
+  if (manufacturerName) {
+    url = url + `&manufacturer=${manufacturerName}`
+  }
 
   if (minPrice) {
-    url = `${baseUrl}${urlData.id}&price[$gt]=${minPrice}&price[$lte]=${maxPrice}`
+    url = url + `&price[$gt]=${minPrice}&price[$lte]=${maxPrice}`
   }
 
   if (skip) {
