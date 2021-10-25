@@ -70,14 +70,14 @@ manufacturer.addEventListener('submit', e => {
 })
 
 // pagination
-const pagination = document.querySelector('.pagination')
+const paginationItems = document.querySelectorAll('.pagination-item')
 
 let skip
 
-pagination.addEventListener('click', (e) => {
+paginationItems.forEach(el => el.addEventListener('click', (e) => {
   skip = doPaginate(e)
   init()
-})
+}))
 
 // search
 const search = document.querySelector('#search-form');

@@ -6,6 +6,7 @@ const coutner = document.querySelector('.product-content-coutner')
 const total = document.querySelector('.product-content-total');
 
 function doPaginate(e, reset = false) {
+  // e.preventDefault()
   let skip
   let currentPage = 1
   
@@ -38,7 +39,7 @@ function doPaginate(e, reset = false) {
       currentPage = first.textContent;      
     }
 
-    if (e.target.classList.contains('arrLeft') && currentPage > 3) {      
+    if (e.target.classList.contains('arrLeft') && Number(first.textContent) > 1) {      
       paginationItems.forEach(el => el.classList.remove('active'));
       last.classList.add('active');
       first.textContent = Number(first.textContent) - 3;
