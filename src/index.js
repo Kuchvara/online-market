@@ -9,6 +9,9 @@ import './js/components/burger';
 import './js/components/slider';
 import './js/components/cart';
 import './js/components/footerMailValidation';
+import request from './js/request';
+import featuredItemTpl from './templates/featuredItem.hbs';
+import newArrivalTpl from './templates/newArrivalTpl.hbs';
 
 // move to categoria page
 const links = document.querySelector('#categories')
@@ -31,9 +34,22 @@ const searchData = document.querySelector('.header-input');
 search.addEventListener('submit', e => {
   e.preventDefault()
   let searchName = searchData.value.split(' ').join('+');
+  searchData.value = '';
   
   urlData.requiredName = searchName
 
   localStorage.setItem('urlData', JSON.stringify(urlData))
   window.location.href = './categories.html';
 })
+
+// dynamic render
+
+// featured
+const featuredRoot = document.querySelector('.featured-list')
+const featuredUrl = 'http://localhost:3030/products?$limit=8&category.id=abcat0101000'
+request(featuredUrl, featuredRoot, featuredItemTpl)
+
+// new arrivel
+const newArrivalRoot = document.querySelector('.arrival-list')
+const newArrivalUrl = 'http://localhost:3030/products?$limit=4&category.id=abcat0101000&$sort[updatedAt]=-1';
+request(newArrivalUrl, newArrivalRoot, newArrivalTpl)
