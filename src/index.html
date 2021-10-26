@@ -23,7 +23,7 @@
 		</a>
 		<div class="burger-menu_nav">
 		<div class="header-menu__flex">
-			<form>
+			<form id="search-form">
 			<div class="header-btn-box">
 				<input class="header-input" placeholder="Search here" />
 				<button type="submit" class="header-submit-btn">
@@ -53,8 +53,7 @@
 				<li class="header-navigation-item"><a href="#categories" class="link">Categories</a></li>
 				<li class="header-navigation-item"><a href="#arrival" class="link">New Arrival</a></li>
 				<li class="header-navigation-item"><a href="#featured" class="link">Features</a></li>
-				<li class="header-navigation-item"><a href="#collections" class="link">Collections</a></li>
-				<li class="header-navigation-item"><a href="./checkout.html" class="link">Checkout</a></li>
+				<li class="header-navigation-item"><a href="#collections" class="link">Collections</a></li>				
 			</ul>
 		</nav>
 		</div>
@@ -64,57 +63,63 @@
 <main>
 	<section class="hero">		
 		<span class="hero-text">50% Off Limited Offer</span>
-		<h2 class="hero-title">Summer<br> Collection</h2>
+		<h2 class="hero-title">Theater<br> Systems</h2>
 		<button class="btn hero-btn">Shop Now 
 			<svg class="hero-btn--icon"><use href="./images/svg/sprite.svg#icon-ArrowR"></use></svg>
 		</button>
 		<ul class="hero-list" id="categories">
-			<li class="hero-list-item">
-				<svg class="hero-list-icon"><use href="./images/svg/sprite.svg#icon-jacket"></use></svg>
-				<span class="hero-list-name">Jacket</span>
-			</li>
-			<li class="hero-list-item">
-				<svg class="hero-list-icon">
-					<use href="./images/svg/sprite.svg#icon-shirt"></use>
+			<li class="hero-list-item" id="abcat0101000">				
+				<svg class="hero-list-icon" id="abcat0101000">
+					<use href="./images/svg/sprite.svg#icon-jacket" id="abcat0101000"></use>
 				</svg>
-				<span class="hero-list-name">Shirt</span>
+				<span class="hero-list-name" id="abcat0101000">"TVs"</span>				
 			</li>
-			<li class="hero-list-item">
-				<svg class="hero-list-icon">
-					<use href="./images/svg/sprite.svg#icon-pants"></use>
+			<li class="hero-list-item" id="abcat0102000">
+				<svg class="hero-list-icon" id="abcat0102000">
+					<use href="./images/svg/sprite.svg#icon-shirt" id="abcat0102000"></use>
 				</svg>
-				<span class="hero-list-name">Pants</span>
+				<span class="hero-list-name" id="abcat0102000">Blu-ray</span>
 			</li>
-			<li class="hero-list-item">
-				<svg class="hero-list-icon">
-					<use href="./images/svg/sprite.svg#icon-shoes"></use>
+			<li class="hero-list-item" id="abcat0106000">
+				<svg class="hero-list-icon" id="abcat0106000">
+					<use href="./images/svg/sprite.svg#icon-pants" id="abcat0106000"></use>
 				</svg>
-				<span class="hero-list-name">Shoes</span>
+				<span class="hero-list-name" id="abcat0106000">TV Stands</span>
 			</li>
-			<li class="hero-list-item">
-				<svg class="hero-list-icon">
-					<use href="./images/svg/sprite.svg#icon-dress"></use>
+			<li class="hero-list-item" id="abcat0107000">
+				<svg class="hero-list-icon" id="abcat0107000">
+					<use href="./images/svg/sprite.svg#icon-shoes" id="abcat0107000"></use>
 				</svg>
-				<span class="hero-list-name">Dress</span>
+				<span class="hero-list-name" id="abcat0107000">Accessories</span>
 			</li>
-			<li class="hero-list-item">
-				<svg class="hero-list-icon">
-					<use href="./images/svg/sprite.svg#icon-accesories"></use>
+			<li class="hero-list-item" id="abcat0203000">
+				<svg class="hero-list-icon" id="abcat0203000">
+					<use href="./images/svg/sprite.svg#icon-dress" id="abcat0203000"></use>
 				</svg>
-				<span class="hero-list-name">Accesories</span>
+				<span class="hero-list-name" id="abcat0203000">Theater Systems</span>
+			</li>
+			<li class="hero-list-item" id="abcat0205007">
+				<svg class="hero-list-icon" id="abcat0205007">
+					<use href="./images/svg/sprite.svg#icon-accesories" id="abcat0205007"></use>
+				</svg>
+				<span class="hero-list-name" id="abcat0205007">Sound Bars</span>
 			</li>
 		</ul>
 		<div class="slider">
 			<div class="slide">
-				<img src="./images/Summer.jpg" alt="first-slide" class="slide-img">
+				<img src="./images/TVs.jpeg" alt="first-slide" class="slide-img">
 				<span class="overlayed"></span>
 			</div>
 			<div class="slide">
-				<img src="./images/bigCollection.jpeg" alt="second-slide" class="slide-img">
+				<img src="./images/theaterSystems.jpg" alt="second-slide" class="slide-img">
 				<span class="overlayed"></span>
 			</div>
 			<div class="slide">
-				<img src="./images/casual.jpg" alt="third-slide" class="slide-img">
+				<img src="./images/stands.jpg" alt="second-slide" class="slide-img">
+				<span class="overlayed"></span>
+			</div>
+			<div class="slide">
+				<img src="./images/Soundbars.jpg" alt="third-slide" class="slide-img">
 				<span class="overlayed"></span>
 			</div>
 		</div>
@@ -142,17 +147,17 @@
 	<section class="collections" id="collections">
 		<div class="collections-small">
 			<div class="collection-item casual">
-				<span class="collection-name">Casual</span><br><span class="collection-text">Collection</span>
-				<img src="./images/casual.jpg" alt="casual collection" class="collection-image">
+				<span class="collection-name">Sound bars</span><br><span class="collection-text">Systems</span>
+				<img src="./images/Soundbars.jpg" alt="Sound bar system" class="collection-image">
 			</div>
 			<div class="collection-item summer">
-				<span class="collection-name">Summer</span><br><span class="collection-text">Collection</span>
-				<img src="./images/Summer.jpg" alt="summer collection" class="collection-image">
+				<span class="collection-name">Theater</span><br><span class="collection-text">Systems</span>
+				<img src="./images/theaterSystems.jpg" alt="theater system" class="collection-image">
 			</div>
 		</div>
 		<div class="collection-item big">
-			<span class="collection-name">Big Vibe</span><br><span class="collection-text">Collection</span>
-			<img src="./images/bigCollection.jpeg" alt="big vibe collection" class="collection-image">
+			<span class="collection-name">TV stands</span><br><span class="collection-text">Collection</span>
+			<img src="./images/stands.jpg" alt="TV stands" class="collection-image">
 		</div>
 	</section>
 	<section class="featured" id="featured">
@@ -164,7 +169,7 @@
 		</div>
 		<div class="featured-content_flex">
 			<div class="featured-product--box_big"><span class="collection-name">Discover Our</span><h4 class="featured-product--heading">Featured Product</h4>
-				<img src="./images/Summer.jpg" alt="featured collection" class="collection-image">
+				<img src="./images/TVs.jpeg" alt="featured collection" class="collection-image">
 				<span class="overlayed"></span>
 			</div>
 			<ul class="featured-list">
@@ -184,126 +189,7 @@
 							</svg>
 						</button>
 					</div>
-				</li>
-				<li class="featured-list-item">
-					<img src="./images/GreenJacket.jpg" alt="green jacket">
-					<span class="featured-list-item-name">Yellow Warm Jacket</span>
-					<span class="fetured-list-item-price">299$</span>
-					<div class="product-icons">
-						<a href="" class="product-icon-box product-link">
-							<svg class="product-icon">
-								<use href="./images/svg/sprite.svg#icon-search"></use>
-							</svg>
-						</a>
-						<button class="product-icon-box" id="product-cart-btn" data-id="2">
-							<svg class="product-icon">
-								<use href="./images/svg/sprite.svg#icon-basket"></use>
-							</svg>
-						</button>
-					</div>
-				</li>
-				<li class="featured-list-item">
-					<img src="./images/GreenJacket.jpg" alt="green jacket">
-					<span class="featured-list-item-name">Red Warm Jacket</span>
-					<span class="fetured-list-item-price">299$</span>
-					<div class="product-icons">
-						<a href="" class="product-icon-box product-link">
-							<svg class="product-icon">
-								<use href="./images/svg/sprite.svg#icon-search"></use>
-							</svg>
-						</a>
-						<button class="product-icon-box" id="product-cart-btn" data-id="3">
-							<svg class="product-icon">
-								<use href="./images/svg/sprite.svg#icon-basket"></use>
-							</svg>
-						</button>
-					</div>
-				</li>
-				<li class="featured-list-item">
-					<img src="./images/GreenJacket.jpg" alt="green jacket">
-					<span class="featured-list-item-name">Green Warm Jacket</span>
-					<span class="fetured-list-item-price">299$</span>
-					<div class="product-icons">
-						<a href="" class="product-icon-box product-link">
-							<svg class="product-icon">
-								<use href="./images/svg/sprite.svg#icon-search"></use>
-							</svg>
-						</a>
-						<button class="product-icon-box" id="product-cart-btn" data-id="4">
-							<svg class="product-icon">
-								<use href="./images/svg/sprite.svg#icon-basket"></use>
-							</svg>
-						</button>
-					</div>
-				</li>
-				<li class="featured-list-item">
-					<img src="./images/GreenJacket.jpg" alt="green jacket">
-					<span class="featured-list-item-name">Green Warm Jacket</span>
-					<span class="fetured-list-item-price">299$</span>
-					<div class="product-icons">
-						<a href="" class="product-icon-box product-link">
-							<svg class="product-icon">
-								<use href="./images/svg/sprite.svg#icon-search"></use>
-							</svg>
-						</a>
-						<button class="product-icon-box" id="product-cart-btn" data-id="5">
-							<svg class="product-icon">
-								<use href="./images/svg/sprite.svg#icon-basket"></use>
-							</svg>
-						</button>
-					</div>
-				</li>
-				<li class="featured-list-item">
-					<img src="./images/GreenJacket.jpg" alt="green jacket">
-					<span class="featured-list-item-name">Green Warm Jacket</span>
-					<span class="fetured-list-item-price">299$</span>
-					<div class="product-icons">
-						<a href="" class="product-icon-box product-link">
-							<svg class="product-icon">
-								<use href="./images/svg/sprite.svg#icon-search"></use>
-							</svg>
-						</a>
-						<button class="product-icon-box" id="product-cart-btn" data-id="6">
-							<svg class="product-icon">
-								<use href="./images/svg/sprite.svg#icon-basket"></use>
-							</svg>
-						</button>
-					</div>
-				</li>
-				<li class="featured-list-item">
-					<img src="./images/GreenJacket.jpg" alt="green jacket">
-					<span class="featured-list-item-name">Green Warm Jacket</span>
-					<span class="fetured-list-item-price">299$</span>
-					<div class="product-icons">
-						<a href="" class="product-icon-box product-link">
-							<svg class="product-icon">
-								<use href="./images/svg/sprite.svg#icon-search"></use>
-							</svg>
-						</a>
-						<button class="product-icon-box" id="product-cart-btn" data-id="7">
-							<svg class="product-icon">
-								<use href="./images/svg/sprite.svg#icon-basket"></use>
-							</svg>
-						</button>
-					</div>
-				</li>
-				<li class="featured-list-item">
-					<img src="./images/GreenJacket.jpg" alt="green jacket">
-					<span class="featured-list-item-name">Green Warm Jacket</span>
-					<span class="fetured-list-item-price">299$</span>
-					<div class="product-icons">
-						<a href="" class="product-icon-box product-link">
-							<svg class="product-icon">
-								<use href="./images/svg/sprite.svg#icon-search"></use>
-							</svg>
-						</a>
-						<button class="product-icon-box" id="product-cart-btn" data-id="8">
-							<svg class="product-icon">
-								<use href="./images/svg/sprite.svg#icon-basket"></use>
-							</svg>
-						</button>
-					</div>
-				</li>
+				</li>				
 			</ul>
 		</div>		
 	</section>
@@ -365,35 +251,7 @@
 	<div class="arriva-week-flex" id="arrival">
 		<section>
 			<h4 class="arrival-title">New Arrival</h4>
-			<ul class="arrival-list">
-				<li class="arrival-item">
-					<img src="./images/checkeredJacket.jpg" alt="stuff" class="arrival-image">
-					<p>
-						<span class="arrival-name">Checkered Jacket</span>
-						<span class="arrival-price">$299</span>
-					</p>
-				</li>
-				<li class="arrival-item">
-					<img src="./images/checkeredJacket.jpg" alt="stuff" class="arrival-image">
-					<p>
-						<span class="arrival-name">Checkered Jacket</span>
-						<span class="arrival-price">$299</span>
-					</p>
-				</li>
-				<li class="arrival-item">
-					<img src="./images/checkeredJacket.jpg" alt="stuff" class="arrival-image">
-					<p>
-						<span class="arrival-name">Checkered Jacket</span>
-						<span class="arrival-price">$299</span>
-					</p>
-				</li>
-				<li class="arrival-item">
-					<img src="./images/checkeredJacket.jpg" alt="stuff" class="arrival-image">
-					<p>
-						<span class="arrival-name">Checkered Jacket</span>
-						<span class="arrival-price">$299</span>
-					</p>
-				</li>				
+			<ul class="arrival-list">							
 			</ul>
 			<a href="" class="view-all-link">View all<svg class="view-all-icon">
 				<use href="./images/svg/spriteMini.svg#icon-ArrowR"></use></svg></a>

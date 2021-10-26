@@ -1,0 +1,26 @@
+.products-list-item {
+  position: relative;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  width: 245px;
+  margin-bottom: 32px;
+}
+
+.product-image {
+  width: 100%;
+  height: 245px;
+  margin-bottom: 16px;
+}
+
+.products-item-name {
+  color: $black;
+  @include font(24px, 36px, 500);
+  margin-bottom: 8px;
+  padding: 0 24px;
+}
+
+.products-item-price {
+  color: $grey-text;
+  @include font(18px, 27px);
+}

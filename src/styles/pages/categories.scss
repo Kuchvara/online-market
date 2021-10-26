@@ -1,0 +1,118 @@
+@import '~normalize.css';
+@import '../utils/variables';
+@import '../base/common';
+@import '../components/buttons';
+@import '../components/link';
+@import '../layout/header';
+@import '../layout/footer';
+@import '../components/productIcons';
+@import '../components/cart';
+@import '../components/burger';
+@import '../components/productTlp';
+@import '../components/pagination';
+
+.container {
+  padding: 0 144px;
+}
+
+.navigation {
+  display: flex;
+  margin-bottom: 41px;
+}
+
+.navigation-item {
+  cursor: pointer;
+  @include font(18px, 27px, 500);
+
+  &:not(:last-child) {
+    margin-right: 32px;
+  }
+}
+
+.product-list-title {
+  @include font(36px, 54px, 700);
+  color: $black;
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.filter-name {
+  @include font(18px, 27px, 500);
+  color: $black;
+  margin-bottom: 32px;
+}
+
+.filter-list {
+  border-top: 1px solid #cdcfd1;
+  width: 245px;
+  padding-top: 32px;
+  margin-bottom: 32px;
+  margin-right: 32px;
+}
+
+.filter-item {
+  @include font(18px, 27px);
+  color: $grey-text;
+  cursor: pointer;
+
+  &:not(:last-child) {
+    margin-bottom: 24px;
+  }
+
+  &:hover,
+  &:focus {
+    color: $black;
+  }
+}
+
+.filter-item > .active {
+  color: $black;
+}
+
+.product-list {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.product-content-text {
+  color: $grey-text;
+  @include font(18px, 27px, 500);
+}
+
+.product-content-coutner,
+.product-content-total {
+  color: $black;
+}
+
+.product-content-text {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 32px;
+}
+
+.flex-box {
+  display: flex;
+  margin-bottom: 56px;
+}
+
+.products-content-box {
+  width: 100%;
+}
+
+#manufacturerName {
+  border: 2px solid #cdcfd1;
+  border-radius: 4px;
+  margin-bottom: 16px;
+  height: 30px;
+}
+
+#manufacturer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.manufacturerBtn {
+  height: 30px;
+}

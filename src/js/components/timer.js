@@ -61,13 +61,13 @@ class CountdownTimer {
   
 const timer = new CountdownTimer({
   selector: refs.timer,
-  targetDate: new Date('Oct 11, 2021'),
+  targetDate: new Date('Nov 13, 2021'),
   refs: refs
 });
 
 const timerSecond = new CountdownTimer({
   selector: refsSecond.timer,
-  targetDate: new Date('Oct 17, 2021'),
+  targetDate: new Date('Nov 13, 2021'),
   refs: refsSecond
 })
 

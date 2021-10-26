@@ -18,11 +18,21 @@
     </h1>
     <div class="burger-menu" id="burger-menu">
       <a href="" class="burger-menu_button">
-        <spun class="burger-menu_lines"></spun>
+        <span class="burger-menu_lines"></span>
       </a>
       <div class="burger-menu_nav">
-        <div class="checkout-header-menu">          
-          <div class="checkout-header-login--group">
+        <div class="header-menu__flex">
+          <form id="search-form">
+            <div class="header-btn-box">
+              <input class="header-input" placeholder="Search here" />
+              <button type="submit" class="header-submit-btn">
+                <svg class="header-submit-btn--icon">
+                  <use href="./images/svg/sprite.svg#icon-search"></use>
+                </svg>
+              </button>
+            </div>
+          </form>
+          <div class="header-login--group">
             <div class="toggle-container">
               <button type="button" class="cart-btn" id="main-cart-btn">
                 <svg class="cart-icon">
@@ -36,112 +46,86 @@
             </svg>
             <button class="btn login">Login</button>
           </div>
-        </div>        
+        </div>
+        
       </div>
       <div class="burger-menu_overlay"></div>
     </div>
   </header>
-  <main class="checkout-container">    
+  <main class="container">    
     <ul class="navigation">
-      <li class="navigation-item"><a href="./index.html" class="link">Home</a></li>        
-      <li class="navigation-item">Checkout</li>
-    </ul>    
-    <h4 class="checkout-title">Checkout</h4>
-    <ul class="checkout-progres">
-    <li class="checkout-progress_item">
-      <span class="checkout-progress_number">1</span>
-      <span class="checkout-progress_name">Shopping Cart</span>
-    </li>
-    <li class="checkout-progress_item">
-      <span class="checkout-progress_number">2</span>
-      <span class="checkout-progress_name">Checkout</span>
-    </li>
-    <li class="checkout-progress_item">
-      <span class="checkout-progress_number">3</span>
-      <span class="checkout-progress_name">Completed</span>
-    </li>
+      <li class="navigation-item"><a href="./index.html" class="link">Home</a></li>
+      <li class="navigation-item">Product List</li>
     </ul>
-    <form class="checkout-form-flex" id="paymentData" name="paymentData">
-    <div class="form buyer">
-      <span class="form-title">Buyer Info</span>
-      <label for="name" class="checkout-form_label">Full Name</label>
-      <input type="text" name="name" id="name" class="checkout-form_input" autocomplete=off required
-        pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"/>
-      <label for="address" class="checkout-form_label">Address</label>
-      <input type="text" name="address" id="address" class="checkout-form_input" autocomplete=off required/>
-      <label for="contact" class="checkout-form_label">Contact</label>
-      <input type="tel" name="phone" id="contact" class="contact checkout-form_input" autocomplete=off required
-        pattern="(\+?( |-|\.)?\d{1,2}( |-|\.)?)?(\(?\d{3}\)?|\d{3})( |-|\.)?(\d{3}( |-|\.)?\d{4})"/>
-      <label for="city" class="checkout-form_label">City</label>
-      <input type="text" name="city" id="city" class="checkout-form_input" autocomplete=off required/>
-      <div class="state-flex-box">
-      <div class="flex-column">
-        <label for="state" class="checkout-form_label">State</label>
-        <input type="text" name="state" id="state" class="checkout-form_input" required/>
+    <h4 class="product-list-title">Product List</h4>
+    <div class="flex-box">
+      <div class="filters">
+        <p class="filter-name">Categories</p>
+        <ul class="filter-list" id="categories">
+          <li class="filter-item" id="abcat0101000">TVs</li>
+          <li class="filter-item" id="abcat0102000">Blu-ray & DVD Players</li>
+          <li class="filter-item" id="abcat0106000">TV Stands, Mounts & Furniture</li>
+          <li class="filter-item" id="abcat0107000">TV & Home Theater Accessories</li>
+          <li class="filter-item" id="abcat0203000">Home Theater Systems</li>
+          <li class="filter-item" id="abcat0205007">Sound Bars</li>
+        </ul>                
+        <p class="filter-name">Filter by Price</p>
+        <ul class="filter-list">
+          <li class="filter-item">
+            <label data-value='1 100'>
+              <input type="checkbox" data-value='1 100' id="price">
+              $1 - $100
+            </label>
+          </li>
+          <li class="filter-item">
+            <label data-value='101 250'>
+            <input type="checkbox" data-value='101 250' id="price">
+            $101 - $250
+          </label>
+        </li>
+          <li class="filter-item">
+            <label data-value='250 500'>
+            <input type="checkbox" data-value='251 500' id="price">
+            $251 - $500
+          </label>
+        </li>
+          <li class="filter-item">
+            <label data-value='500 1000'>
+            <input type="checkbox" data-value='501 1000' id="price">
+            $501 - $1000
+          </label>
+        </li>
+          <li class="filter-item">
+            <label data-value='1000 1500'>
+            <input type="checkbox" data-value='1001 1500' id="price">
+            $1001 - $1500
+            </label>
+          </li>          
+        </ul>
+        <p class="filter-name">Manufacturer</p>
+        <ul class="filter-list" id="manufacturers"></ul>        
       </div>
-      <div class="flex-column">
-        <label for="zipCode" class="checkout-form_label">Zip Code</label>
-        <input type="text" name="zipCode" id="zipCode" class="checkout-form_input" required/>
+      <div class="products-content-box">
+        <div class="product-content-text">
+          <span>Viewing <span class="product-content-coutner">20</span> of <span class="product-content-total">160</span> product</span>
+          <span>Sort by: <select id="sort-select">
+            <option value=""></option>
+            <option value="&$sort[price]=1">from cheapest to most expensive</option>
+            <option value="&$sort[price]=-1">from most expensive to cheapest</option>
+            <option value="&$sort[updatedAt]=1">from oldest to newest</option>
+            <option value="&$sort[updatedAt]=-1">from newest to oldest</option>            
+          </select></span>
+        </div>
+        <ul class="product-list"></ul>
       </div>      
-      </div>
-    </div>  
-    <div class="form buyer">
-      <span class="form-title">Payment Method</span>
-      <ul class="payment-list">
-      <li class="payment-item">
-        <input type="radio" name="paymentMethod" class="payment-input" id="creditCard" value="creditCard" required/>
-        <label class="payment-method" for="creditCard">          
-          <svg class="payment-icon">
-            <use href="./images/svg/sprite.svg#icon-Card"></use>
-          </svg>
-          <span class="payment-text">Credit Card</span>          
-        </label>
-      </li>
-      <li class="payment-item">
-        <input type="radio" name="paymentMethod" class="payment-input" value="bank" id="bank" required/>
-        <label class="payment-method" for="bank">
-          <svg class="payment-icon">
-            <use href="./images/svg/payment.svg#Transfer"></use>
-          </svg>
-          <span class="payment-text">Bank Transfer</span>          
-        </label>
-      </li>
-      <li class="payment-item">
-        <input type="radio" name="paymentMethod" class="payment-input" id="paypal" value="paypal" required/>
-        <label class="payment-method" for="paypal">
-          <svg class="payment-icon">
-            <use href="./images/svg/payment.svg#Paypal"></use>
-          </svg>
-          <span class="payment-text">Paypal</span>          
-        </label>
-      </li>
-      </ul>
-      <label for="cardName" class="checkout-form_label">Name on Card</label>
-      <input type="text" name="cardName" id="cardName" class="checkout-form_input" required autocomplete="off"
-        pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"/>
-      <div class="state-flex-box">
-      <div class="flex-column">
-        <label for="card" class="checkout-form_label">Card Number</label>
-        <input type="text" name="card" id="card" class="checkout-form_input" autocomplete="off" required/>
-      </div>
-      <div class="flex-column">
-        <label for="cvv" class="checkout-form_label">CVV</label>
-        <input type="text" name="cvv" id="cvv" class="checkout-form_input" autocomplete="off" required/>
-      </div>
-      </div>
-      <div class="state-flex-box">
-      <div class="flex-column">
-        <label for="month" class="checkout-form_label">Month</label>
-        <input type="text" name="month" id="month" class="checkout-form_input" required/>
-      </div>
-      <div class="flex-column">
-        <label for="year" class="checkout-form_label">Year</label>
-        <input type="text" name="year" id="year" class="checkout-form_input" required/>
-      </div>
-      </div>
-      <button type="submit" class="btn checkout-btn">Checkout</button>
     </div>
-    </form>
+    <ul class="pagination">
+      <li class="pagination-item arrLeft">&#60;</li>
+      <li class="pagination-item active" id="first">1</li>
+      <li class="pagination-item" id="middle">2</li>
+      <li class="pagination-item" id="last">3</li>
+      <li class="pagination-item arrRight">&#62;</li>
+    </ul>    
   </main>
   <footer class="footer">
     <div class="footer-flex">
@@ -194,11 +178,8 @@
             Drop your email below to get update, promotions, coupons, and more!
           </span>
           <div class="footer-btn-box">
-            <input 
-              type="email"
-              class="footer-input"
-              placeholder="Enter your email" 
-              pattern="^[A-Za-z0-9+_.-]+@[a-z]+\.[a-z]*$"/>
+            <input type="email" class="footer-input" placeholder="Enter your email"
+              pattern="^[A-Za-z0-9+_.-]+@[a-z]+\.[a-z]*$" />
             <button type="submit" class="footer-submit-btn">
               <svg class="footer-submit-btn--arrow">
                 <use href="./images/svg/sprite.svg#icon-ArrowR"></use>
@@ -227,7 +208,5 @@
       </footer>
     </aside>
   </div>
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>  
-  <script src="./js/jquery.mask.js"></script>  
 </body>
 </html>

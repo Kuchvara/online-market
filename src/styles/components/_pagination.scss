@@ -1,0 +1,30 @@
+.pagination {
+  display: flex;
+  color: $grey-text;
+  margin-bottom: 100px;
+  justify-content: center;
+}
+
+.pagination-item {
+  border: 2px solid #9f9f9f;
+  width: 51px;
+  height: 51px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+
+  &:not(:last-child) {
+    margin-right: 24px;
+  }
+
+  &:hover {
+    background-color: $black;
+    color: $white;
+  }
+}
+
+.active {
+  color: $white;
+  background-color: $black;
+}

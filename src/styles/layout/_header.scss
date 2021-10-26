@@ -138,92 +138,30 @@
   color: $black;
 }
 
-// burger menu
+// checkout header
 
-.burger-menu_button {
-  position: fixed;
-  top: 10px;
-  right: 10px;
-  z-index: 7;
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  background-color: $black;
-  transition: 0.4s;
-
-  @media screen and (min-width: 730px) {
-    display: none;
-  }
-}
-
-.burger-menu_lines::before,
-.burger-menu_lines::after,
-.burger-menu_lines {
-  position: absolute;
-  width: 25px;
-  height: 3px;
-  background-color: $white;
-  transition: 0.4s;
-}
-.burger-menu_lines {
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-.burger-menu_lines::before {
-  content: '';
-  top: -10px;
-}
-.burger-menu_lines::after {
-  content: '';
-  top: 10px;
-}
-
-.burger-menu_active .burger-menu_lines {
-  background-color: transparent;
-}
-.burger-menu_active .burger-menu_lines::before {
-  top: 0;
-  transform: rotate(45deg);
-}
-.burger-menu_active .burger-menu_lines::after {
-  top: 0;
-  transform: rotate(-45deg);
-}
-
-.burger-menu_nav {
-  @media screen and (max-width: 730px) {
-    padding: 80px 16px 0px 16px;
-    position: fixed;
-    top: 0;
-    z-index: 6;
+.checkout-header-menu {
+  @media screen and (min-width: 731px) {
     display: flex;
-    flex-flow: column;
-    align-items: center;
-    height: 100%;
-    overflow-y: auto;
-    right: -100%;
-    transition: 0.8s;
+    justify-content: end;
+    margin-bottom: 24px;
+  }
+
+  @media screen and (min-width: 1630px) and (max-width: 1919px) {
+    margin-left: 411px;
   }
 }
 
-.burger-menu_active .burger-menu_nav {
-  right: 0;
-  transition: 0.4s;
-  background-color: $background;
-}
+.checkout-header-login--group {
+  display: flex;
+  align-items: center;
+  justify-content: end;
 
-.burger-menu_overlay {
-  display: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  z-index: 5;
-}
+  @media screen and (max-width: 1200px) {
+    width: 400px;
+  }
 
-.burger-menu_active .burger-menu_overlay {
-  display: block;
-  background-color: rgba(0, 0, 0, 0.5);
+  @media screen and (min-width: 1800px) {
+    width: 800px;
+  }
 }

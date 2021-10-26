@@ -1,21 +1,55 @@
 'use strict';
+import 'regenerator-runtime/runtime';
 
-import './styles/main.scss';
+import './styles/pages/main.scss';
 
-import './js/back-to-top';
-import './js/timer';
-import './js/burger';
-import './js/slider';
-import './js/cart';
+import './js/components/back-to-top';
+import './js/components/timer';
+import './js/components/burger';
+import './js/components/slider';
+import './js/components/cart';
+import './js/components/footerMailValidation';
+import request from './js/request';
+import featuredItemTpl from './templates/featuredItem.hbs';
+import newArrivalTpl from './templates/newArrivalTpl.hbs';
 
-// footer validation
+// move to categoria page
+const links = document.querySelector('#categories')
 
-const email = document.querySelector('.footer-input')
+let urlData = {}
 
-email.addEventListener("input", function () { 
-  if (!email.validity.patternMismatch && email.value.length > 0) {
-    email.setCustomValidity("");    
-  } else {
-    email.setCustomValidity("e-mail address is not valid");
-  }
-});
+links.addEventListener('click', (e) => {  
+  const id = e.target.id
+  
+  urlData.id = id  
+
+  localStorage.setItem('urlData', JSON.stringify(urlData))
+  window.location.href = './categories.html';
+})
+
+// search
+const search = document.querySelector('#search-form');
+const searchData = document.querySelector('.header-input');
+
+search.addEventListener('submit', e => {
+  e.preventDefault()
+  let searchName = searchData.value.split(' ').join('+');
+  searchData.value = '';
+  
+  urlData.requiredName = searchName
+
+  localStorage.setItem('urlData', JSON.stringify(urlData))
+  window.location.href = './categories.html';
+})
+
+// dynamic render
+
+// featured
+const featuredRoot = document.querySelector('.featured-list')
+const featuredUrl = 'http://localhost:3030/products?$limit=8&category.id=abcat0101000'
+request(featuredUrl, featuredRoot, featuredItemTpl)
+
+// new arrivel
+const newArrivalRoot = document.querySelector('.arrival-list')
+const newArrivalUrl = 'http://localhost:3030/products?$limit=4&category.id=abcat0101000&$sort[updatedAt]=-1';
+request(newArrivalUrl, newArrivalRoot, newArrivalTpl)

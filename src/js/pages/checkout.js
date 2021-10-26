@@ -1,13 +1,14 @@
 'use strict';
+import 'regenerator-runtime/runtime';
 
-import '../styles/main.scss';
+import '../../styles/pages/checkout.scss';
 
-import './burger';
-import './back-to-top';
-import './jquery.mask';
-import './cart';
+import '../components/burger';
+import '../components/back-to-top';
+import '../jquery.mask';
+import '../components/cart';
+import '../components/footerMailValidation';
 
-const email = document.querySelector('.footer-input')
 const fullName = document.querySelector('#name')
 const contact = document.querySelector('#contact')
 const cardName = document.querySelector('#cardName')
@@ -32,13 +33,6 @@ form.onsubmit = (e) => {
 // ======================
 
 // validation
-email.addEventListener("input", function () { 
-  if (!email.validity.patternMismatch && email.value.length > 0) {
-    email.setCustomValidity("");    
-  } else {
-    email.setCustomValidity("e-mail address is not valid");
-  }
-});
 
 fullName.addEventListener("input", function () {  
   if (fullName.validity.patternMismatch) {
