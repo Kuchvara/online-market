@@ -68,18 +68,19 @@
           <li class="filter-item" id="abcat0107000">TV & Home Theater Accessories</li>
           <li class="filter-item" id="abcat0203000">Home Theater Systems</li>
           <li class="filter-item" id="abcat0205007">Sound Bars</li>
-        </ul>
-        <p class="filter-name">Manufacturer</p>
-        <form class="filter-list" id="manufacturer">
-          <input type="text" id="manufacturerName">
-          <button type="submit" class="btn manufacturerBtn">Filter</button>
-        </form>        
+        </ul>                
         <p class="filter-name">Filter by Price</p>
-        <ul class="filter-list">          
+        <ul class="filter-list">
           <li class="filter-item">
-            <label data-value='100 250'>
-            <input type="checkbox" data-value='100 250' id="price">
-            $100 - $250
+            <label data-value='1 100'>
+              <input type="checkbox" data-value='1 100' id="price">
+              $1 - $100
+            </label>
+          </li>
+          <li class="filter-item">
+            <label data-value='101 250'>
+            <input type="checkbox" data-value='101 250' id="price">
+            $101 - $250
           </label>
         </li>
           <li class="filter-item">
@@ -101,11 +102,19 @@
             </label>
           </li>          
         </ul>
+        <p class="filter-name">Manufacturer</p>
+        <ul class="filter-list" id="manufacturers"></ul>        
       </div>
       <div class="products-content-box">
         <div class="product-content-text">
           <span>Viewing <span class="product-content-coutner">20</span> of <span class="product-content-total">160</span> product</span>
-          <span>Sort by: Newest Items</span>
+          <span>Sort by: <select id="sort-select">
+            <option value=""></option>
+            <option value="&$sort[price]=1">from cheapest to most expensive</option>
+            <option value="&$sort[price]=-1">from most expensive to cheapest</option>
+            <option value="&$sort[updatedAt]=1">from oldest to newest</option>
+            <option value="&$sort[updatedAt]=-1">from newest to oldest</option>            
+          </select></span>
         </div>
         <ul class="product-list"></ul>
       </div>      

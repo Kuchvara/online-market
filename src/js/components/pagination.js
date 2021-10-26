@@ -5,10 +5,18 @@ const paginationItems = document.querySelectorAll('.pagination-item')
 const coutner = document.querySelector('.product-content-coutner')
 const total = document.querySelector('.product-content-total');
 
-function doPaginate(e, reset = false) {
-  // e.preventDefault()
+function doPaginate(e, reset = false) {  
   let skip
   let currentPage = 1
+
+  const modifyPagination = (item, number) => {
+    paginationItems.forEach(el => el.classList.remove('active'));
+    item.classList.add('active');
+    first.textContent = Number(first.textContent) + number;
+    middle.textContent = Number(middle.textContent) + number;
+    last.textContent = Number(last.textContent) + number;
+    currentPage = item.textContent;
+  }
   
   if (reset) {
     paginationItems.forEach(el => el.classList.remove('active'));
@@ -31,21 +39,11 @@ function doPaginate(e, reset = false) {
     }
 
     if (e.target.classList.contains('arrRight') && currentPage < Number(total.textContent) / 20) {
-      paginationItems.forEach(el => el.classList.remove('active'));
-      first.classList.add('active');
-      first.textContent = Number(first.textContent) + 3;
-      middle.textContent = Number(middle.textContent) + 3;
-      last.textContent = Number(last.textContent) + 3;
-      currentPage = first.textContent;      
+      modifyPagination(first, 3)      
     }
 
     if (e.target.classList.contains('arrLeft') && Number(first.textContent) > 1) {      
-      paginationItems.forEach(el => el.classList.remove('active'));
-      last.classList.add('active');
-      first.textContent = Number(first.textContent) - 3;
-      middle.textContent = Number(middle.textContent) - 3;
-      last.textContent = Number(last.textContent) - 3;
-      currentPage = last.textContent;      
+      modifyPagination(last, -3)      
     }
 
     skip = currentPage * 20 - 20; 

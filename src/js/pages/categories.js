@@ -10,17 +10,17 @@ import productTpl from '../../templates/product.hbs';
 import doPaginate from '../components/pagination';
 
 const root = document.querySelector('.product-list');
+const manufacturersRoot = document.querySelector('#manufacturers');
 const total = document.querySelector('.product-content-total');
 const prices = document.querySelectorAll('#price');
 const categories = document.querySelector('#categories');
-const manufacturer = document.querySelector('#manufacturer');
-const manufacturerInput = document.querySelector('#manufacturerName');
 
 let pricesArr = []
 let minPrice
 let maxPrice
 let manufacturerName
 let searchName
+let sortBy
 
 // categoria filter
 categories.addEventListener('click', (e) => {  
@@ -59,15 +59,37 @@ prices.forEach(el => el.addEventListener('click', (e) => {
 }))
 
 // manufacturer filter
-manufacturer.addEventListener('submit', e => {
-  e.preventDefault()
+const getManufacturers = function () {
+  const categoriaId = JSON.parse(localStorage.getItem('urlData')).id
+  const url = `http://localhost:3030/products?$limit=999&category.id=${categoriaId}&$select[]=manufacturer`;
+  
 
-  manufacturerName = manufacturerInput.value;
-  doPaginate(e, true)  
+  const dataProcessing = (data) => {
+    let manufacturersArr = []
 
-  manufacturerInput.value = ''
-  init()
-})
+    data.forEach(el => {      
+      if (!manufacturersArr.includes(el.manufacturer)) {
+        manufacturersArr.push(el.manufacturer)
+      }      
+    })
+    
+    manufacturersArr.forEach(el => {
+    const markup = `<li class="filter-item" id="manufacturer-item">${el}</li>`    
+    manufacturersRoot.insertAdjacentHTML('beforeend', markup);
+    })
+
+    const manufacturers = document.querySelectorAll('#manufacturer-item')
+    manufacturers.forEach(el => {
+      el.addEventListener('click', e => {        
+        manufacturerName = e.target.textContent;        
+        skip = doPaginate(e, true)
+        init()
+      })
+    })  
+  }  
+  
+  request(url, dataProcessing) 
+}
 
 // pagination
 const paginationItems = document.querySelectorAll('.pagination-item')
@@ -88,6 +110,14 @@ search.addEventListener('submit', e => {
   searchName = searchData.value.split(' ').join('+');
   searchData.value = '';
 
+  init()
+})
+
+// sort
+const sort = document.querySelector('#sort-select')
+
+sort.addEventListener('change', e => {
+  sortBy = e.target.value
   init()
 })
 
@@ -116,6 +146,10 @@ let getUrl = function () {
     url = url + `&name[$like]=*${searchName}*`
   }
 
+  if (sortBy) {
+    url = url + sortBy
+  }
+
   if (skip) {
     url = url + `&$skip=${skip}`    
   }
@@ -123,9 +157,17 @@ let getUrl = function () {
   return url
 }
 
-const init = function () {  
-  root.innerHTML = '';
-  request(getUrl(), root, productTpl, total)
+const makeMarkup = function (data) {    
+  data.forEach(el => {
+    const markup = productTpl(el);
+    root.insertAdjacentHTML('beforeend', markup);
+  })
 }
 
-window.addEventListener('DOMContentLoaded', init())
+const init = function () {  
+  root.innerHTML = '';
+  request(getUrl(), makeMarkup, total)
+}
+
+getManufacturers()
+init()

@@ -1,4 +1,4 @@
-const request = function (url, root, template, total = undefined) {  
+const request = function (url, callback, total = undefined) {  
   let request = new XMLHttpRequest();
   let response
 
@@ -13,11 +13,7 @@ const request = function (url, root, template, total = undefined) {
     if (total) {
       total.textContent = response.total
     }
-    
-    response.data.forEach(el => {
-      const markup = template(el);
-      root.insertAdjacentHTML('beforeend', markup);
-    })    
+    callback(response.data)        
   };  
   return response
 }
