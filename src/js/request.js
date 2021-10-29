@@ -13,7 +13,7 @@ const request = function (url, callback, total = undefined) {
     if (total) {
       total.textContent = response.total
     }
-    callback(response.data)        
+    callback(response)
   };  
   return response
 }

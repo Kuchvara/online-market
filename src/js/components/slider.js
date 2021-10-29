@@ -10,3 +10,13 @@ $(document).ready(function () {
 		zIndex: 0
   });
 });
+
+$(document).ready(function () {
+	$('.similar-list').slick({
+		infinite: true,
+  	slidesToShow: 1,
+		slidesToScroll: 1,
+		speed: 600,
+		dots: true,
+  });
+});

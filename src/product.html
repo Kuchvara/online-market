@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@400;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+  <title>Online-market</title>
+</head>
+<body>
+  <header class="header">
+    <h1 class="logo">
+      <svg class="header-logo-icon">
+        <use href="./images/svg/sprite.svg#icon-logo"></use>
+      </svg>Elliye
+    </h1>
+    <div class="burger-menu" id="burger-menu">
+      <a href="" class="burger-menu_button">
+        <span class="burger-menu_lines"></span>
+      </a>
+      <div class="burger-menu_nav">
+        <div class="header-menu__flex">
+          <form id="search-form">
+            <div class="header-btn-box">
+              <input class="header-input" placeholder="Search here" />
+              <button type="submit" class="header-submit-btn">
+                <svg class="header-submit-btn--icon">
+                  <use href="./images/svg/sprite.svg#icon-search"></use>
+                </svg>
+              </button>
+            </div>
+          </form>
+          <div class="header-login--group">
+            <div class="toggle-container">
+              <button type="button" class="cart-btn" id="main-cart-btn">
+                <svg class="cart-icon">
+                  <use href="./images/svg/sprite.svg#icon-basket"></use>
+                </svg>
+              </button>
+              <span class="cart-counter">0</span>
+            </div>
+            <svg class="header-icon">
+              <use href="./images/svg/sprite.svg#icon-envelope"></use>
+            </svg>
+            <button class="btn login">Login</button>
+          </div>
+        </div>  
+      </div>
+      <div class="burger-menu_overlay"></div>
+    </div>
+  </header>
+  <main class="product-container">
+    <div class="product-root"></div>    
+    <div class="review-flex-box">
+      <div>
+        <p class="product-data">Rating: <span class="rating-value"></span></p>          
+        <ul class="reviews-root"></ul>
+      </div>
+      <form id="comment-form">
+        <ul class="rating-list">
+          <li class="rating-item">
+            <label for="rating1" class="rating-label">1</label>
+            <input type="radio" name="rating" id="rating1" value="1">
+          </li>
+          <li class="rating-item">
+            <label for="rating2" class="rating-label">2</label>
+            <input type="radio" name="rating" id="rating2" value="2">
+          </li>
+          <li class="rating-item">
+            <label for="rating3" class="rating-label">3</label>
+            <input type="radio" name="rating" id="rating3" value="3">
+          </li>
+          <li class="rating-item">
+            <label for="rating4" class="rating-label">4</label>
+            <input type="radio" name="rating" id="rating4" value="4">
+          </li>
+          <li class="rating-item">
+            <label for="rating5" class="rating-label">5</label>
+            <input type="radio" name="rating" id="rating5" value="5">
+          </li>
+        </ul>
+        <p class="comment-heading">Your comment</p>
+        <textarea name="comment" id="" cols="80" rows="10" class="comment-area"></textarea>
+        <button type="submit" class="btn add-btn">Leave comment</button>
+      </form>
+    </div>
+    <div>
+      <h4 class="reviewed-heading">Last viewed products</h4>
+      <ul class="reviewed-list"></ul>
+    </div>
+    <div>
+      <h4 class="reviewed-heading">A few similar products</h4>
+      <div class="similar-list"></div>
+    </div>
+  </main>
+  <footer class="footer">
+    <div class="footer-flex">
+      <div class="footer-contacts-box">
+        <h2 class="footer-logo">
+          <svg class="footer-logo--icon">
+            <use href="./images/svg/sprite.svg#icon-logo"></use>
+          </svg>
+          Elliye
+        </h2>
+        <span class="footer-contacts-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nulla amet ut
+          temporibus.</span>
+        <a href="tel:+1234567890" class="fotter-contacts">
+          <svg class="footer-contacts-icon" width="20" height="20">
+            <use href="./images/svg/sprite.svg#icon-phone"></use>
+          </svg>
+          +1234567890
+        </a>
+        <a href="mailto:info@devstudio.com" class="fotter-contacts">
+          <svg class="footer-contacts-icon" width="20" height="16">
+            <use href="./images/svg/sprite.svg#icon-envelope"></use>
+          </svg>
+          elliye@support.com
+        </a>
+      </div>
+      <div class="footer-content-box">
+        <h5 class="footer-content-box--heading">Product Links</h5>
+        <ul>
+          <li class="footer-product-item"><a href="#categories" class="link">Categories</a></li>
+          <li class="footer-product-item"><a href="#arrival" class="link">New Arrival</a></li>
+          <li class="footer-product-item"><a href="#featured" class="link">Features</a></li>
+          <li class="footer-product-item"><a href="#collections" class="link">Collections</a></li>
+        </ul>
+      </div>
+      <div class="footer-content-box">
+        <h5 class="footer-content-box--heading">Company</h5>
+        <ul>
+          <li class="footer-product-item">About</li>
+          <li class="footer-product-item">Blog</li>
+          <li class="footer-product-item">Careers</li>
+          <li class="footer-product-item">Services</li>
+          <li class="footer-product-item">Privacy Policy</li>
+          <li class="footer-product-item">Terms of service</li>
+        </ul>
+      </div>
+      <div class="footer-content-box">
+        <h5 class="footer-content-box--heading">Join our Newsletter</h5>
+        <form autocomplete="off">
+          <span class=" footer-form-text">
+            Drop your email below to get update, promotions, coupons, and more!
+          </span>
+          <div class="footer-btn-box">
+            <input type="email" class="footer-input" placeholder="Enter your email"
+              pattern="^[A-Za-z0-9+_.-]+@[a-z]+\.[a-z]*$" />
+            <button type="submit" class="footer-submit-btn">
+              <svg class="footer-submit-btn--arrow">
+                <use href="./images/svg/sprite.svg#icon-ArrowR"></use>
+              </svg>
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <span class="footer-copyright">Copyright © 2021 Elliye. All Right Reseved</span>
+  </footer>
+  <div class="overlay">
+    <aside class="cart">
+      <button class="cart-close-btn">
+        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+          <path
+            d="M31.708 25.708c-0-0-0-0-0-0l-9.708-9.708 9.708-9.708c0-0 0-0 0-0 0.105-0.105 0.18-0.227 0.229-0.357 0.133-0.356 0.057-0.771-0.229-1.057l-4.586-4.586c-0.286-0.286-0.702-0.361-1.057-0.229-0.13 0.048-0.252 0.124-0.357 0.228 0 0-0 0-0 0l-9.708 9.708-9.708-9.708c-0-0-0-0-0-0-0.105-0.104-0.227-0.18-0.357-0.228-0.356-0.133-0.771-0.057-1.057 0.229l-4.586 4.586c-0.286 0.286-0.361 0.702-0.229 1.057 0.049 0.13 0.124 0.252 0.229 0.357 0 0 0 0 0 0l9.708 9.708-9.708 9.708c-0 0-0 0-0 0-0.104 0.105-0.18 0.227-0.229 0.357-0.133 0.355-0.057 0.771 0.229 1.057l4.586 4.586c0.286 0.286 0.702 0.361 1.057 0.229 0.13-0.049 0.252-0.124 0.357-0.229 0-0 0-0 0-0l9.708-9.708 9.708 9.708c0 0 0 0 0 0 0.105 0.105 0.227 0.18 0.357 0.229 0.356 0.133 0.771 0.057 1.057-0.229l4.586-4.586c0.286-0.286 0.362-0.702 0.229-1.057-0.049-0.13-0.124-0.252-0.229-0.357z">
+          </path>
+        </svg>
+      </button>
+      <h3 class="cart-title">Your cart</h3>
+      <div class="cart-items"></div>
+      <footer>
+        <h3 class="cart-price">Total price: $0</h3>
+        <a href="./checkout.html" class="checkout-link">Checkout</a>
+      </footer>
+    </aside>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+</body>
+</html>

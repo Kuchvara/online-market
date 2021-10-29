@@ -1,8 +1,6 @@
 'use strict';
 import 'regenerator-runtime/runtime';
-
 import './styles/pages/main.scss';
-
 import './js/components/back-to-top';
 import './js/components/timer';
 import './js/components/burger';
@@ -47,9 +45,41 @@ search.addEventListener('submit', e => {
 // featured
 const featuredRoot = document.querySelector('.featured-list')
 const featuredUrl = 'http://localhost:3030/products?$limit=8&category.id=abcat0101000'
-request(featuredUrl, featuredRoot, featuredItemTpl)
+
+const featuredMarkup = function (data) {
+  data.data.forEach(el => {
+    const markup = featuredItemTpl(el);
+    featuredRoot.insertAdjacentHTML('beforeend', markup);    
+  })
+
+  linkHandler()  
+}
+
+request(featuredUrl, featuredMarkup)
 
 // new arrivel
 const newArrivalRoot = document.querySelector('.arrival-list')
 const newArrivalUrl = 'http://localhost:3030/products?$limit=4&category.id=abcat0101000&$sort[updatedAt]=-1';
-request(newArrivalUrl, newArrivalRoot, newArrivalTpl)
+
+const newArrivalMarkup = function (data) {
+  data.data.forEach(el => {
+    const markup = newArrivalTpl(el);
+    newArrivalRoot.insertAdjacentHTML('beforeend', markup);
+  })
+
+  linkHandler()
+}
+
+// product link handler
+const linkHandler = function () {
+  const productLinks = document.querySelectorAll('.product-link')
+  productLinks.forEach(el => {
+    el.addEventListener('click', e => {
+      e.preventDefault()      
+      localStorage.setItem('productId', e.currentTarget.id)
+      window.location.href = './product.html';
+    })
+  })
+}
+
+request(newArrivalUrl, newArrivalMarkup)
