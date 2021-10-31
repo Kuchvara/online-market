@@ -71,10 +71,12 @@ const productHandle = function (response) {
 
 // reviewed products render
 const reviewedRender = function () {
-  reviewedProducts.forEach(el => {
+  if (reviewedProducts) {
+    reviewedProducts.forEach(el => {
     const markup = productTpl(el);
     reviewedRoot.insertAdjacentHTML('beforeend', markup);
   });
+  }
 }
 
 const productLinks = document.querySelectorAll('.product-link')
@@ -95,10 +97,14 @@ commentForm.onsubmit = (e) => {
 
   let object = {id: productId};
   data.forEach((value, key) => object[key] = [value]);
-
+  
   if (sameElement) {    
-    sameElement.rating.push(object.rating)    
-    sameElement.comment.push(object.comment)
+    if (object.rating) {      
+      sameElement.rating = [...sameElement.rating, object.rating]
+    }
+    if (object.comment[0].length > 0) {      
+      sameElement.comment.push(object.comment)
+    }
     const filteredRew = reviews.filter(el => el.id !== productId)
     filteredRew.push(sameElement)
     localStorage.setItem('reviews', JSON.stringify(filteredRew))
@@ -114,11 +120,11 @@ const sameElement = reviews ? reviews.find(el => el.id === productId) : '';
 const setRating = () => {  
   if (sameElement) {
     let sum = 0
-    if (sameElement.rating.length > 1) {
+    if (sameElement.rating && sameElement.rating.length > 1) {
       sameElement.rating.map(el => {
       sum = sum + Number(el)
     })    
-    rating.textContent = sum / sameElement.rating.length
+      rating.textContent = (sum / sameElement.rating.length).toPrecision(2)      
     } else {
       rating.textContent = sameElement.rating
     }    
@@ -131,15 +137,15 @@ const setComments = () => {
   if (sameElement) {    
     if (sameElement.comment.length > 1) {      
       sameElement.comment.forEach(el => {
-      const markup = `<li>${el}</li>`;
+      const markup = `<li class="comment">${el}</li>`;
       commentsRoot.insertAdjacentHTML('beforeend', markup);
     })
     } else {      
-      const markup = `<li>${sameElement.comment}</li>`;
+      const markup = `<li class="comment">${sameElement.comment}</li>`;
       commentsRoot.insertAdjacentHTML('beforeend', markup);
     }    
   } else {
-    const markup = '<li>No comments</li>';
+    const markup = '<li class="comment">No comments</li>';
     commentsRoot.insertAdjacentHTML('beforeend', markup);
   }
 }

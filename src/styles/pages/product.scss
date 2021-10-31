@@ -104,3 +104,9 @@
 .comment-area {
   border: 4px solid #f6f7fb;
 }
+
+.comment {
+  color: $black;
+  margin-bottom: 32px;
+  @include font(32px, 54px);
+}
