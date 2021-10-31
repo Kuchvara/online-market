@@ -108,9 +108,12 @@ commentForm.onsubmit = (e) => {
     const filteredRew = reviews.filter(el => el.id !== productId)
     filteredRew.push(sameElement)
     localStorage.setItem('reviews', JSON.stringify(filteredRew))
-  } else {
-    reviews.push(object)
-    localStorage.setItem('reviews', JSON.stringify(reviews))
+  } else {    
+    if (reviews) {
+      reviews.push(object)
+      localStorage.setItem('reviews', JSON.stringify(reviews))
+    }    
+    localStorage.setItem('reviews', JSON.stringify([object]))
   }
   location.reload()
 }

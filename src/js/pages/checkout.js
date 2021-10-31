@@ -26,9 +26,7 @@ form.onsubmit = (e) => {
   let data = new FormData(form)
 
   let object = {};
-  data.forEach((value, key) => object[key] = value);  
-  
-  console.log(JSON.stringify(object)); 
+  data.forEach((value, key) => object[key] = value);
 }
 // ======================
 
