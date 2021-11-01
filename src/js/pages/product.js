@@ -38,8 +38,10 @@ const productHandle = function (response) {
   }
   
   const reviewedArr = JSON.parse(localStorage.getItem('reviewedProducts'))
-
-  if (reviewedArr.length < 5) {
+  const doubleReviewedProd = reviewedArr.find(el => el.id === currentProduct.id)
+  
+  if (!doubleReviewedProd) {
+    if (reviewedArr.length < 5) {
     reviewedArr.push(currentProduct)
     localStorage.setItem('reviewedProducts', JSON.stringify(reviewedArr))
   } else {
@@ -47,6 +49,7 @@ const productHandle = function (response) {
     reviewedArr.push(currentProduct)
     localStorage.setItem('reviewedProducts', JSON.stringify(reviewedArr))
   }
+  }  
 
   let productCategories = [];
   response.categories.forEach(el => {
@@ -140,11 +143,12 @@ const setComments = () => {
   if (sameElement) {    
     if (sameElement.comment.length > 1) {      
       sameElement.comment.forEach(el => {
-      const markup = `<li class="comment">${el}</li>`;
+        const index = sameElement.comment.indexOf(el)
+      const markup = `<li class="comment">${el}. Rating: ${sameElement.rating[index]}</li>`;
       commentsRoot.insertAdjacentHTML('beforeend', markup);
     })
     } else {      
-      const markup = `<li class="comment">${sameElement.comment}</li>`;
+      const markup = `<li class="comment">${sameElement.comment}. Rating: ${sameElement.rating}</li>`;
       commentsRoot.insertAdjacentHTML('beforeend', markup);
     }    
   } else {
