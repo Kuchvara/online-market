@@ -10,7 +10,7 @@ const refs = {
   totalAmount: document.querySelector('.cart-counter'),  
 }
 
-//  seting initial storage
+//  setting initial storage
 
 let storage = JSON.parse(localStorage.getItem('storage')) ? JSON.parse(localStorage.getItem('storage')) : localStorage.setItem('storage', '[]')
 

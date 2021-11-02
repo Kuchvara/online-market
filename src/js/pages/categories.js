@@ -67,7 +67,7 @@ const getManufacturers = function () {
   const dataProcessing = (data) => {
     let manufacturersArr = []
 
-    data.forEach(el => {      
+    data.data.forEach(el => {      
       if (!manufacturersArr.includes(el.manufacturer)) {
         manufacturersArr.push(el.manufacturer)
       }      
@@ -88,7 +88,7 @@ const getManufacturers = function () {
     })  
   }  
   
-  request(url, dataProcessing) 
+  request(url, dataProcessing)
 }
 
 // pagination
@@ -157,16 +157,30 @@ let getUrl = function () {
   return url
 }
 
-const makeMarkup = function (data) {    
-  data.forEach(el => {
+const makeMarkup = function (data) {
+  data.data.forEach(el => {
     const markup = productTpl(el);
     root.insertAdjacentHTML('beforeend', markup);
   })
+
+  linkHandler()
 }
 
 const init = function () {  
   root.innerHTML = '';
   request(getUrl(), makeMarkup, total)
+}
+
+// product link handler
+const linkHandler = function () {
+  const productLinks = document.querySelectorAll('.product-link')
+  productLinks.forEach(el => {
+    el.addEventListener('click', e => {
+      e.preventDefault()      
+      localStorage.setItem('productId', e.currentTarget.id)
+      window.location.href = './product.html';
+    })
+  })
 }
 
 getManufacturers()
