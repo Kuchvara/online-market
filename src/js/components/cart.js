@@ -71,7 +71,7 @@ const addToCart = (item) => {
   article.classList.add('cart-item');
   article.setAttribute('id', item.id);
   article.innerHTML = `
-    <img src="${item.image}" alt="${item.name}" class="cart-item-image">
+    <img class="cart-item-image" src="${item.image}" alt="${item.name}">
 		<h4 class="cart-item-name">${item.name}</h4>
 		<span class="cart-item-price">${item.price}</span>
 		<div class="cart-amount-box">
@@ -85,39 +85,7 @@ const addToCart = (item) => {
   refs.cartItems.appendChild(article);
 };
 
-refs.productBtn.forEach(btn => btn.addEventListener('click', (e) => {
-  const startPoint = e.currentTarget.parentElement.previousElementSibling;
-
-  const item = {
-    id: shortid.generate(),
-    price: Number.parseInt(startPoint.textContent),
-    name: startPoint.previousElementSibling.textContent,
-    image: startPoint.previousElementSibling.previousElementSibling.attributes.src.nodeValue,
-    amount: 1
-  }
-
-  const newStorage = storage = JSON.parse(localStorage.getItem('storage'))  
-  const sameElement = newStorage.find(el => el.name === item.name)  
-  
-  if (sameElement) {
-    const newAmount = sameElement.amount += 1;
-    const id = sameElement.id
-    refs.cartItems.querySelector(`#${id}`).querySelector('.cart-item-amount').textContent = newAmount;
-    
-    const newProduct = { ...sameElement, amount: newAmount }      
-    const newStorage = storage.filter(el => el.id !== id)
-    newStorage.push(newProduct)
-    localStorage.setItem('storage', JSON.stringify(newStorage))
-  } else {
-    storage.push(item);
-    localStorage.setItem('storage', JSON.stringify(storage));
-    addToCart(item);
-  }  
-
-  displayCartItemCount()
-  displayCartTotal()
-  openCart()
-}))
+refs.productBtn.forEach(btn => btn.addEventListener('click', (e) => cartFunc(e)))
 
 function setupCartFunctionality() {
   refs.cartItems.addEventListener('click', function (e) {
@@ -177,3 +145,39 @@ const init = () => {
 };
 
 init();
+
+const cartFunc = function (e) {
+  const startPoint = e.currentTarget.parentElement.previousElementSibling;
+
+  const item = {
+    id: shortid.generate(),
+    price: Number.parseFloat(startPoint.textContent),
+    name: startPoint.previousElementSibling.textContent,
+    image: startPoint.previousElementSibling.previousElementSibling.attributes.src.nodeValue,
+    amount: 1
+  }
+
+  const newStorage = storage = JSON.parse(localStorage.getItem('storage'))  
+  const sameElement = newStorage.find(el => el.name === item.name)  
+  
+  if (sameElement) {
+    const newAmount = sameElement.amount += 1;
+    const id = sameElement.id
+    refs.cartItems.querySelector(`#${id}`).querySelector('.cart-item-amount').textContent = newAmount;
+    
+    const newProduct = { ...sameElement, amount: newAmount }      
+    const newStorage = storage.filter(el => el.id !== id)
+    newStorage.push(newProduct)
+    localStorage.setItem('storage', JSON.stringify(newStorage))
+  } else {
+    storage.push(item);
+    localStorage.setItem('storage', JSON.stringify(storage));
+    addToCart(item);
+  }  
+
+  displayCartItemCount()
+  displayCartTotal()
+  openCart()
+}
+
+export default cartFunc

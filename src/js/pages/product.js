@@ -5,6 +5,7 @@ import '../components/burger';
 import '../components/back-to-top';
 import '../components/cart';
 import '../components/footerMailValidation';
+import cartFunc from '../components/cart';
 import request from '../request';
 import productPageTpl from '../../templates/productPageTpl.hbs';
 import productTpl from '../../templates/product.hbs';
@@ -66,7 +67,10 @@ const productHandle = function (response) {
     const markup = similarTpl(el);
     similarRoot.insertAdjacentHTML('beforeend', markup);
   })   
-
+  const cartBtns = similarRoot.querySelectorAll('#product-cart-btn')  
+  cartBtns.forEach(el => {
+    el.addEventListener('click', e => cartFunc(e))
+  })
   linkHandler()
   }
   request(categiryUrl, similarMarkup)
@@ -80,6 +84,10 @@ const reviewedRender = function () {
     reviewedRoot.insertAdjacentHTML('beforeend', markup);
   });
   }
+  const cartBtns = reviewedRoot.querySelectorAll('#product-cart-btn')  
+  cartBtns.forEach(el => {
+    el.addEventListener('click', e => cartFunc(e))
+  })
 }
 
 const productLinks = document.querySelectorAll('.product-link')
