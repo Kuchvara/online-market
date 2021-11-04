@@ -70,16 +70,17 @@
     </ul>
     <div class="flex-box">
       <form class="coupon-btn-box">
-        <input type="email" class="coupon-input" placeholder="Enter coupon code" />
+        <input type="text" class="coupon-input" placeholder="Enter coupon code" />
         <button type="submit" class="coupon-submit-btn">
           Apply Code
         </button>
       </form>
-      <div>
-        <span>Total</span>
-        <span>total value</span>
-      </div>
-    </div>    
+      <h4 class="cart-products-total"></h4>
+    </div>
+    <div>
+      <h4 class="reviewed-heading">You can also buy</h4>
+      <div class="similar-list"></div>
+    </div>
   </main>
   <footer class="footer">
     <div class="footer-flex">
@@ -159,6 +160,7 @@
       <div class="cart-items"></div>
       <footer>
         <h3 class="cart-price">Total price: $0</h3>
+        <a href="./cart.html" class="checkout-link">Cart page</a>
         <a href="./checkout.html" class="checkout-link">Checkout</a>
       </footer>
     </aside>

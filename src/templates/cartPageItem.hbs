@@ -1,19 +1,19 @@
-<li class="cart-page-item">
+<li class="cart-page-item" id={{id}}>
   <div class="cart-page-item_box">
     <img class="cart-page-item_img" src={{image}} alt={{name}}>
     <h5 class="cart-page-item_name">{{name}}</h5>
-    <div class="cart-quantity-box">
+    <div class="cart-quantity-box" id={{id}}>
       <button type="button" class="cartPage-decrease-quantity">-</button>
       <span class="cartPage-item-quantity">{{amount}}</span>
       <button type="button" class="cartPage-increase-quantity">+</button>
     </div>
     <h5 class="cart-page-item_price">{{price}}</h5>
     <h5 class="cart-page-item_total">total</h5>
-    <button type="button" class="cart-remove-item">
+    <button type="button" class="cart-remove-item" id={{id}}>
       <span class="cart-remove-item_lines"></span>
     </button>
   </div>
-  <input type="checkbox" id="additional-warranty">
-  <label for="additional-warranty" class="additional-warranty">Additional warranty</label>
-  <span class="additional-warranty_price"></span>
+  <input type="checkbox" id="additional-warranty{{id}}" class="extra-warranty">
+  <label for="additional-warranty{{id}}" class="additional-warranty">Additional warranty</label>
+  <span class="additional-warranty_price">+15%</span>
 </li>

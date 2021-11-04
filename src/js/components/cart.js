@@ -33,6 +33,7 @@ refs.cartOverlay.addEventListener('click', (event) => {
 })
 
 // functions
+const totalTextRoot = refs.totalPrice
 
 function displayCartItemCount() {
   const newStorage = JSON.parse(localStorage.getItem('storage'))
@@ -42,22 +43,23 @@ function displayCartItemCount() {
   refs.totalAmount.textContent = amount;  
 }
 
-function displayCartTotal() {
+function displayCartTotal(totalTextRoot) {
   const newStorage = JSON.parse(localStorage.getItem('storage'))
   let total = newStorage.reduce((total, cartItem) => {
     return (total += cartItem.price * cartItem.amount);
   }, 0);
-  refs.totalPrice.textContent = `Total: ${total} $`;
+  totalTextRoot.textContent = `Total: ${total} $`;
+  return total
 }
 
 function removeItem(id) {
   const currentStorage = JSON.parse(localStorage.getItem('storage'))
   const newStorage = JSON.stringify(currentStorage.filter((el) => el.id !== id));
-  localStorage.removeItem(storage);
+  // localStorage.removeItem(storage);
   localStorage.setItem('storage', newStorage)  
   
   displayCartItemCount()
-  displayCartTotal()
+  displayCartTotal(totalTextRoot)
 }
 
 const findProduct = (id) => {
@@ -95,21 +97,25 @@ function setupCartFunctionality() {
     
     // remove
     if (element.classList.contains('cart-remove-item')) {
-      removeItem(parentID);
+      removeItem(parentID);      
       parent.remove();
     }
     // increase
     if (element.classList.contains('cart-increase-amount-btn')) {
       const id = element.parentElement.parentElement.id
-      const newAmount = Number(element.nextElementSibling.textContent) + 1;
-
-      element.nextElementSibling.textContent = newAmount;
       const product = findProduct(id)
+
+      if (product.stock > Number(element.nextElementSibling.textContent)) {
+        const newAmount = Number(element.nextElementSibling.textContent) + 1;
+      element.nextElementSibling.textContent = newAmount;      
       const newProduct = { ...product, amount: newAmount }
       const currentStorage = JSON.parse(localStorage.getItem('storage'))
       const newStorage = currentStorage.filter(el => el.id !== id)
       newStorage.push(newProduct)
-      localStorage.setItem('storage', JSON.stringify(newStorage))      
+      localStorage.setItem('storage', JSON.stringify(newStorage))
+      } else {
+        alert('out of stock')
+      }
     }
     // decrease
     if (element.classList.contains('cart-decrease-amount-btn')) {
@@ -117,7 +123,7 @@ function setupCartFunctionality() {
       const newAmount = Number(element.previousElementSibling.textContent) - 1;
       
       if (newAmount === 0) {
-        removeItem(id);
+        removeItem(id);        
         element.parentElement.parentElement.remove();
       } else {
         element.previousElementSibling.textContent = newAmount;
@@ -130,7 +136,7 @@ function setupCartFunctionality() {
       }
     }
     displayCartItemCount();
-    displayCartTotal();    
+    displayCartTotal(totalTextRoot);    
   });
 }
 
@@ -138,7 +144,7 @@ const init = () => {
   // display amount of cart items
   displayCartItemCount();
   // display total
-  displayCartTotal();  
+  displayCartTotal(totalTextRoot);  
   // setup cart functionality
   setupCartFunctionality();
   if (storage) { storage.map(el => addToCart(el)) }
@@ -148,9 +154,13 @@ init();
 
 const cartFunc = function (e) {
   const startPoint = e.currentTarget.parentElement.previousElementSibling;
+  const randumStock = function (min, max) {
+  return Math.floor(Math.random() * (max - min + 1) + min)
+}
 
   const item = {
     id: shortid.generate(),
+    stock: randumStock(5, 10),
     price: Number.parseFloat(startPoint.textContent),
     name: startPoint.previousElementSibling.textContent,
     image: startPoint.previousElementSibling.previousElementSibling.attributes.src.nodeValue,
@@ -161,7 +171,8 @@ const cartFunc = function (e) {
   const sameElement = newStorage.find(el => el.name === item.name)  
   
   if (sameElement) {
-    const newAmount = sameElement.amount += 1;
+    if (sameElement.stock > sameElement.amount) {
+      const newAmount = sameElement.amount += 1;
     const id = sameElement.id
     refs.cartItems.querySelector(`#${id}`).querySelector('.cart-item-amount').textContent = newAmount;
     
@@ -169,6 +180,9 @@ const cartFunc = function (e) {
     const newStorage = storage.filter(el => el.id !== id)
     newStorage.push(newProduct)
     localStorage.setItem('storage', JSON.stringify(newStorage))
+    } else {
+      alert('out of stock')
+    }    
   } else {
     storage.push(item);
     localStorage.setItem('storage', JSON.stringify(storage));
@@ -176,8 +190,8 @@ const cartFunc = function (e) {
   }  
 
   displayCartItemCount()
-  displayCartTotal()
+  displayCartTotal(totalTextRoot)
   openCart()
 }
 
-export default cartFunc
+export { cartFunc, displayCartTotal, removeItem, findProduct }
