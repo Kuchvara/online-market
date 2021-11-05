@@ -77,6 +77,31 @@
       </form>
       <h4 class="cart-products-total"></h4>
     </div>
+    <ul class="installments-list">
+      <li class="installments-item">
+        <span class="bank-name">Privat Bank (take extra 3%)</span>        
+        <select id="installment-select" data-percent="1.03">
+          <option value="1">Choose installment</option>
+          <option value="3">3 monthes</option>
+          <option value="6">6 monthes</option>
+          <option value="9">9 monthes</option>
+          <option value="12">12 monthes</option>
+        </select>
+        <span class="month-paiment">month paiment</span>
+        <span class="installment-total">Total</span>
+      </li>
+      <li class="installments-item">
+        <span class="bank-name">Monobank (take extra 2%)</span>
+        <select id="installment-select" data-percent="1.02">
+          <option value="1">Choose installment</option>
+          <option value="4">4 monthes</option>
+          <option value="8">8 monthes</option>          
+          <option value="12">12 monthes</option>
+        </select>
+        <span class="month-paiment">month paiment</span>
+        <span class="installment-total">Total</span>
+      </li>
+    </ul>
     <div>
       <h4 class="reviewed-heading">You can also buy</h4>
       <div class="similar-list"></div>
@@ -164,6 +189,6 @@
         <a href="./checkout.html" class="checkout-link">Checkout</a>
       </footer>
     </aside>
-  </div>  
+  </div>
 </body>
 </html>

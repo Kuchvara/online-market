@@ -251,3 +251,29 @@
   display: flex;
   justify-content: space-between;
 }
+
+.installments-list {
+  margin-bottom: 32px;
+}
+
+.installments-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 32px;
+}
+
+.bank-name {
+  color: $black;
+  @include font(24px, 36px);
+}
+
+.month-paiment {
+  color: $grey-text;
+  @include font(24px, 36px);
+}
+
+.installment-total {
+  columns: $black;
+  @include font(24px, 36px, 700);
+}

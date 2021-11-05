@@ -5,15 +5,13 @@ import '../components/burger';
 import '../components/back-to-top';
 import '../components/cart';
 import '../components/footerMailValidation';
-import {cartFunc, displayCartTotal, removeItem, findProduct} from '../components/cart'
+import { cartFunc, displayCartTotal, removeItem, findProduct } from '../components/cart';
 import cartPageItem from '../../templates/cartPageItem.hbs';
 import similarTpl from '../../templates/similarTpl.hbs';
 import request from '../request';
 
 const cartListRoot = document.querySelector('.cart-products-list')
 const cartProductTotal = document.querySelector('.cart-products-total')
-
-// let storage = JSON.parse(localStorage.getItem('storage')) ? JSON.parse(localStorage.getItem('storage')) : localStorage.setItem('storage', '[]')
 
 // initial markup
 const makeMarkup = function () {  
@@ -75,7 +73,7 @@ const localTotal = document.querySelectorAll('.cart-page-item_total')
 const setLocalTolat = function (localTotal) {
   const localPrice = Number(localTotal.previousElementSibling.textContent)
   const localAmount = Number(localTotal.previousElementSibling.previousElementSibling.children[1].textContent)  
-  localTotal.textContent = localPrice * localAmount
+  localTotal.textContent = (localPrice * localAmount).toPrecision(6)
 }
 
 localTotal.forEach(el => setLocalTolat(el))
@@ -86,9 +84,9 @@ const extraWarranty = document.querySelectorAll('.extra-warranty')
 extraWarranty.forEach(el => el.addEventListener('click', (e) => {  
   const productsPrice = Number(e.target.previousElementSibling.children[4].textContent)
   const warranryPrice = e.target.nextElementSibling.nextElementSibling
-  warranryPrice.textContent = productsPrice * 0.15
+  warranryPrice.textContent = (productsPrice * 0.15).toPrecision(6)
   if (e.target.checked) {
-    warranryPrice.textContent = productsPrice * 0.15
+    warranryPrice.textContent = (productsPrice * 0.15).toPrecision(6)
     e.target.previousElementSibling.children[4].textContent = productsPrice * 1.15
   } else {
     e.target.previousElementSibling.children[4].textContent = productsPrice / 1.15
@@ -120,7 +118,7 @@ couponForm.addEventListener('submit', e => {
   const findCoupon = coupons.find(el => el.code === couponCode)
 
   if (findCoupon) {
-    const newTotalValue = displayCartTotal(cartProductTotal) * findCoupon.value
+    const newTotalValue = (displayCartTotal(cartProductTotal) * findCoupon.value).toPrecision(6)
     cartProductTotal.textContent = `Total: ${newTotalValue} $`
     couponInput.value = '';
   } else {
@@ -158,3 +156,14 @@ cartBtns.forEach(el => {
 linkHandler()
 }
 request(categiryUrl, similarMarkup)
+
+// installments
+const instellmentSelect = document.querySelectorAll('#installment-select')
+
+instellmentSelect.forEach(el => el.addEventListener('change', e => {
+  const monthes = Number(e.target.value)
+  const extraPercents = Number(e.target.dataset.percent)  
+  
+  e.target.nextElementSibling.textContent = (displayCartTotal(cartProductTotal) / monthes).toPrecision(6)
+  e.target.nextElementSibling.nextElementSibling.textContent = (displayCartTotal(cartProductTotal) * extraPercents).toPrecision(6)
+}))

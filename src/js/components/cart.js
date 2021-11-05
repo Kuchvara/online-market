@@ -48,14 +48,13 @@ function displayCartTotal(totalTextRoot) {
   let total = newStorage.reduce((total, cartItem) => {
     return (total += cartItem.price * cartItem.amount);
   }, 0);
-  totalTextRoot.textContent = `Total: ${total} $`;
+  totalTextRoot.textContent = `Total: ${total.toPrecision(6)} $`;
   return total
 }
 
 function removeItem(id) {
   const currentStorage = JSON.parse(localStorage.getItem('storage'))
-  const newStorage = JSON.stringify(currentStorage.filter((el) => el.id !== id));
-  // localStorage.removeItem(storage);
+  const newStorage = JSON.stringify(currentStorage.filter((el) => el.id !== id));  
   localStorage.setItem('storage', newStorage)  
   
   displayCartItemCount()
