@@ -72,8 +72,8 @@ const localTotal = document.querySelectorAll('.cart-page-item_total')
 
 const setLocalTolat = function (localTotal) {
   const localPrice = Number(localTotal.previousElementSibling.textContent)
-  const localAmount = Number(localTotal.previousElementSibling.previousElementSibling.children[1].textContent)  
-  localTotal.textContent = (localPrice * localAmount).toPrecision(6)
+  const localAmount = Number(localTotal.previousElementSibling.previousElementSibling.children[1].textContent)
+  localTotal.textContent = (localPrice * localAmount).toPrecision(6)  
 }
 
 localTotal.forEach(el => setLocalTolat(el))
@@ -82,15 +82,26 @@ localTotal.forEach(el => setLocalTolat(el))
 const extraWarranty = document.querySelectorAll('.extra-warranty')
 
 extraWarranty.forEach(el => el.addEventListener('click', (e) => {  
-  const productsPrice = Number(e.target.previousElementSibling.children[4].textContent)
   const warranryPrice = e.target.nextElementSibling.nextElementSibling
-  warranryPrice.textContent = (productsPrice * 0.15).toPrecision(6)
+  const product = findProduct(e.target.id.slice(20))
+  const storage = JSON.parse(localStorage.getItem('storage'))  
+  
   if (e.target.checked) {
-    warranryPrice.textContent = (productsPrice * 0.15).toPrecision(6)
-    e.target.previousElementSibling.children[4].textContent = productsPrice * 1.15
+    warranryPrice.textContent = (product.price * 0.15).toPrecision(6)
+    e.target.previousElementSibling.children[4].textContent = (product.price * 1.15).toPrecision(6)
+
+    const filteredStorage = storage.filter(el => el.id !== product.id)
+    product.price = product.price * 1.15
+    filteredStorage.push(product)
+    localStorage.setItem('storage', JSON.stringify(filteredStorage))    
   } else {
-    e.target.previousElementSibling.children[4].textContent = productsPrice / 1.15
-    warranryPrice.textContent = '+15%'    
+    e.target.previousElementSibling.children[4].textContent = (product.price / 1.15).toPrecision(6)
+    warranryPrice.textContent = '+15%'
+    
+    const filteredStorage = storage.filter(el => el.id !== product.id)
+    product.price = product.price / 1.15
+    filteredStorage.push(product)
+    localStorage.setItem('storage', JSON.stringify(filteredStorage))
   }
   displayCartTotal(cartProductTotal)
 }))
@@ -100,8 +111,10 @@ const removeBtns = document.querySelectorAll('.cart-remove-item')
 
 removeBtns.forEach(el => el.addEventListener('click', e => {  
   removeItem(e.currentTarget.id)
+  makeMarkup()
   displayCartTotal(cartProductTotal)
-  makeMarkup()  
+  const localTotal = document.querySelectorAll('.cart-page-item_total')
+  localTotal.forEach(el => setLocalTolat(el))
 }))
 
 displayCartTotal(cartProductTotal)
