@@ -236,7 +236,8 @@
   justify-content: space-between;
 }
 
-.cart-products-total {
+.cart-products-total,
+.cart-products-total_value {
   color: $black;
   @include font(36px, 54px, 700);
 }
@@ -276,4 +277,9 @@
 .installment-total {
   columns: $black;
   @include font(24px, 36px, 700);
+}
+
+.discount {
+  color: $grey-text;
+  @include font(24px, 36px);
 }

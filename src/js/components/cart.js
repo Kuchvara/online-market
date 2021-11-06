@@ -1,4 +1,5 @@
 const shortid = require('shortid');
+shortid.characters('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ$@!?-_%(/|}{');
 
 const refs = {
   mainCartBtn: document.querySelector('#main-cart-btn'),  
@@ -48,7 +49,7 @@ function displayCartTotal(totalTextRoot) {
   let total = newStorage.reduce((total, cartItem) => {
     return (total += cartItem.price * cartItem.amount);
   }, 0);
-  totalTextRoot.textContent = `Total: ${total.toPrecision(6)} $`;
+  totalTextRoot.textContent = total.toPrecision(6);
   return total
 }
 
