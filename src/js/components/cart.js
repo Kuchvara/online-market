@@ -1,5 +1,7 @@
 const shortid = require('shortid');
-shortid.characters('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ$@!?-_%(/|}{');
+shortid.characters('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZйцукенгшщзхї');
+
+import setStock from '../utils/setStock';
 
 const refs = {
   mainCartBtn: document.querySelector('#main-cart-btn'),  
@@ -49,7 +51,7 @@ function displayCartTotal(totalTextRoot) {
   let total = newStorage.reduce((total, cartItem) => {
     return (total += cartItem.price * cartItem.amount);
   }, 0);
-  totalTextRoot.textContent = total.toPrecision(6);
+  totalTextRoot.textContent = total.toFixed(2);
   return total
 }
 
@@ -102,8 +104,8 @@ function setupCartFunctionality() {
     }
     // increase
     if (element.classList.contains('cart-increase-amount-btn')) {
-      const id = element.parentElement.parentElement.id
-      const product = findProduct(id)
+      const id = element.parentElement.parentElement.id      
+      const product = findProduct(id)      
 
       if (product.stock > Number(element.nextElementSibling.textContent)) {
         const newAmount = Number(element.nextElementSibling.textContent) + 1;
@@ -152,20 +154,18 @@ const init = () => {
 
 init();
 
-const cartFunc = function (e) {
-  const startPoint = e.currentTarget.parentElement.previousElementSibling;
-  const randumStock = function (min, max) {
-  return Math.floor(Math.random() * (max - min + 1) + min)
-}
+const cartFunc = function (e, item = undefined) {
+  const startPoint = e.currentTarget.parentElement.previousElementSibling;  
 
-  const item = {
+  if (!item) { item = {
     id: shortid.generate(),
-    stock: randumStock(5, 10),
+    stock: setStock(e.currentTarget.dataset.id),
     price: Number.parseFloat(startPoint.textContent),
     name: startPoint.previousElementSibling.textContent,
     image: startPoint.previousElementSibling.previousElementSibling.attributes.src.nodeValue,
-    amount: 1
-  }
+    amount: 1,
+    warranty: false
+  }}  
 
   const newStorage = storage = JSON.parse(localStorage.getItem('storage'))  
   const sameElement = newStorage.find(el => el.name === item.name)  
@@ -173,13 +173,14 @@ const cartFunc = function (e) {
   if (sameElement) {
     if (sameElement.stock > sameElement.amount) {
       const newAmount = sameElement.amount += 1;
-    const id = sameElement.id
-    refs.cartItems.querySelector(`#${id}`).querySelector('.cart-item-amount').textContent = newAmount;
+      const id = sameElement.id
+      
+      refs.cartItems.querySelector(`#${id}`).querySelector('.cart-item-amount').textContent = newAmount;
     
-    const newProduct = { ...sameElement, amount: newAmount }      
-    const newStorage = storage.filter(el => el.id !== id)
-    newStorage.push(newProduct)
-    localStorage.setItem('storage', JSON.stringify(newStorage))
+      const newProduct = { ...sameElement, amount: newAmount }      
+      const newStorage = storage.filter(el => el.id !== id)
+      newStorage.push(newProduct)
+      localStorage.setItem('storage', JSON.stringify(newStorage))
     } else {
       alert('out of stock')
     }    

@@ -108,3 +108,13 @@ const coupons = [
 ]
 
 localStorage.setItem('coupons', JSON.stringify(coupons))
+
+// set initial empty stock
+const currentStock = () => {
+  const stock = JSON.parse(localStorage.getItem('stock')) ?
+    JSON.parse(localStorage.getItem('stock')) :
+    localStorage.setItem('stock', JSON.stringify([]))
+  return stock
+}
+
+currentStock()

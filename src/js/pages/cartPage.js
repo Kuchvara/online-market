@@ -17,7 +17,7 @@ const cartProductTotal = document.querySelector('.cart-products-total_value')
 const setLocalTolat = function (localTotal) {
   const localPrice = Number(localTotal.previousElementSibling.textContent)
   const localAmount = Number(localTotal.previousElementSibling.previousElementSibling.children[1].textContent)
-  localTotal.textContent = (localPrice * localAmount).toPrecision(6)  
+  localTotal.textContent = (localPrice * localAmount).toFixed(2)  
 }
 
 const changeAmount = function (e) {
@@ -32,7 +32,7 @@ const changeAmount = function (e) {
     newStorage.push(newProduct)
     localStorage.setItem('storage', JSON.stringify(newStorage))
     if (Number(warranty.textContent)) {
-      warranty.textContent = product.price * 0.15 * newAmount
+      warranty.textContent = (product.price * 0.15 * newAmount).toFixed(2)
     }
   }
 
@@ -82,16 +82,18 @@ const addExtraWarranty = function (e) {
   }
   
   if (e.target.checked) {
-    warranryPrice.textContent = (product.price * 0.15 * product.amount).toPrecision(6)
-    e.target.previousElementSibling.children[3].textContent = (product.price * 1.15).toPrecision(6)
+    warranryPrice.textContent = (product.price * 0.15 * product.amount).toFixed(2)    
+    e.target.previousElementSibling.children[3].textContent = (product.price * 1.15).toFixed(2)
     
-    product.price = product.price * 1.15    
+    product.price = product.price * 1.15
+    product.warranty = true
     refreshStrage()
   } else {
-    e.target.previousElementSibling.children[3].textContent = (product.price / 1.15).toPrecision(6)
+    e.target.previousElementSibling.children[3].textContent = (product.price / 1.15).toFixed(2)
     warranryPrice.textContent = '+15% per one'    
     
     product.price = product.price / 1.15
+    product.warranty = false
     refreshStrage()
   }
   const localTotal = document.querySelectorAll('.cart-page-item_total')
@@ -100,22 +102,24 @@ const addExtraWarranty = function (e) {
 }
 
 // coupons
-const coupons = JSON.parse(localStorage.getItem('coupons'))
 const couponForm = document.querySelector('.coupon-btn-box')
-const couponInput = document.querySelector('.coupon-input')
-const discount = document.querySelector('.discount')
 
 couponForm.addEventListener('submit', e => {
   e.preventDefault()
+  const coupons = JSON.parse(localStorage.getItem('coupons'))  
+  const couponInput = document.querySelector('.coupon-input')
+  const discount = document.querySelector('.discount')
 
   const couponCode = couponInput.value
   const findCoupon = coupons.find(el => el.code === couponCode)
 
   if (findCoupon) {
-    const newTotalValue = (displayCartTotal(cartProductTotal) * findCoupon.value).toPrecision(6)
-    discount.textContent = (displayCartTotal(cartProductTotal) - displayCartTotal(cartProductTotal) * findCoupon.value).toPrecision(6)
+    const newTotalValue = (displayCartTotal(cartProductTotal) * findCoupon.value).toFixed(2)
+    discount.textContent = (displayCartTotal(cartProductTotal) - newTotalValue).toFixed(2)
     cartProductTotal.textContent = newTotalValue
     couponInput.value = '';
+    const filteredCoupons = coupons.filter(el => el.code !== findCoupon.code)
+    localStorage.setItem('coupons', JSON.stringify(filteredCoupons))
   } else {
     couponInput.value = '';
     alert('wrong coupon')
@@ -160,10 +164,24 @@ const instellmentSelect = document.querySelectorAll('#installment-select')
 
 instellmentSelect.forEach(el => el.addEventListener('change', e => {
   const monthes = Number(e.target.value)
-  const extraPercents = Number(e.target.dataset.percent)  
+  const extraPercents = Number(e.target.dataset.percent)
   
-  e.target.nextElementSibling.textContent = (Number.parseFloat(cartProductTotal.textContent) / monthes).toPrecision(6)
-  e.target.nextElementSibling.nextElementSibling.textContent = (Number(cartProductTotal.textContent) * extraPercents).toPrecision(6)
+  const getTotal = () => {
+    let total = 0
+    const currentStorage = JSON.parse(localStorage.getItem('storage'))    
+    currentStorage.forEach(el => {      
+      if (el.warranty) {        
+        total = total + (el.price / 1.15 * el.amount)        
+      }
+      else {        
+        total = total + el.price * el.amount
+      }      
+    })    
+    return total
+  }  
+  
+  e.target.nextElementSibling.textContent = (getTotal() / monthes).toFixed(2)
+  e.target.nextElementSibling.nextElementSibling.textContent = (getTotal() * extraPercents).toFixed(2)
 }))
 
 // page main functionality
