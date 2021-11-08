@@ -8,7 +8,7 @@ import '../components/footerMailValidation';
 import { cartFunc, displayCartTotal, removeItem, findProduct } from '../components/cart';
 import cartPageItem from '../../templates/cartPageItem.hbs';
 import similarTpl from '../../templates/similarTpl.hbs';
-import request from '../request';
+import request from '../utils/request';
 
 const cartListRoot = document.querySelector('.cart-products-list')
 const cartProductTotal = document.querySelector('.cart-products-total_value')

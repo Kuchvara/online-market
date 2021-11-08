@@ -6,7 +6,7 @@ import '../components/back-to-top';
 import '../components/cart';
 import '../components/footerMailValidation';
 import {cartFunc} from '../components/cart';
-import request from '../request';
+import request from '../utils/request';
 import productTpl from '../../templates/product.hbs';
 import doPaginate from '../components/pagination';
 

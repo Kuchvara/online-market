@@ -8,7 +8,7 @@ import '../components/back-to-top';
 import '../components/cart';
 import '../components/footerMailValidation';
 import { cartFunc } from '../components/cart';
-import request from '../request';
+import request from '../utils/request';
 import productPageTpl from '../../templates/productPageTpl.hbs';
 import productTpl from '../../templates/product.hbs';
 import similarTpl from '../../templates/similarTpl.hbs';

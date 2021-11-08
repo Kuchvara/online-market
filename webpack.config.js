@@ -55,7 +55,8 @@ module.exports = {
     checkout: ['regenerator-runtime/runtime.js', './src/js/pages/checkout.js'],    
     categories: ['regenerator-runtime/runtime.js', './src/js/pages/categories.js'],
     product: ['regenerator-runtime/runtime.js', './src/js/pages/product.js'],
-    cart: ['regenerator-runtime/runtime.js', './src/js/pages/cartPage.js']
+    cart: ['regenerator-runtime/runtime.js', './src/js/pages/cartPage.js'],
+    complete: './src/js/pages/complete.js'
   },
   output: {
     filename: './js/[name].js',
@@ -112,9 +113,17 @@ module.exports = {
       },
       chunks: ['cart']
     }),
+    new HTMLWebpackPlugin({
+      template: './src/complete.html',
+      filename: 'complete.html',
+      minify: {
+        collapseWhitespace: !devMode
+      },
+      chunks: ['complete']
+    }),
     new CopyWebpackPlugin([
       { from: 'src/images', to: 'images' },      
-      { from: 'src/js/jquery.mask.js', to: 'js/jquery.mask.js'}
+      { from: 'src/js/utils/jquery.mask.js', to: 'js/jquery.mask.js'}
     ]),        
     new CleanWebpackPlugin(),
     new MiniCssExtractPlugin({
