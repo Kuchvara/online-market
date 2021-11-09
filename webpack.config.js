@@ -54,7 +54,8 @@ module.exports = {
     index: ['regenerator-runtime/runtime.js', './src/index.js'],
     checkout: ['regenerator-runtime/runtime.js', './src/js/pages/checkout.js'],    
     categories: ['regenerator-runtime/runtime.js', './src/js/pages/categories.js'],
-    product: ['regenerator-runtime/runtime.js', './src/js/pages/product.js']
+    product: ['regenerator-runtime/runtime.js', './src/js/pages/product.js'],
+    cart: ['regenerator-runtime/runtime.js', './src/js/pages/cartPage.js']
   },
   output: {
     filename: './js/[name].js',
@@ -102,6 +103,14 @@ module.exports = {
         collapseWhitespace: !devMode
       },
       chunks: ['product']
+    }),
+    new HTMLWebpackPlugin({
+      template: './src/cart.html',
+      filename: 'cart.html',
+      minify: {
+        collapseWhitespace: !devMode
+      },
+      chunks: ['cart']
     }),
     new CopyWebpackPlugin([
       { from: 'src/images', to: 'images' },      

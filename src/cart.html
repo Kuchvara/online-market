@@ -7,7 +7,6 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@400;700&display=swap"
     rel="stylesheet">
-  <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
   <title>Online-market</title>
 </head>
 <body>
@@ -19,21 +18,11 @@
     </h1>
     <div class="burger-menu" id="burger-menu">
       <a href="" class="burger-menu_button">
-        <span class="burger-menu_lines"></span>
+        <spun class="burger-menu_lines"></spun>
       </a>
       <div class="burger-menu_nav">
-        <div class="header-menu__flex">
-          <form id="search-form">
-            <div class="header-btn-box">
-              <input class="header-input" placeholder="Search here" />
-              <button type="submit" class="header-submit-btn">
-                <svg class="header-submit-btn--icon">
-                  <use href="./images/svg/sprite.svg#icon-search"></use>
-                </svg>
-              </button>
-            </div>
-          </form>
-          <div class="header-login--group">
+        <div class="checkout-header-menu">
+          <div class="checkout-header-login--group">
             <div class="toggle-container">
               <button type="button" class="cart-btn" id="main-cart-btn">
                 <svg class="cart-icon">
@@ -47,52 +36,75 @@
             </svg>
             <button class="btn login">Login</button>
           </div>
-        </div>  
+        </div>
       </div>
       <div class="burger-menu_overlay"></div>
     </div>
   </header>
-  <main class="product-container">
-    <div class="product-root"></div>    
-    <div class="review-flex-box">
-      <div>
-        <p class="product-data">Rating: <span class="rating-value"></span></p>          
-        <ul class="reviews-root"></ul>
-      </div>
-      <form id="comment-form">
-        <ul class="rating-list">
-          <li class="rating-item">
-            <label for="rating1" class="rating-label">1</label>
-            <input type="radio" name="rating" id="rating1" value="1" required>
-          </li>
-          <li class="rating-item">
-            <label for="rating2" class="rating-label">2</label>
-            <input type="radio" name="rating" id="rating2" value="2" required>
-          </li>
-          <li class="rating-item">
-            <label for="rating3" class="rating-label">3</label>
-            <input type="radio" name="rating" id="rating3" value="3" required>
-          </li>
-          <li class="rating-item">
-            <label for="rating4" class="rating-label">4</label>
-            <input type="radio" name="rating" id="rating4" value="4" required>
-          </li>
-          <li class="rating-item">
-            <label for="rating5" class="rating-label">5</label>
-            <input type="radio" name="rating" id="rating5" value="5" required>
-          </li>
-        </ul>
-        <p class="comment-heading">Your comment</p>
-        <textarea name="comment" id="" cols="80" rows="10" class="comment-area" required></textarea>
-        <button type="submit" class="btn add-btn">Leave comment</button>
+  <main class="checkout-container">
+    <ul class="navigation">
+      <li class="navigation-item"><a href="./index.html" class="link">Home</a></li>
+      <li class="navigation-item">Shopping cart</li>
+      <li class="navigation-item"><a href="./checkout.html" class="link">Checkout</a></li>
+    </ul>
+    <h4 class="checkout-title">Shopping Cart</h4>
+    <ul class="checkout-progres">
+      <li class="checkout-progress_item">
+        <span class="checkout-progress_number">1</span>
+        <span class="checkout-progress_name">Shopping Cart</span>
+      </li>
+      <li class="checkout-progress_item">
+        <span class="checkout-progress_number">2</span>
+        <span class="checkout-progress_name">Checkout</span>
+      </li>
+      <li class="checkout-progress_item">
+        <span class="checkout-progress_number">3</span>
+        <span class="checkout-progress_name">Completed</span>
+      </li>
+    </ul> 
+    <span class="cart-description-text product">Product</span>
+    <span class="cart-description-text quantity">Quantity</span>
+    <span class="cart-description-text price">Price</span>
+    <span class="cart-description-text">Total</span>
+    <ul class="cart-products-list">      
+    </ul>
+    <div class="flex-box">
+      <form class="coupon-btn-box">
+        <input type="text" class="coupon-input" placeholder="Enter coupon code" />
+        <button type="submit" class="coupon-submit-btn">
+          Apply coupon
+        </button>
       </form>
+      <button type="button" class="coupon-cancel-btn">Cancel coupon</button>
+      <span class="discount">Discount</span>
+      <h4 class="cart-products-total">Total: <span class="cart-products-total_value"></span></h4>
     </div>
+    <ul class="installments-list">
+      <li class="installments-item">
+        <span class="bank-name">Privat Bank (take extra 3%)</span>        
+        <select id="installment-select" data-percent="1.03">
+          <option value="1">Choose installment</option>
+          <option value="3">3 monthes</option>
+          <option value="6">6 monthes</option>
+          <option value="9">9 monthes</option>          
+        </select>
+        <span class="month-paiment">month paiment</span>
+        <span class="installment-total">Total</span>
+      </li>
+      <li class="installments-item">
+        <span class="bank-name">Monobank (take extra 2%)</span>
+        <select id="installment-select" data-percent="1.02">
+          <option value="1">Choose installment</option>
+          <option value="4">4 monthes</option>
+          <option value="8">8 monthes</option>          
+          <option value="12">12 monthes</option>
+        </select>
+        <span class="month-paiment">month paiment</span>
+        <span class="installment-total">Total</span>
+      </li>
+    </ul>
     <div>
-      <h4 class="reviewed-heading">Last viewed products</h4>
-      <ul class="reviewed-list"></ul>
-    </div>
-    <div>
-      <h4 class="reviewed-heading">A few similar products</h4>
+      <h4 class="reviewed-heading">You can also buy</h4>
       <div class="similar-list"></div>
     </div>
   </main>
@@ -105,7 +117,8 @@
           </svg>
           Elliye
         </h2>
-        <span class="footer-contacts-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nulla amet ut
+        <span class="footer-contacts-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nulla amet
+          ut
           temporibus.</span>
         <a href="tel:+1234567890" class="fotter-contacts">
           <svg class="footer-contacts-icon" width="20" height="20">
@@ -178,7 +191,5 @@
       </footer>
     </aside>
   </div>
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 </body>
 </html>

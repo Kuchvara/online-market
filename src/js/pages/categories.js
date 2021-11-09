@@ -5,6 +5,7 @@ import '../components/burger';
 import '../components/back-to-top';
 import '../components/cart';
 import '../components/footerMailValidation';
+import {cartFunc} from '../components/cart';
 import request from '../request';
 import productTpl from '../../templates/product.hbs';
 import doPaginate from '../components/pagination';
@@ -162,7 +163,10 @@ const makeMarkup = function (data) {
     const markup = productTpl(el);
     root.insertAdjacentHTML('beforeend', markup);
   })
-
+  const cartBtns = document.querySelectorAll('#product-cart-btn')  
+  cartBtns.forEach(el => {
+    el.addEventListener('click', e => cartFunc(e))
+  })
   linkHandler()
 }
 

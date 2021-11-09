@@ -1,10 +1,21 @@
-<img class="product-page-image" src={{image}} alt="product name">
+<img class="product-page-image" src={{image}} alt="product name"
+onerror="src='https://subscribenow.com.au/time/asia/Solo/Content/Images/noCover.gif'">
 <div>
   <h2 class="product-name">{{name}}</h2>
   <p class="product-price">${{price}}</p>
   <p class="product-data">Manufacturer: <span class="product-data-text">{{manufacturer}}</span></p>
   <p class="product-data">Shipping: <span class="product-data-text">{{shipping}}</span></p>
   <p class="product-data">Type: <span class="product-data-text">{{type}}</span></p>
+  <p class="product-data">Stock: <span class="product-data-text">{{stock}}</span></p>
   <p class="product-data-text">{{description}}</p>
+  <div class="flex-box">
+    <span class="product-quantity">Quantity: </span>
+    <div class="cart-quantity-box" id={{id}}>
+      <button type="button" class="cartPage-decrease-quantity">-</button>
+      <span class="cartPage-item-quantity">{{amount}}</span>
+      <button type="button" class="cartPage-increase-quantity">+</button>
+    </div>
+  </div> 
+  
   <button class="btn add-btn">Add to cart</button>
 </div>

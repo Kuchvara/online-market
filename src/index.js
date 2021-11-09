@@ -7,6 +7,7 @@ import './js/components/burger';
 import './js/components/slider';
 import './js/components/cart';
 import './js/components/footerMailValidation';
+import { cartFunc } from './js/components/cart';
 import request from './js/request';
 import featuredItemTpl from './templates/featuredItem.hbs';
 import newArrivalTpl from './templates/newArrivalTpl.hbs';
@@ -16,7 +17,7 @@ const links = document.querySelector('#categories')
 
 let urlData = {}
 
-links.addEventListener('click', (e) => {  
+links.addEventListener('click', (e) => {
   const id = e.target.id
   
   urlData.id = id  
@@ -51,7 +52,10 @@ const featuredMarkup = function (data) {
     const markup = featuredItemTpl(el);
     featuredRoot.insertAdjacentHTML('beforeend', markup);    
   })
-
+  const cartBtns = featuredRoot.querySelectorAll('#product-cart-btn')  
+  cartBtns.forEach(el => {
+    el.addEventListener('click', e => cartFunc(e))
+  })
   linkHandler()  
 }
 
@@ -66,7 +70,10 @@ const newArrivalMarkup = function (data) {
     const markup = newArrivalTpl(el);
     newArrivalRoot.insertAdjacentHTML('beforeend', markup);
   })
-
+  const cartBtns = newArrivalRoot.querySelectorAll('#product-cart-btn')  
+  cartBtns.forEach(el => {
+    el.addEventListener('click', e => cartFunc(e))
+  })
   linkHandler()
 }
 
@@ -83,3 +90,31 @@ const linkHandler = function () {
 }
 
 request(newArrivalUrl, newArrivalMarkup)
+
+// set coupons
+const coupons = [
+  {
+    code: 'discount10',
+    value: 0.9
+  },
+  {
+    code: 'discount20',
+    value: 0.8
+  },
+  {
+    code: 'discount30',
+    value: 0.7
+  }
+]
+
+localStorage.setItem('coupons', JSON.stringify(coupons))
+
+// set initial empty stock
+const currentStock = () => {
+  const stock = JSON.parse(localStorage.getItem('stock')) ?
+    JSON.parse(localStorage.getItem('stock')) :
+    localStorage.setItem('stock', JSON.stringify([]))
+  return stock
+}
+
+currentStock()

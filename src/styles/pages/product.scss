@@ -47,6 +47,7 @@
 .product-data-text {
   color: $grey-text;
   @include font(36px, 54px);
+  margin-bottom: 32px;
 }
 
 .add-btn {
@@ -109,4 +110,46 @@
   color: $black;
   margin-bottom: 32px;
   @include font(32px, 54px);
+}
+
+.cartPage-increase-quantity,
+.cartPage-item-quantity,
+.cartPage-decrease-quantity,
+.cart-quantity-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 48px;
+}
+
+.cart-quantity-box {
+  box-sizing: border-box;
+  border: 1px solid #cdcfd1;
+  width: 171px;
+}
+
+.cartPage-decrease-quantity {
+  width: 48px;
+  background-color: $background2;
+}
+
+.cartPage-increase-quantity {
+  width: 48px;
+  color: $white;
+  background-color: $black;
+}
+
+.cartPage-item-quantity {
+  width: 75px;
+}
+
+.flex-box {
+  display: flex;
+  align-items: center;
+}
+
+.product-quantity {
+  columns: $black;
+  margin-right: 16px;
+  @include font(28px, 46px);
 }

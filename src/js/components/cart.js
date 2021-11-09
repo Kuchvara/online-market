@@ -1,4 +1,7 @@
 const shortid = require('shortid');
+shortid.characters('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZйцукенгшщзхї');
+
+import setStock from '../utils/setStock';
 
 const refs = {
   mainCartBtn: document.querySelector('#main-cart-btn'),  
@@ -33,6 +36,7 @@ refs.cartOverlay.addEventListener('click', (event) => {
 })
 
 // functions
+const totalTextRoot = refs.totalPrice
 
 function displayCartItemCount() {
   const newStorage = JSON.parse(localStorage.getItem('storage'))
@@ -42,22 +46,22 @@ function displayCartItemCount() {
   refs.totalAmount.textContent = amount;  
 }
 
-function displayCartTotal() {
+function displayCartTotal(totalTextRoot) {
   const newStorage = JSON.parse(localStorage.getItem('storage'))
   let total = newStorage.reduce((total, cartItem) => {
     return (total += cartItem.price * cartItem.amount);
   }, 0);
-  refs.totalPrice.textContent = `Total: ${total} $`;
+  totalTextRoot.textContent = total.toFixed(2);
+  return total
 }
 
 function removeItem(id) {
   const currentStorage = JSON.parse(localStorage.getItem('storage'))
-  const newStorage = JSON.stringify(currentStorage.filter((el) => el.id !== id));
-  localStorage.removeItem(storage);
+  const newStorage = JSON.stringify(currentStorage.filter((el) => el.id !== id));  
   localStorage.setItem('storage', newStorage)  
   
   displayCartItemCount()
-  displayCartTotal()
+  displayCartTotal(totalTextRoot)
 }
 
 const findProduct = (id) => {
@@ -71,7 +75,7 @@ const addToCart = (item) => {
   article.classList.add('cart-item');
   article.setAttribute('id', item.id);
   article.innerHTML = `
-    <img src="${item.image}" alt="${item.name}" class="cart-item-image">
+    <img class="cart-item-image" src="${item.image}" alt="${item.name}">
 		<h4 class="cart-item-name">${item.name}</h4>
 		<span class="cart-item-price">${item.price}</span>
 		<div class="cart-amount-box">
@@ -85,39 +89,7 @@ const addToCart = (item) => {
   refs.cartItems.appendChild(article);
 };
 
-refs.productBtn.forEach(btn => btn.addEventListener('click', (e) => {
-  const startPoint = e.currentTarget.parentElement.previousElementSibling;
-
-  const item = {
-    id: shortid.generate(),
-    price: Number.parseInt(startPoint.textContent),
-    name: startPoint.previousElementSibling.textContent,
-    image: startPoint.previousElementSibling.previousElementSibling.attributes.src.nodeValue,
-    amount: 1
-  }
-
-  const newStorage = storage = JSON.parse(localStorage.getItem('storage'))  
-  const sameElement = newStorage.find(el => el.name === item.name)  
-  
-  if (sameElement) {
-    const newAmount = sameElement.amount += 1;
-    const id = sameElement.id
-    refs.cartItems.querySelector(`#${id}`).querySelector('.cart-item-amount').textContent = newAmount;
-    
-    const newProduct = { ...sameElement, amount: newAmount }      
-    const newStorage = storage.filter(el => el.id !== id)
-    newStorage.push(newProduct)
-    localStorage.setItem('storage', JSON.stringify(newStorage))
-  } else {
-    storage.push(item);
-    localStorage.setItem('storage', JSON.stringify(storage));
-    addToCart(item);
-  }  
-
-  displayCartItemCount()
-  displayCartTotal()
-  openCart()
-}))
+refs.productBtn.forEach(btn => btn.addEventListener('click', (e) => cartFunc(e)))
 
 function setupCartFunctionality() {
   refs.cartItems.addEventListener('click', function (e) {
@@ -127,21 +99,25 @@ function setupCartFunctionality() {
     
     // remove
     if (element.classList.contains('cart-remove-item')) {
-      removeItem(parentID);
+      removeItem(parentID);      
       parent.remove();
     }
     // increase
     if (element.classList.contains('cart-increase-amount-btn')) {
-      const id = element.parentElement.parentElement.id
-      const newAmount = Number(element.nextElementSibling.textContent) + 1;
+      const id = element.parentElement.parentElement.id      
+      const product = findProduct(id)      
 
-      element.nextElementSibling.textContent = newAmount;
-      const product = findProduct(id)
+      if (product.stock > Number(element.nextElementSibling.textContent)) {
+        const newAmount = Number(element.nextElementSibling.textContent) + 1;
+      element.nextElementSibling.textContent = newAmount;      
       const newProduct = { ...product, amount: newAmount }
       const currentStorage = JSON.parse(localStorage.getItem('storage'))
       const newStorage = currentStorage.filter(el => el.id !== id)
       newStorage.push(newProduct)
-      localStorage.setItem('storage', JSON.stringify(newStorage))      
+      localStorage.setItem('storage', JSON.stringify(newStorage))
+      } else {
+        alert('out of stock')
+      }
     }
     // decrease
     if (element.classList.contains('cart-decrease-amount-btn')) {
@@ -149,7 +125,7 @@ function setupCartFunctionality() {
       const newAmount = Number(element.previousElementSibling.textContent) - 1;
       
       if (newAmount === 0) {
-        removeItem(id);
+        removeItem(id);        
         element.parentElement.parentElement.remove();
       } else {
         element.previousElementSibling.textContent = newAmount;
@@ -162,7 +138,7 @@ function setupCartFunctionality() {
       }
     }
     displayCartItemCount();
-    displayCartTotal();    
+    displayCartTotal(totalTextRoot);    
   });
 }
 
@@ -170,10 +146,53 @@ const init = () => {
   // display amount of cart items
   displayCartItemCount();
   // display total
-  displayCartTotal();  
+  displayCartTotal(totalTextRoot);  
   // setup cart functionality
   setupCartFunctionality();
   if (storage) { storage.map(el => addToCart(el)) }
 };
 
 init();
+
+const cartFunc = function (e, item = undefined) {
+  const startPoint = e.currentTarget.parentElement.previousElementSibling;  
+
+  if (!item) { item = {
+    id: shortid.generate(),
+    stock: setStock(e.currentTarget.dataset.id),
+    price: Number.parseFloat(startPoint.textContent),
+    name: startPoint.previousElementSibling.textContent,
+    image: startPoint.previousElementSibling.previousElementSibling.attributes.src.nodeValue,
+    amount: 1,
+    warranty: false
+  }}  
+
+  const newStorage = storage = JSON.parse(localStorage.getItem('storage'))  
+  const sameElement = newStorage.find(el => el.name === item.name)  
+  
+  if (sameElement) {
+    if (sameElement.stock > sameElement.amount) {
+      const newAmount = sameElement.amount += 1;
+      const id = sameElement.id
+      
+      refs.cartItems.querySelector(`#${id}`).querySelector('.cart-item-amount').textContent = newAmount;
+    
+      const newProduct = { ...sameElement, amount: newAmount }      
+      const newStorage = storage.filter(el => el.id !== id)
+      newStorage.push(newProduct)
+      localStorage.setItem('storage', JSON.stringify(newStorage))
+    } else {
+      alert('out of stock')
+    }    
+  } else {
+    storage.push(item);
+    localStorage.setItem('storage', JSON.stringify(storage));
+    addToCart(item);
+  }  
+
+  displayCartItemCount()
+  displayCartTotal(totalTextRoot)
+  openCart()
+}
+
+export { cartFunc, displayCartTotal, removeItem, findProduct }

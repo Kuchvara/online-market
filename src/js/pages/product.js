@@ -1,14 +1,18 @@
 'use strict'
 import 'regenerator-runtime/runtime';
+const shortid = require('shortid');
+shortid.characters('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZйцукенгшщзхї');
 import '../../styles/pages/product.scss';
 import '../components/burger';
 import '../components/back-to-top';
 import '../components/cart';
 import '../components/footerMailValidation';
+import { cartFunc } from '../components/cart';
 import request from '../request';
 import productPageTpl from '../../templates/productPageTpl.hbs';
 import productTpl from '../../templates/product.hbs';
 import similarTpl from '../../templates/similarTpl.hbs';
+import setStock from '../utils/setStock';
 
 const productId = localStorage.getItem('productId')
 const productUrl = `http://localhost:3030/products/${productId}`
@@ -26,16 +30,29 @@ let reviews = JSON.parse(localStorage.getItem('reviews')) ?
   JSON.parse(localStorage.getItem('reviews')) :
 localStorage.setItem('reviews', '[]');
 
-const productHandle = function (response) {  
-  const markup = productPageTpl(response);
-  productPageRoot.insertAdjacentHTML('beforeend', markup);
-  
+const productHandle = function (response) {
   const currentProduct = {
-    id: response.id,
+    id: shortid.generate(),
     name: response.name,
     image: response.image,
-    price: response.price
-  }
+    price: response.price,
+    manufacturer: response.manufacturer,
+    shipping: response.shipping,
+    type: response.type,
+    description: response.description,
+    stock: setStock(response.id),
+    amount: 1,
+    warranty: false
+  }  
+
+  const markup = productPageTpl(currentProduct);
+  productPageRoot.insertAdjacentHTML('beforeend', markup);
+
+  const quantityBox = document.querySelector('.cart-quantity-box')
+  quantityBox.addEventListener('click', e => quantityHandle(e, currentProduct))
+
+  const addBtn = document.querySelector('.add-btn')
+  addBtn.addEventListener('click', e => cartFunc(e, currentProduct))  
   
   const reviewedArr = JSON.parse(localStorage.getItem('reviewedProducts'))
   const doubleReviewedProd = reviewedArr.find(el => el.id === currentProduct.id)
@@ -56,9 +73,9 @@ const productHandle = function (response) {
     productCategories.push(el.id)
   })
   
-  const randomCategory = productCategories[Math.floor(Math.random()*productCategories.length)];
+  const getRandomCategory = productCategories[Math.floor(Math.random()*productCategories.length)];
   
-  const categiryUrl = `http://localhost:3030/products?$limit=5&category.id=${randomCategory}`
+  const categiryUrl = `http://localhost:3030/products?$limit=5&category.id=${getRandomCategory}`
   const similarRoot = document.querySelector('.similar-list')
   
   const similarMarkup = function (data) {
@@ -66,7 +83,10 @@ const productHandle = function (response) {
     const markup = similarTpl(el);
     similarRoot.insertAdjacentHTML('beforeend', markup);
   })   
-
+  const cartBtns = similarRoot.querySelectorAll('#product-cart-btn')  
+  cartBtns.forEach(el => {
+    el.addEventListener('click', e => cartFunc(e))
+  })
   linkHandler()
   }
   request(categiryUrl, similarMarkup)
@@ -80,6 +100,10 @@ const reviewedRender = function () {
     reviewedRoot.insertAdjacentHTML('beforeend', markup);
   });
   }
+  const cartBtns = reviewedRoot.querySelectorAll('#product-cart-btn')  
+  cartBtns.forEach(el => {
+    el.addEventListener('click', e => cartFunc(e))
+  })
 }
 
 const productLinks = document.querySelectorAll('.product-link')
@@ -167,6 +191,25 @@ const linkHandler = function () {
       window.location.href = './product.html';
     })
   })
+}
+
+const quantityHandle = function (e, product) {
+    const quantity = document.querySelector('.cartPage-item-quantity')    
+  
+  if (e.target.classList.contains('cartPage-increase-quantity')) {
+    if (product.stock > Number(quantity.textContent)) {
+      product.amount = product.amount + 1
+      quantity.textContent = product.amount      
+    } else {
+      alert('no more available in stock')
+    }
+  }
+    if (e.target.classList.contains('cartPage-decrease-quantity')) {
+    if (product.amount > 1) {
+      product.amount = product.amount -1
+      quantity.textContent = product.amount      
+    }
+  }    
 }
 
 setComments()

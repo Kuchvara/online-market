@@ -1,15 +1,15 @@
 <li class="products-list-item">
   <img class="product-image" src={{image}} alt={{name}} 
-  onerror="src='https://subscribenow.com.au/time/asia/Solo/Content/Images/noCover.gif'"/>
+  onerror="src='https://subscribenow.com.au/time/asia/Solo/Content/Images/noCover.gif'">
   <span class="products-item-name">{{name}}</span>
-  <span class="products-item-price">{{price}}</span>
+  <span class="products-item-price">{{price}}$</span>
   <div class="product-icons">
     <a href="" class="product-icon-box product-link" id={{id}}>
       <svg class="product-icon">
         <use href="./images/svg/sprite.svg#icon-search"></use>
       </svg>
     </a>
-    <button class="product-icon-box" id="product-cart-btn">
+    <button class="product-icon-box" id="product-cart-btn" data-id={{id}}>
       <svg class="product-icon">
         <use href="./images/svg/sprite.svg#icon-basket"></use>
       </svg>
