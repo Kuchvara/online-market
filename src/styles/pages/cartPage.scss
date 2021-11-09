@@ -217,11 +217,16 @@
   color: $grey-text;
 }
 
-.coupon-submit-btn {
+.coupon-submit-btn,
+.coupon-cancel-btn {
   padding: 16px;
   background-color: $black;
   color: $white;
   cursor: pointer;
+}
+
+.coupon-cancel-btn {
+  height: 60px;
 }
 
 .coupon-btn-box {
