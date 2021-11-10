@@ -4,4 +4,7 @@
   <span class="products-item-name">{{name}}</span>
   <span class="products-item-price">{{price}}$</span>
   <span class="products-item-price">Amount: {{amount}}</span>
+  {{#if warranty}}
+  <span class="products-item-price">With additional warranty</span>
+  {{/if}}
 </li>

@@ -1,5 +1,7 @@
 'use strict';
 import 'regenerator-runtime/runtime';
+const shortid = require('shortid');
+shortid.characters('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZйцукенгшщзхї');
 import './styles/pages/main.scss';
 import './js/components/back-to-top';
 import './js/components/timer';
@@ -40,8 +42,6 @@ search.addEventListener('submit', e => {
   window.location.href = './categories.html';
 })
 
-// dynamic render
-
 // featured
 const featuredRoot = document.querySelector('.featured-list')
 const featuredUrl = 'http://localhost:3030/products?$limit=8&category.id=abcat0101000'
@@ -62,7 +62,7 @@ request(featuredUrl, featuredMarkup)
 
 // new arrivel
 const newArrivalRoot = document.querySelector('.arrival-list')
-const newArrivalUrl = 'http://localhost:3030/products?$limit=4&category.id=abcat0101000&$sort[updatedAt]=-1';
+const newArrivalUrl = 'http://localhost:3030/products?$limit=8&category.id=abcat0203000&$sort[updatedAt]=-1';
 
 const newArrivalMarkup = function (data) {
   data.data.forEach(el => {
@@ -75,6 +75,33 @@ const newArrivalMarkup = function (data) {
   })
   linkHandler()
 }
+
+// limited add to cart
+const limitedLeft = document.querySelector('#limitedLeft')
+const limitedRight = document.querySelector('#limitedRight')
+
+const leftItem = {
+  id: shortid.generate(),
+  stock: 1,
+  amount: 1,
+  price: 8888,
+  image: 'http://img.bbystatic.com/BestBuy_US/images/products/5154/5154802_sa.jpg',
+  warranty: false,
+  name: 'Samsung - 78" Class'
+}
+
+const rightItem = {
+  id: shortid.generate(),
+  stock: 1,
+  amount: 1,
+  price: 7777,
+  image: 'http://img.bbystatic.com/BestBuy_US/images/products/5481/5481000_sa.jpg',
+  warranty: false,
+  name: 'Sony Pre-Order - 75" Class'
+}
+
+limitedLeft.addEventListener('click', e => cartFunc(e, leftItem))
+limitedRight.addEventListener('click', e => cartFunc(e, rightItem))
 
 // product link handler
 const linkHandler = function () {

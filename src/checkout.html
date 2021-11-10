@@ -46,23 +46,69 @@
       <li class="navigation-item"><a href="./index.html" class="link">Home</a></li>
       <li class="navigation-item"><a href="./cart.html" class="link">Shopping cart</a></li>
       <li class="navigation-item">Checkout</li>
-    </ul>    
-    <h4 class="checkout-title">Checkout our cart</h4>
-    <ul class="cart-review"></ul>
+    </ul> 
     <ul class="checkout-progres">
-    <li class="checkout-progress_item">
-      <span class="checkout-progress_number">1</span>
-      <span class="checkout-progress_name">Shopping Cart</span>
-    </li>
-    <li class="checkout-progress_item">
-      <span class="checkout-progress_number">2</span>
-      <span class="checkout-progress_name">Checkout</span>
-    </li>
-    <li class="checkout-progress_item">
-      <span class="checkout-progress_number">3</span>
-      <span class="checkout-progress_name">Completed</span>
-    </li>
+      <li class="checkout-progress_item">
+        <span class="checkout-progress_number">1</span>
+        <span class="checkout-progress_name">Shopping Cart</span>
+      </li>
+      <li class="checkout-progress_item">
+        <span class="checkout-progress_number">2</span>
+        <span class="checkout-progress_name">Checkout</span>
+      </li>
+      <li class="checkout-progress_item">
+        <span class="checkout-progress_number">3</span>
+        <span class="checkout-progress_name">Completed</span>
+      </li>
     </ul>
+    <h4 class="checkout-title">Checkout your cart</h4>
+    <ul class="cart-review"></ul>
+    <div class="state-flex-box">
+      <div>
+        <p class="delivery-title">Delivery methid</p>
+        <ul>
+          <li class="delivery-item">
+            <input type="radio" id="home" name="delivery" value="20">
+            <label for="home">Bring to your place +20$</label>
+          </li>
+          <li class="delivery-item">
+            <input type="radio" id="shop" name="delivery" value="0">
+            <label for="shop">Take from shop +0</label>
+          </li>
+          <li class="delivery-item">
+            <input type="radio" id="post" name="delivery" value="10">
+            <label for="post">Take from postoffice +10$</label>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <p class="delivery-home">Please fill your address data in form below</p>
+        <div id="shop-box">
+          <div class="flex-box">
+            <p class="shop-data">Find shop</p>
+            <input id="shop-input" type="text">
+            <div>
+              <p class="shop-data">Name: <span class="shop-name"></span></p>
+              <p class="shop-data">Addres: <span class="shop-address"></span></p>
+              <p class="shop-data">City: <span class="shop-city"></span></p>
+            </div>
+          </div>
+        </div>
+        <div id="post-box">
+          <div class="flex-box">
+            <p class="shop-data">Choose postoffice</p>
+            <input id="post-input" type="text">
+            <div>
+              <p class="shop-data">Name: <span class="post-name"></span></p>
+              <p class="shop-data">Addres: <span class="post-address"></span></p>
+              <p class="shop-data">City: <span class="post-city"></span></p>
+            </div>
+          </div>
+        </div>        
+      </div>
+      <p class="toal-heading">Total: <span class="total-value"></span></p>
+    </div>        
+    <div id="map"></div>    
     <form class="checkout-form-flex" id="paymentData" name="paymentData">
     <div class="form buyer">
       <span class="form-title">Buyer Info</span>
@@ -229,8 +275,11 @@
         <a href="./checkout.html" class="checkout-link">Checkout</a>
       </footer>
     </aside>
-  </div>
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>  
-  <script src="./js/jquery.mask.js"></script>
+  </div>  
+  <script type="text/javascript"
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAAwBBMMPMPMJW_4F2nn3nebttBfosCnlA&libraries=places">
+  </script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="./js/jquery.mask.js"></script>  
 </body>
 </html>

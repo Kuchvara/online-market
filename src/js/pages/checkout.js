@@ -9,7 +9,9 @@ import '../utils/jquery.mask.js';
 import '../components/cart';
 import '../components/footerMailValidation';
 import '../utils/validation';
+import '../components/initMap';
 import checkoutItem from '../../templates/checkoutItem.hbs';
+import {displayCartTotal} from '../components/cart';
 
 // render cart items
 const storage = JSON.parse(localStorage.getItem('storage'))
@@ -29,6 +31,51 @@ const ordersStorage = () => {
 
 ordersStorage()
 
+// set total value
+const totalValue = document.querySelector('.total-value')
+displayCartTotal(totalValue)
+
+// delivery method
+const paiment = {
+  value: displayCartTotal(totalValue)
+}
+const deliveryHome = document.querySelector('.delivery-home')
+const deliveryShop = document.getElementById('shop-box')
+const deliveryPost = document.getElementById('post-box')
+deliveryHome.hidden = true
+deliveryShop.hidden = true
+deliveryPost.hidden = true
+
+const changeHandle = (e) => {  
+  totalValue.textContent = displayCartTotal(totalValue) + Number(e.target.value)
+  paiment.value = totalValue.textContent
+  paiment.delivery = e.target.id
+}
+
+const bringToYou = document.querySelector('#home')
+bringToYou.addEventListener('change', (e) => {
+  deliveryHome.hidden = false;
+  deliveryShop.hidden = true;
+  deliveryPost.hidden = true;  
+  changeHandle(e)
+})
+
+const takeFromShop = document.querySelector('#shop')
+takeFromShop.addEventListener('change', (e) => {
+  deliveryHome.hidden = true
+  deliveryShop.hidden = false
+  deliveryPost.hidden = true  
+  changeHandle(e)
+})
+
+const takeFromPost = document.querySelector('#post')
+takeFromPost.addEventListener('change', (e) => {
+  deliveryHome.hidden = true
+  deliveryShop.hidden = true
+  deliveryPost.hidden = false  
+  changeHandle(e)
+})
+
 // form data
 const form = document.querySelector('#paymentData')
 
@@ -41,13 +88,14 @@ form.onsubmit = (e) => {
 
   let object = {
     castumerData: {},
-    cartData: cartData
+    cartData: cartData,
+    paimentData: paiment
   };
   data.forEach((value, key) => object.castumerData[key] = value)
-  console.log(object);
-
-  // ordersStorage().push(object)
-  // window.location.href = './complete.html'
+  
+  const orderData = ordersStorage().push(object)
+  localStorage.setItem('order', JSON.stringify(orderData))
+  window.location.href = './complete.html'
 }
 
 //  mask

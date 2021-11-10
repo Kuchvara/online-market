@@ -6,12 +6,10 @@ import '../components/burger';
 import '../components/back-to-top';
 import '../components/footerMailValidation';
 
-// refresh localStorage
-localStorage.setItem('stock', JSON.stringify([]))
-localStorage.setItem('reviewedProducts', JSON.stringify([]))
-localStorage.setItem('reviews', JSON.stringify([]))
+// clean cart storage
 localStorage.setItem('storage', JSON.stringify([]))
-// set coupons
+
+// refresh coupons
 const coupons = [
   {
     code: 'discount10',

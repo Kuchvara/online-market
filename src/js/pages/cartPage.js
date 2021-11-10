@@ -103,27 +103,57 @@ const addExtraWarranty = function (e) {
 
 // coupons
 const couponForm = document.querySelector('.coupon-btn-box')
+const couponInput = document.querySelector('.coupon-input')
+const discount = document.querySelector('.discount')
 
 couponForm.addEventListener('submit', e => {
   e.preventDefault()
-  const coupons = JSON.parse(localStorage.getItem('coupons'))  
-  const couponInput = document.querySelector('.coupon-input')
-  const discount = document.querySelector('.discount')
-
   const couponCode = couponInput.value
-  const findCoupon = coupons.find(el => el.code === couponCode)
+  const coupons = JSON.parse(localStorage.getItem('coupons'))  
+  const currentCart = JSON.parse(localStorage.getItem('storage'))
 
-  if (findCoupon) {
+  const findCoupon = coupons.find(el => el.code === couponCode)  
+
+  if (findCoupon) {    
     const newTotalValue = (displayCartTotal(cartProductTotal) * findCoupon.value).toFixed(2)
     discount.textContent = (displayCartTotal(cartProductTotal) - newTotalValue).toFixed(2)
     cartProductTotal.textContent = newTotalValue
+    currentCart.forEach(el => {
+      el.coupon = true
+      el.price = el.price * findCoupon.value
+    })
     couponInput.value = '';
     const filteredCoupons = coupons.filter(el => el.code !== findCoupon.code)
+    localStorage.setItem('storage', JSON.stringify(currentCart))
     localStorage.setItem('coupons', JSON.stringify(filteredCoupons))
+    localStorage.setItem('usedCoupon', JSON.stringify([findCoupon]))
   } else {
     couponInput.value = '';
     alert('wrong coupon')
   }  
+})
+
+// cancel coupon
+const couponCancelBtn = document.querySelector('.coupon-cancel-btn')
+
+couponCancelBtn.addEventListener('click', () => {
+  const usedCoupon = JSON.parse(localStorage.getItem('usedCoupon'))
+  const currentCart = JSON.parse(localStorage.getItem('storage'))
+  const coupons = JSON.parse(localStorage.getItem('coupons'))
+
+  if (usedCoupon.length > 0) {    
+    currentCart.forEach(el => {
+      if (el.coupon) {        
+        el.price = el.price / usedCoupon[0].value
+        el.coupon = false
+      }      
+    })    
+    localStorage.setItem('usedCoupon', JSON.stringify([]))
+    localStorage.setItem('storage', JSON.stringify(currentCart))
+    cartProductTotal.textContent = displayCartTotal(cartProductTotal).toFixed(2)
+    coupons.push(usedCoupon)
+    localStorage.setItem('coupons', JSON.stringify(coupons))
+  }
 })
 
 // You can also buy
