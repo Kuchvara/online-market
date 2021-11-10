@@ -112,7 +112,7 @@ couponForm.addEventListener('submit', e => {
   const coupons = JSON.parse(localStorage.getItem('coupons'))  
   const currentCart = JSON.parse(localStorage.getItem('storage'))
 
-  const findCoupon = coupons.find(el => el.code === couponCode)  
+  const findCoupon = coupons.find(el => el.code === couponCode) 
 
   if (findCoupon) {    
     const newTotalValue = (displayCartTotal(cartProductTotal) * findCoupon.value).toFixed(2)
@@ -138,8 +138,10 @@ const couponCancelBtn = document.querySelector('.coupon-cancel-btn')
 
 couponCancelBtn.addEventListener('click', () => {
   const usedCoupon = JSON.parse(localStorage.getItem('usedCoupon'))
+
   const currentCart = JSON.parse(localStorage.getItem('storage'))
   const coupons = JSON.parse(localStorage.getItem('coupons'))
+
 
   if (usedCoupon.length > 0) {    
     currentCart.forEach(el => {
@@ -151,6 +153,7 @@ couponCancelBtn.addEventListener('click', () => {
     localStorage.setItem('usedCoupon', JSON.stringify([]))
     localStorage.setItem('storage', JSON.stringify(currentCart))
     cartProductTotal.textContent = displayCartTotal(cartProductTotal).toFixed(2)
+
     coupons.push(usedCoupon)
     localStorage.setItem('coupons', JSON.stringify(coupons))
   }
