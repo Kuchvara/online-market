@@ -32,15 +32,19 @@ function initMap() {
     
     if (place) {
       namePlace.textContent = place.name    
-      addressPlace.textContent = `${place.address_components[0].long_name}, ${place.address_components[2].long_name}, ${place.address_components[1].long_name}`
-      cityPlace.textContent = place.address_components[4].long_name
-    }      
+      addressPlace.textContent = `${place.address_components[0]?.long_name}, ${place.address_components[2]?.long_name}, ${place.address_components[1]?.long_name}`
+      cityPlace.textContent = place.address_components[4]?.long_name
+
+      localStorage.setItem('deliveryAddress', JSON.stringify(place.address_components))
+    }    
       
     input.addEventListener('change', () => {
       if (!input.value) {
       namePlace.textContent = ''
       addressPlace.textContent = ''
       cityPlace.textContent = ''
+      
+      localStorage.setItem('deliveryAddress', '[]')
     }
     })  
     

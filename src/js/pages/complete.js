@@ -26,5 +26,6 @@ const coupons = [
 ]
 localStorage.setItem('coupons', JSON.stringify(coupons))
 
-const order = JSON.parse(localStorage.getItem('order'))
-console.log(order);
+const orders = JSON.parse(localStorage.getItem('orders'))
+console.log('Your order: ', orders[orders.length - 1]);
+console.log('All orders:', orders);

@@ -20,7 +20,8 @@
   padding: 0 24px;
 }
 
-.products-item-price {
+.products-item-price,
+.products-item-text {
   color: $grey-text;
   @include font(18px, 27px);
 }

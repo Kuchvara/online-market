@@ -155,8 +155,7 @@ const init = () => {
 init();
 
 const cartFunc = function (e, item = undefined) {
-  const startPoint = e.currentTarget.parentElement.previousElementSibling;
-  console.log(e.currentTarget.dataset.id);
+  const startPoint = e.currentTarget.parentElement.previousElementSibling;  
 
   if (!item) { item = {
     id: shortid.generate(),
@@ -167,7 +166,7 @@ const cartFunc = function (e, item = undefined) {
     amount: 1,
     warranty: false
   }}  
-  console.log(item);
+  
   const newStorage = storage = JSON.parse(localStorage.getItem('storage'))  
   const sameElement = newStorage.find(el => el.name === item.name)  
   

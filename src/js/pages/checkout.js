@@ -22,22 +22,18 @@ storage.forEach(el => {
 })
 
 // set initial orders
-const ordersStorage = () => {
-  const orders = JSON.parse(localStorage.getItem('orders')) ?
+let orders = JSON.parse(localStorage.getItem('orders')) ?
     JSON.parse(localStorage.getItem('orders')) :
-    localStorage.setItem('orders', JSON.stringify([]))
-  return orders
-}
+    localStorage.setItem('orders', '[]')
 
-ordersStorage()
 
 // set total value
 const totalValue = document.querySelector('.total-value')
-displayCartTotal(totalValue)
+displayCartTotal(totalValue).toFixed(2)
 
 // delivery method
 const paiment = {
-  value: displayCartTotal(totalValue)
+  value: displayCartTotal(totalValue).toFixed(2)
 }
 const deliveryHome = document.querySelector('.delivery-home')
 const deliveryShop = document.getElementById('shop-box')
@@ -47,9 +43,26 @@ deliveryShop.hidden = true
 deliveryPost.hidden = true
 
 const changeHandle = (e) => {  
-  totalValue.textContent = displayCartTotal(totalValue) + Number(e.target.value)
+  totalValue.textContent = (displayCartTotal(totalValue) + Number(e.target.value)).toFixed(2)
   paiment.value = totalValue.textContent
-  paiment.delivery = e.target.id
+  paiment.deliveryMethod = e.target.id
+  localStorage.setItem('deliveryAddress', '[]')
+  const postInput = document.querySelector('#post-input')
+  const shopInput = document.querySelector('#shop-input')
+  const shopName = document.querySelector('.shop-name')
+  const shopAddress = document.querySelector('.shop-address')
+  const shopCity = document.querySelector('.shop-city')
+  const postCity = document.querySelector('.post-city')
+  const postName = document.querySelector('.post-name')
+  const postAddress = document.querySelector('.post-address')
+  postCity.textContent = ''
+  postName.textContent = ''
+  postAddress.textContent = ''
+  shopName.textContent = ''
+  shopAddress.textContent = ''
+  shopCity.textContent = ''
+  postInput.value = ''
+  shopInput.value = ''
 }
 
 const bringToYou = document.querySelector('#home')
@@ -78,23 +91,40 @@ takeFromPost.addEventListener('change', (e) => {
 
 // form data
 const form = document.querySelector('#paymentData')
+let deliveryAddress = JSON.parse(localStorage.getItem('deliveryAddress'))
 
 form.onsubmit = (e) => {
   e.preventDefault()
 
   let data = new FormData(form)
 
-  const cartData = JSON.parse(localStorage.getItem('storage'))
+  const cartData = JSON.parse(localStorage.getItem('storage'))  
 
   let object = {
     castumerData: {},
-    cartData: cartData,
-    paimentData: paiment
+    cartData: cartData    
   };
-  data.forEach((value, key) => object.castumerData[key] = value)
   
-  const orderData = ordersStorage().push(object)
-  localStorage.setItem('order', JSON.stringify(orderData))
+  data.forEach((value, key) => object.castumerData[key] = value)  
+  
+  if (deliveryAddress.length > 0) {
+    paiment.deliveryAddress = deliveryAddress
+  } else {
+    paiment.deliveryAddress = {
+      address: object.castumerData.address,
+      contact: object.castumerData.phone,
+      zipCode: object.castumerData.zipCode,
+      city: object.castumerData.city,
+      state: object.castumerData.state
+    }
+  }
+  paiment.method = object.castumerData.paymentMethod  
+  
+  object.paimentData = paiment
+  orders.push(object)
+  console.log(orders);
+  
+  localStorage.setItem('orders', JSON.stringify(orders))
   window.location.href = './complete.html'
 }
 
@@ -114,3 +144,11 @@ $(document).ready(function () {
   $(card).mask('0000-0000-0000-0000');
   $(contact).mask('+380000000000');
 });
+
+function correctPrice() {
+  const pricesToCorrect = document.querySelectorAll('.products-item-price')
+  pricesToCorrect.forEach(el => {    
+    el.textContent = `${Number.parseFloat(el.textContent).toFixed(2)}$`
+  })
+}
+document.addEventListener('load', correctPrice())
