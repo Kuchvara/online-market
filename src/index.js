@@ -126,3 +126,27 @@ const currentStock = () => {
 }
 
 currentStock()
+
+// set coupons
+const couponsArr = [
+  {
+    code: 'discount10',
+    value: 0.9
+  },
+  {
+    code: 'discount20',
+    value: 0.8
+  },
+  {
+    code: 'discount30',
+    value: 0.7
+  }
+]
+const setCoupons = () => {
+  const coupons = JSON.parse(localStorage.getItem('coupons'))
+    ? JSON.parse(localStorage.getItem('coupons'))
+    : localStorage.setItem('coupons', JSON.stringify(couponsArr))
+  return coupons
+}
+
+setCoupons()

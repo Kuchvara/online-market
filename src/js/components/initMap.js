@@ -5,7 +5,7 @@ function initMap() {
   }
     const options = {    
     center: location,
-    zoom: 12
+    zoom: 17
   }
   
   map = new google.maps.Map(document.getElementById('map'), options);
@@ -30,9 +30,20 @@ function initMap() {
     autocomplete.addListener('place_changed', () => {
     const place = autocomplete.getPlace()
     
-    namePlace.textContent = place.name    
-    addressPlace.textContent = `${place.address_components[0].long_name}, ${place.address_components[2].long_name}, ${place.address_components[1].long_name}`
-    cityPlace.textContent = place.address_components[4].long_name
+    if (place) {
+      namePlace.textContent = place.name    
+      addressPlace.textContent = `${place.address_components[0].long_name}, ${place.address_components[2].long_name}, ${place.address_components[1].long_name}`
+      cityPlace.textContent = place.address_components[4].long_name
+    }      
+      
+    input.addEventListener('change', () => {
+      if (!input.value) {
+      namePlace.textContent = ''
+      addressPlace.textContent = ''
+      cityPlace.textContent = ''
+    }
+    })  
+    
       
     new google.maps.Marker({
       position: place.geometry.location,      

@@ -151,7 +151,7 @@ couponCancelBtn.addEventListener('click', () => {
     localStorage.setItem('usedCoupon', JSON.stringify([]))
     localStorage.setItem('storage', JSON.stringify(currentCart))
     cartProductTotal.textContent = displayCartTotal(cartProductTotal).toFixed(2)
-    coupons.push(usedCoupon)
+    coupons.push(usedCoupon[0])
     localStorage.setItem('coupons', JSON.stringify(coupons))
   }
 })
