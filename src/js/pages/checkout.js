@@ -121,8 +121,7 @@ form.onsubmit = (e) => {
   paiment.method = object.castumerData.paymentMethod  
   
   object.paimentData = paiment
-  orders.push(object)
-  console.log(orders);
+  orders.push(object)  
   
   localStorage.setItem('orders', JSON.stringify(orders))
   window.location.href = './complete.html'
