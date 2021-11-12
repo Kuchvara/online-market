@@ -1,5 +1,7 @@
 'use strict';
 import 'regenerator-runtime/runtime';
+const shortid = require('shortid');
+shortid.characters('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZйцукенгшщзхї');
 import './styles/pages/main.scss';
 import './js/components/back-to-top';
 import './js/components/timer';
@@ -8,13 +10,12 @@ import './js/components/slider';
 import './js/components/cart';
 import './js/components/footerMailValidation';
 import { cartFunc } from './js/components/cart';
-import request from './js/request';
+import request from './js/utils/request';
 import featuredItemTpl from './templates/featuredItem.hbs';
 import newArrivalTpl from './templates/newArrivalTpl.hbs';
 
 // move to categoria page
 const links = document.querySelector('#categories')
-
 let urlData = {}
 
 links.addEventListener('click', (e) => {
@@ -41,8 +42,6 @@ search.addEventListener('submit', e => {
   window.location.href = './categories.html';
 })
 
-// dynamic render
-
 // featured
 const featuredRoot = document.querySelector('.featured-list')
 const featuredUrl = 'http://localhost:3030/products?$limit=8&category.id=abcat0101000'
@@ -63,7 +62,7 @@ request(featuredUrl, featuredMarkup)
 
 // new arrivel
 const newArrivalRoot = document.querySelector('.arrival-list')
-const newArrivalUrl = 'http://localhost:3030/products?$limit=4&category.id=abcat0101000&$sort[updatedAt]=-1';
+const newArrivalUrl = 'http://localhost:3030/products?$limit=8&category.id=abcat0203000&$sort[updatedAt]=-1';
 
 const newArrivalMarkup = function (data) {
   data.data.forEach(el => {
@@ -76,6 +75,33 @@ const newArrivalMarkup = function (data) {
   })
   linkHandler()
 }
+
+// limited add to cart
+const limitedLeft = document.querySelector('#limitedLeft')
+const limitedRight = document.querySelector('#limitedRight')
+
+const leftItem = {
+  id: shortid.generate(),
+  stock: 1,
+  amount: 1,
+  price: 8888,
+  image: 'http://img.bbystatic.com/BestBuy_US/images/products/5154/5154802_sa.jpg',
+  warranty: false,
+  name: 'Samsung - 78" Class'
+}
+
+const rightItem = {
+  id: shortid.generate(),
+  stock: 1,
+  amount: 1,
+  price: 7777,
+  image: 'http://img.bbystatic.com/BestBuy_US/images/products/5481/5481000_sa.jpg',
+  warranty: false,
+  name: 'Sony Pre-Order - 75" Class'
+}
+
+limitedLeft.addEventListener('click', e => cartFunc(e, leftItem))
+limitedRight.addEventListener('click', e => cartFunc(e, rightItem))
 
 // product link handler
 const linkHandler = function () {
@@ -91,8 +117,18 @@ const linkHandler = function () {
 
 request(newArrivalUrl, newArrivalMarkup)
 
+// set initial empty stock
+const currentStock = () => {
+  const stock = JSON.parse(localStorage.getItem('stock')) ?
+    JSON.parse(localStorage.getItem('stock')) :
+    localStorage.setItem('stock', JSON.stringify([]))
+  return stock
+}
+
+currentStock()
+
 // set coupons
-const coupons = [
+const couponsArr = [
   {
     code: 'discount10',
     value: 0.9
@@ -106,15 +142,11 @@ const coupons = [
     value: 0.7
   }
 ]
-
-localStorage.setItem('coupons', JSON.stringify(coupons))
-
-// set initial empty stock
-const currentStock = () => {
-  const stock = JSON.parse(localStorage.getItem('stock')) ?
-    JSON.parse(localStorage.getItem('stock')) :
-    localStorage.setItem('stock', JSON.stringify([]))
-  return stock
+const setCoupons = () => {
+  const coupons = JSON.parse(localStorage.getItem('coupons'))
+    ? JSON.parse(localStorage.getItem('coupons'))
+    : localStorage.setItem('coupons', JSON.stringify(couponsArr))
+  return coupons
 }
 
-currentStock()
+setCoupons()

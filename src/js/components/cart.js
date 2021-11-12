@@ -166,7 +166,7 @@ const cartFunc = function (e, item = undefined) {
     amount: 1,
     warranty: false
   }}  
-
+  
   const newStorage = storage = JSON.parse(localStorage.getItem('storage'))  
   const sameElement = newStorage.find(el => el.name === item.name)  
   

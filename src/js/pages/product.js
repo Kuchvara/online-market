@@ -8,7 +8,7 @@ import '../components/back-to-top';
 import '../components/cart';
 import '../components/footerMailValidation';
 import { cartFunc } from '../components/cart';
-import request from '../request';
+import request from '../utils/request';
 import productPageTpl from '../../templates/productPageTpl.hbs';
 import productTpl from '../../templates/product.hbs';
 import similarTpl from '../../templates/similarTpl.hbs';
@@ -55,7 +55,7 @@ const productHandle = function (response) {
   addBtn.addEventListener('click', e => cartFunc(e, currentProduct))  
   
   const reviewedArr = JSON.parse(localStorage.getItem('reviewedProducts'))
-  const doubleReviewedProd = reviewedArr.find(el => el.id === currentProduct.id)
+  const doubleReviewedProd = reviewedArr.find(el => el.name === currentProduct.name)  
   
   if (!doubleReviewedProd) {
     if (reviewedArr.length < 5) {

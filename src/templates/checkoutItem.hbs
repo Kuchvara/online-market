@@ -1,0 +1,10 @@
+<li class="products-list-item">
+  <img class="product-image" src={{image}} alt={{name}}
+    onerror="src='https://subscribenow.com.au/time/asia/Solo/Content/Images/noCover.gif'">
+  <span class="products-item-name">{{name}}</span>
+  <span class="products-item-price">{{price}}$</span>
+  <span class="products-item-text">Amount: {{amount}}</span>
+  {{#if warranty}}
+  <span class="products-item-text">With additional warranty</span>
+  {{/if}}
+</li>

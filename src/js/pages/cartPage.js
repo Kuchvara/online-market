@@ -8,7 +8,7 @@ import '../components/footerMailValidation';
 import { cartFunc, displayCartTotal, removeItem, findProduct } from '../components/cart';
 import cartPageItem from '../../templates/cartPageItem.hbs';
 import similarTpl from '../../templates/similarTpl.hbs';
-import request from '../request';
+import request from '../utils/request';
 
 const cartListRoot = document.querySelector('.cart-products-list')
 const cartProductTotal = document.querySelector('.cart-products-total_value')
@@ -112,8 +112,7 @@ couponForm.addEventListener('submit', e => {
   const coupons = JSON.parse(localStorage.getItem('coupons'))  
   const currentCart = JSON.parse(localStorage.getItem('storage'))
 
-  const findCoupon = coupons.find(el => el.code === couponCode)
-  console.log(findCoupon);
+  const findCoupon = coupons.find(el => el.code === couponCode) 
 
   if (findCoupon) {    
     const newTotalValue = (displayCartTotal(cartProductTotal) * findCoupon.value).toFixed(2)
@@ -139,7 +138,10 @@ const couponCancelBtn = document.querySelector('.coupon-cancel-btn')
 
 couponCancelBtn.addEventListener('click', () => {
   const usedCoupon = JSON.parse(localStorage.getItem('usedCoupon'))
-  const currentCart = JSON.parse(localStorage.getItem('storage'))  
+
+  const currentCart = JSON.parse(localStorage.getItem('storage'))
+  const coupons = JSON.parse(localStorage.getItem('coupons'))
+
 
   if (usedCoupon.length > 0) {    
     currentCart.forEach(el => {
@@ -151,6 +153,8 @@ couponCancelBtn.addEventListener('click', () => {
     localStorage.setItem('usedCoupon', JSON.stringify([]))
     localStorage.setItem('storage', JSON.stringify(currentCart))
     cartProductTotal.textContent = displayCartTotal(cartProductTotal).toFixed(2)
+    coupons.push(usedCoupon[0])
+    localStorage.setItem('coupons', JSON.stringify(coupons))
   }
 })
 

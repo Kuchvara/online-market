@@ -41,13 +41,12 @@
       <div class="burger-menu_overlay"></div>
     </div>
   </header>
-  <main class="checkout-container">
+  <main class="checkout-container">    
     <ul class="navigation">
       <li class="navigation-item"><a href="./index.html" class="link">Home</a></li>
-      <li class="navigation-item">Shopping cart</li>
-      <li class="navigation-item"><a href="./checkout.html" class="link">Checkout</a></li>
-    </ul>
-    <h4 class="checkout-title">Shopping Cart</h4>
+      <li class="navigation-item"><a href="./cart.html" class="link">Shopping cart</a></li>
+      <li class="navigation-item">Checkout</li>
+    </ul>    
     <ul class="checkout-progres">
       <li class="checkout-progress_item">
         <span class="checkout-progress_number">1</span>
@@ -61,52 +60,9 @@
         <span class="checkout-progress_number">3</span>
         <span class="checkout-progress_name">Completed</span>
       </li>
-    </ul> 
-    <span class="cart-description-text product">Product</span>
-    <span class="cart-description-text quantity">Quantity</span>
-    <span class="cart-description-text price">Price</span>
-    <span class="cart-description-text">Total</span>
-    <ul class="cart-products-list">      
     </ul>
-    <div class="flex-box">
-      <form class="coupon-btn-box">
-        <input type="text" class="coupon-input" placeholder="Enter coupon code" />
-        <button type="submit" class="coupon-submit-btn">
-          Apply coupon
-        </button>
-      </form> 
-      <button type="button" class="coupon-cancel-btn">Cancel coupon</button>
-      <span class="discount">Discount</span>
-      <h4 class="cart-products-total">Total: <span class="cart-products-total_value"></span></h4>
-    </div>
-    <ul class="installments-list">
-      <li class="installments-item">
-        <span class="bank-name">Privat Bank (take extra 3%)</span>        
-        <select id="installment-select" data-percent="1.03">
-          <option value="1">Choose installment</option>
-          <option value="3">3 monthes</option>
-          <option value="6">6 monthes</option>
-          <option value="9">9 monthes</option>          
-        </select>
-        <span class="month-paiment">month paiment</span>
-        <span class="installment-total">Total</span>
-      </li>
-      <li class="installments-item">
-        <span class="bank-name">Monobank (take extra 2%)</span>
-        <select id="installment-select" data-percent="1.02">
-          <option value="1">Choose installment</option>
-          <option value="4">4 monthes</option>
-          <option value="8">8 monthes</option>          
-          <option value="12">12 monthes</option>
-        </select>
-        <span class="month-paiment">month paiment</span>
-        <span class="installment-total">Total</span>
-      </li>
-    </ul>
-    <div>
-      <h4 class="reviewed-heading">You can also buy</h4>
-      <div class="similar-list"></div>
-    </div>
+    <h4 class="checkout-title">Checkout Complete!</h4>
+    <a class="btn goAgain" href="./index.html">Go Shopping Again</a>    
   </main>
   <footer class="footer">
     <div class="footer-flex">
@@ -172,24 +128,6 @@
       </div>
     </div>
     <span class="footer-copyright">Copyright © 2021 Elliye. All Right Reseved</span>
-  </footer>
-  <div class="overlay">
-    <aside class="cart">
-      <button class="cart-close-btn">
-        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
-          <path
-            d="M31.708 25.708c-0-0-0-0-0-0l-9.708-9.708 9.708-9.708c0-0 0-0 0-0 0.105-0.105 0.18-0.227 0.229-0.357 0.133-0.356 0.057-0.771-0.229-1.057l-4.586-4.586c-0.286-0.286-0.702-0.361-1.057-0.229-0.13 0.048-0.252 0.124-0.357 0.228 0 0-0 0-0 0l-9.708 9.708-9.708-9.708c-0-0-0-0-0-0-0.105-0.104-0.227-0.18-0.357-0.228-0.356-0.133-0.771-0.057-1.057 0.229l-4.586 4.586c-0.286 0.286-0.361 0.702-0.229 1.057 0.049 0.13 0.124 0.252 0.229 0.357 0 0 0 0 0 0l9.708 9.708-9.708 9.708c-0 0-0 0-0 0-0.104 0.105-0.18 0.227-0.229 0.357-0.133 0.355-0.057 0.771 0.229 1.057l4.586 4.586c0.286 0.286 0.702 0.361 1.057 0.229 0.13-0.049 0.252-0.124 0.357-0.229 0-0 0-0 0-0l9.708-9.708 9.708 9.708c0 0 0 0 0 0 0.105 0.105 0.227 0.18 0.357 0.229 0.356 0.133 0.771 0.057 1.057-0.229l4.586-4.586c0.286-0.286 0.362-0.702 0.229-1.057-0.049-0.13-0.124-0.252-0.229-0.357z">
-          </path>
-        </svg>
-      </button>
-      <h3 class="cart-title">Your cart</h3>
-      <div class="cart-items"></div>
-      <footer>
-        <h3 class="cart-price">Total price: $0</h3>
-        <a href="./cart.html" class="checkout-link">Cart page</a>
-        <a href="./checkout.html" class="checkout-link">Checkout</a>
-      </footer>
-    </aside>
-  </div>
+  </footer>  
 </body>
 </html>

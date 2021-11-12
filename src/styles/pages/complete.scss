@@ -1,0 +1,97 @@
+@import '~normalize.css';
+@import '../utils/variables';
+@import '../base/common';
+@import '../components/buttons';
+@import '../components/link';
+@import '../layout/header';
+@import '../layout/footer';
+@import '../components/cart';
+@import '../components/burger';
+
+.checkout-container {
+  padding: 0px 32px;
+  text-align: center;
+
+  @media screen and (min-width: 1600px) {
+    padding: 0px 144px;
+  }
+}
+
+.navigation {
+  display: flex;
+  margin-bottom: 100px;
+}
+
+.navigation-item {
+  cursor: pointer;
+  @include font(18px, 27px, 500);
+
+  &:not(:last-child) {
+    margin-right: 32px;
+  }
+}
+
+.checkout-title {
+  text-align: center;
+  color: $black;
+  @include font(64px, 96px, 700);
+  margin-bottom: 32px;
+  margin-top: 17px;
+}
+
+.checkout-progres {
+  display: flex;
+  padding: 0px 32px;
+  justify-content: space-between;
+  margin-bottom: 200px;
+
+  @media screen and (max-width: 730px) {
+    flex-direction: column;
+  }
+}
+
+.checkout-progress_item {
+  color: $black;
+  display: flex;
+  align-items: center;
+
+  @media screen and (max-width: 730px) {
+    margin-bottom: 16px;
+  }
+}
+
+.checkout-progress_number {
+  border-radius: 50%;
+  border: 2px solid;
+  box-sizing: border-box;
+  width: 56px;
+  height: 56px;
+  margin-right: 24px;
+  @include font(24px, 36px, 500);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  @media screen and (max-width: 830px) {
+    @include font(18px, 27px);
+    width: 40px;
+    height: 40px;
+  }
+}
+
+.checkout-progress_name {
+  @include font(24px, 36px, 500);
+
+  @media screen and (max-width: 830px) {
+    @include font(18px, 27px);
+  }
+}
+
+.goAgain {
+  padding: 17px 35px;
+  margin-bottom: 200px;
+  display: inline-block;
+  text-decoration: none;
+  color: $white;
+  @include font(18px, 27px);
+}
